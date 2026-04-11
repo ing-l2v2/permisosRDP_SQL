@@ -1,0 +1,17 @@
+2026-03-07 15:33:22 | ERROR: Error de conexión al servidor remoto 10.0.0.80. Mensaje de error: WinRM no puede procesar la solicitud. Se produjo el siguiente error con código de error 0x8009030e al usar la autenticación Negotiate: Una sesión de inicio especificada no existe. Es posible que haya finalizado.  
+ Las causas posibles son:
+  -El nombre de usuario o la contraseña especificados no son válidos.
+  -Se usa Kerberos cuando no se especificó ningún método de autenticación ni ningún nombre de usuario.
+  -Kerberos acepta nombres de usuario de dominio, pero no nombres de usuario locales.
+  -El nombre de entidad de seguridad de servicio (SPN) del nombre y puerto del equipo remoto no existe.
+  -Los equipos cliente y remoto se encuentran en dominios distintos y no hay confianza entre los dos dominios.
+ Después de comprobar los problemas mencionados, intente lo siguiente:
+  -Consulte el visor de eventos y busque eventos relacionados con la autenticación.
+  -Cambie el método de autenticación; agregue el equipo de destino a la opción de configuración TrustedHosts de WinRM o use el transporte HTTPS.
+ Tenga en cuenta que es posible que no se autentiquen los equipos de la lista TrustedHosts.
+   -Para obtener más información acerca de la configuración de WinRM, ejecute el siguiente comando: winrm help config. Para obtener más información, consulte el tema de la Ayuda about_Remote_Troubleshooting.
+2026-03-07 15:35:03 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-07 15:35:10 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-07 15:35:55 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-07 15:47:34 | Proceso completado Ok. .\hcaycho en 'Remote Desktop Users', NumReg: 16888, Estado: '2', Expira: '2026-03-08 00:00', HoraExpira: '2026-03-07 16:00'
+2026-03-10 13:03:43 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL

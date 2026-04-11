@@ -1,0 +1,3552 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Resumen DBA Azure Ginger</title>
+<link rel="stylesheet" href="css/asignados.css">
+</head>
+
+<body>
+<h1>Detalle para DBA de SQL Azure.</h1>
+
+<!-- Mini Dashboard -->
+<div class="dashboard">
+<div class="card">
+<div class="cardTitle">Bases Datos</div>
+<div class="cardValue">88</div>
+</div>
+<div class="card">
+<div class="cardTitle">Usuarios</div>
+<div class="cardValue">28</div>
+</div>
+<div class="card">
+<div class="cardTitle">Roles</div>
+<div class="cardValue">6</div>
+</div>
+<div class="card">
+<div class="cardTitle">Poblacion</div>
+<div class="cardValue">581</div>
+</div>
+</div>
+
+<input type="text" id="globalSearch" placeholder="Buscar en todo el reporte...">
+<h2 id="accesosSql">Bases de datos de Azure SQL-GINGER.</h2>
+<input type="text" class="groupSearch" data-table="tablaSql" placeholder="Buscar en Azure">
+
+<table id="tablaSql">
+<thead>
+
+<!-- Filtros de cabeceras en tablaSql -->
+<tr class="filters">
+<th><input class="colFilter" data-col="0" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="1" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="2" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="3" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="4" data-table="tablaSql"></th>
+</tr>
+
+<tr>
+<th onclick="sortTable(0,'tablaSql')">BaseDatos <span class="arrow"></span></th>
+<th onclick="sortTable(1,'tablaSql')">Usuario <span class="arrow"></span></th>
+<th onclick="sortTable(2,'tablaSql')">Roles <span class="arrow"></span></th>
+<th onclick="sortTable(3,'tablaSql')">Permiso <span class="arrow"></span></th>
+<th onclick="sortTable(4,'tablaSql')">TotalPermiso <span class="arrow"></span></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Autenticacion</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>mlizama</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>pala</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion_renta</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion_renta</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion_renta</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion_renta</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion_renta</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>mlizama</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-aclub</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-baninter</td>
+<td>arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-baninter</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-baninter</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-baninter</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-baninter</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-baninter</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-baninter</td>
+<td>mlizama</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-baninter</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>mlizama</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-bice</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-dealers</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-dealers</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-dealers</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-dealers</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-dealers</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-help</td>
+<td>arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-help</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-help</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-help</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-help</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-help</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-help</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>mlizama</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-imcruz</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape-log</td>
+<td>cberruz</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape-log</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape-log</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape-log</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape-log</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape-log</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape-log</td>
+<td>lmartinez</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-inchcape-log</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-affinity</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-affinity</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-affinity</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-affinity</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-affinity</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>jtoledo</td>
+<td>db_datareader</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>mlizama</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>pala</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-cont</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-flotante</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-flotante</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-flotante</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-flotante</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-flotante</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-flotante</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-flotante</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-flotante</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-flotante</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>mlizama</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-sura-mprod</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-sura-rmx</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-sura-rmx</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-sura-rmx</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-sura-rmx</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Autenticacion-sura-rmx</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>mlizama</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>autenticacion-zurich</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fid_qa_client_auditlogs</td>
+<td>##MS_SyncAccount##</td>
+<td>DataSync_admin</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fid_qa_client_auditlogs</td>
+<td>##MS_SyncResourceManager##</td>
+<td>DataSync_admin</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fid_qa_client_auditlogs</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fid_qa_client_auditlogs</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fid_qa_client_auditlogs</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fid_qa_client_auditlogs</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqa</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqa</td>
+<td>fidqa</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqa</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqa</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqa</td>
+<td>jbogado</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqa</td>
+<td>kcuenca</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqa</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqa</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>fidqa</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>jarzolay</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>jbogado</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>mcobos</td>
+<td>db_datareader, db_datawriter</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>mvasquez</td>
+<td>db_datareader, db_datawriter</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>pala</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqaclient</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqadefault</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqadefault</td>
+<td>fidqa</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqadefault</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqadefault</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqadefault</td>
+<td>jbogado</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqadefault</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>fidqadefault</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital</td>
+<td>Usuappfirmadigital</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital_prod</td>
+<td>arquitectura</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital_prod</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital_prod</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital_prod</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital_prod</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital_prod</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital_prod</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital-help</td>
+<td>arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital-help</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital-help</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital-help</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital-help</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital-help</td>
+<td>jnavidad</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital-help</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FirmaDigital-help</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape</td>
+<td>larroba</td>
+<td>db_datareader, db_datawriter</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape-log</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape-log</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape-log</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape-log</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-inchcape-log</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>arquitectura</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-sura-mprod</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-zurich</td>
+<td>arquitectura</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-zurich</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-zurich</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-zurich</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-zurich</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-zurich</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>firma-digital-zurich</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>jarzolay</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>pala</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FlujoVenta</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape</td>
+<td>larroba</td>
+<td>db_datareader, db_datawriter</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape-log</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape-log</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape-log</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape-log</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-inchcape-log</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-affinity</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-affinity</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-affinity</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-affinity</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-affinity</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-dealers</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-dealers</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-dealers</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-dealers</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-dealers</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-dealers</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>jarzolay</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-mprod</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-rmx</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-rmx</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-rmx</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-rmx</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>flujo-venta-sura-rmx</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion</td>
+<td>componentesProd</td>
+<td>db_sp_ejecutor, db_datareader, db_datawriter</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-aclub</td>
+<td>arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-aclub</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-aclub</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-aclub</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-aclub</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-aclub</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion-help</td>
+<td>arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion-help</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion-help</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion-help</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion-help</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>FormatoImpresion-help</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape-log</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape-log</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape-log</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape-log</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-inchcape-log</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-affinity</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-affinity</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-affinity</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-affinity</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-affinity</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-flotante</td>
+<td>componentesProd</td>
+<td>db_sp_ejecutor, db_datareader, db_datawriter</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-flotante</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-flotante</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-flotante</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-flotante</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-flotante</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-flotante</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-mprod</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-mprod</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-mprod</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-mprod</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-mprod</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-mprod</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-mprod</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-mprod</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>formato-impresion-sura-mprod</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios-help</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios-help</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios-help</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios-help</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Gestion_usuarios-help</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger</td>
+<td>kcuenca</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger</td>
+<td>scardenas</td>
+<td>db_datareader</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_brunofritsch</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_brunofritsch</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_brunofritsch</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_brunofritsch</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo</td>
+<td>Arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_BCI</td>
+<td>Arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_BCI</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_BCI</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_BCI</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_BCI</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_bruno</td>
+<td>Arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_bruno</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_bruno</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_bruno</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_bruno</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_FID</td>
+<td>Arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_FID</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_FID</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_FID</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_FID</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_fidens</td>
+<td>Arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_fidens</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_fidens</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_fidens</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_fidens</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_Liberty</td>
+<td>Arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_Liberty</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_Liberty</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_Liberty</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_Liberty</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_sura</td>
+<td>Arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_sura</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_sura</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_sura</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_demo_sura</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_fid</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_fid</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_fid</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_fid</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_fidens</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_fidens</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_fidens</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ginger_fidens</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>gingerqa_derco</td>
+<td>Arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>gingerqa_derco</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>gingerqa_derco</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>gingerqa_derco</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>gingerqa_derco</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Inspecciones</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Inspecciones</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Inspecciones</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Inspecciones</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Inspecciones</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Inspecciones</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape-log</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape-log</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape-log</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape-log</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>inspecciones-inchcape-log</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces-help</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces-help</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces-help</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces-help</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Interfaces-help</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>interfaces-zurich</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>interfaces-zurich</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>interfaces-zurich</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>interfaces-zurich</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>interfaces-zurich</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-help</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-help</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-help</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-help</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-help</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-inchcape</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-inchcape</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-inchcape</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-inchcape</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>logs-monitoreo-inchcape</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-help</td>
+<td>Arquitectura</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-help</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-help</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-help</td>
+<td>guest</td>
+<td></td>
+<td>EXECUTE (7)</td>
+<td>7</td>
+</tr>    <tr>
+<td>MailRelay-help</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-help</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-imcruz-prd</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-imcruz-prd</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-imcruz-prd</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-imcruz-prd</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-imcruz-prd</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape-log</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape-log</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape-log</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape-log</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-inchcape-log</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-renta</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-renta</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-renta</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-renta</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>mail-relay-renta</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-dealers</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-dealers</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-dealers</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-dealers</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-dealers</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-rmx</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-rmx</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-rmx</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-rmx</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>MailRelay-sura-rmx</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>pala</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape-log</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape-log</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape-log</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape-log</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-inchcape-log</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-affinity</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-affinity</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-affinity</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-affinity</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-affinity</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-cont</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-cont</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-cont</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-cont</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-cont</td>
+<td>jtoledo</td>
+<td>db_datareader</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-cont</td>
+<td>pala</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-cont</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-flotante</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>hclavijo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>jtoledo</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pagos-sura-mprod</td>
+<td>ysantana</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pruebascriptbase</td>
+<td>componentesprod</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pruebascriptbase</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>pruebascriptbase</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pruebascriptbase</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>pruebascriptbase</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-help</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-help</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-help</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-help</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-help</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-sura-affinity</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-sura-affinity</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-sura-affinity</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-sura-affinity</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>reporteria-sura-affinity</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Siniestros</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Siniestros</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Siniestros</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Siniestros</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Siniestros</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Siniestros</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-imcruz-prd</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-imcruz-prd</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-imcruz-prd</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-imcruz-prd</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-imcruz-prd</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-inchcape</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-inchcape</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-inchcape</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-inchcape</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-inchcape</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-inchcape</td>
+<td>mcobos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>siniestros-inchcape</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Valores</td>
+<td>componentesProd</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Valores</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Valores</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Valores</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>Valores</td>
+<td>readQuery</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>Valores</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ventas-inchcape-log</td>
+<td>cberruz</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ventas-inchcape-log</td>
+<td>componentesprod</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ventas-inchcape-log</td>
+<td>dbo</td>
+<td>db_owner</td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ventas-inchcape-log</td>
+<td>eavalos</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ventas-inchcape-log</td>
+<td>ecordova</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ventas-inchcape-log</td>
+<td>guest</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ventas-inchcape-log</td>
+<td>INFORMATION_SCHEMA</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    <tr>
+<td>ventas-inchcape-log</td>
+<td>lmartinez</td>
+<td></td>
+<td>CONNECT (1)</td>
+<td>1</td>
+</tr>    <tr>
+<td>ventas-inchcape-log</td>
+<td>sys</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>    
+</tbody>
+</table>
+
+<br><br><p><strong>Informe generado en: </strong> <span id='totalProceso'>00:00:52</span></p><br><br>
+
+<script src="js/asignados.js"></script>
+</body>
+</html>

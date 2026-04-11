@@ -1,0 +1,215 @@
+2026-03-10 10:44:04 - ==== INICIO SINCRONIZACION ====
+2026-03-10 10:44:04 - Validando credencial de 10.0.0.15
+2026-03-10 10:44:12 - Puerto 3389 OK en 10.0.0.15
+2026-03-10 10:44:12 - Validando credencial de 10.0.0.101
+2026-03-10 10:44:12 - Credencial encontrada para 10.0.0.101
+2026-03-10 10:44:15 - Puerto 3389 OK en 10.0.0.101
+2026-03-10 10:44:15 - Validando credencial de 10.0.0.201
+2026-03-10 10:44:15 - Credencial encontrada para 10.0.0.201
+2026-03-10 10:44:18 - Puerto 3389 OK en 10.0.0.201
+2026-03-10 10:44:18 - Validando credencial de 10.0.0.60
+2026-03-10 10:44:18 - Credencial encontrada para 10.0.0.60
+2026-03-10 10:44:21 - Puerto 3389 OK en 10.0.0.60
+2026-03-10 10:44:21 - Validando credencial de 10.0.0.102
+2026-03-10 10:44:21 - Credencial encontrada para 10.0.0.102
+2026-03-10 10:44:24 - Puerto 3389 OK en 10.0.0.102
+2026-03-10 10:44:24 - Validando credencial de 10.0.0.77
+2026-03-10 10:44:24 - Credencial encontrada para 10.0.0.77
+2026-03-10 10:44:27 - Puerto 3389 OK en 10.0.0.77
+2026-03-10 10:44:27 - Validando credencial de 10.0.0.56
+2026-03-10 10:44:27 - Credencial encontrada para 10.0.0.56
+2026-03-10 10:44:30 - Puerto 3389 OK en 10.0.0.56
+2026-03-10 10:44:30 - Validando credencial de 10.0.0.36
+2026-03-10 10:44:30 - Credencial encontrada para 10.0.0.36
+2026-03-10 10:44:32 - Puerto 3389 OK en 10.0.0.36
+2026-03-10 10:44:32 - Validando credencial de 10.0.0.40
+2026-03-10 10:44:32 - Credencial encontrada para 10.0.0.40
+2026-03-10 10:44:35 - Puerto 3389 OK en 10.0.0.40
+2026-03-10 10:44:35 - Validando credencial de 10.0.0.186
+2026-03-10 10:44:35 - Credencial encontrada para 10.0.0.186
+2026-03-10 10:44:38 - Puerto 3389 OK en 10.0.0.186
+2026-03-10 10:44:38 - Credencial OK para 10.0.0.186
+2026-03-10 10:44:38 - Credencial encontrada para 10.0.0.87
+2026-03-10 10:44:41 - Puerto 3389 OK en 10.0.0.87
+2026-03-10 10:44:41 - Validando credencial de 10.0.0.84
+2026-03-10 10:44:41 - Credencial encontrada para 10.0.0.84
+2026-03-10 10:44:44 - Puerto 3389 OK en 10.0.0.84
+2026-03-10 10:44:44 - Validando credencial de 10.0.0.246
+2026-03-10 10:44:44 - Credencial encontrada para 10.0.0.246
+2026-03-10 10:44:47 - Puerto 3389 OK en 10.0.0.246
+2026-03-10 10:44:47 - Validando credencial de 10.0.0.54
+2026-03-10 10:44:47 - Credencial encontrada para 10.0.0.54
+2026-03-10 10:44:50 - Puerto 3389 OK en 10.0.0.54
+2026-03-10 10:44:50 - Validando credencial de 10.0.0.203
+2026-03-10 10:44:50 - Credencial encontrada para 10.0.0.203
+2026-03-10 10:44:53 - Puerto 3389 OK en 10.0.0.203
+2026-03-10 10:44:53 - Validando credencial de 10.0.0.48
+2026-03-10 10:44:53 - Credencial encontrada para 10.0.0.48
+2026-03-10 10:44:56 - Puerto 3389 OK en 10.0.0.48
+2026-03-10 10:44:56 - Validando credencial de 10.0.0.53
+2026-03-10 10:44:56 - Credencial encontrada para 10.0.0.53
+2026-03-10 10:44:59 - Puerto 3389 OK en 10.0.0.53
+2026-03-10 10:44:59 - Validando credencial de 10.0.0.59
+2026-03-10 10:44:59 - Credencial encontrada para 10.0.0.59
+2026-03-10 10:45:02 - Puerto 3389 OK en 10.0.0.59
+2026-03-10 10:45:02 - Validando credencial de 10.0.0.103
+2026-03-10 10:45:02 - Credencial encontrada para 10.0.0.103
+2026-03-10 10:45:05 - Puerto 3389 OK en 10.0.0.103
+2026-03-10 10:45:05 - Validando credencial de 10.0.0.192
+2026-03-10 10:45:05 - Credencial encontrada para 10.0.0.192
+2026-03-10 10:45:08 - Sin respuesta ICMP desde 10.0.0.192
+2026-03-10 10:45:08 - Restaurando credencial para 10.0.0.192
+2026-03-10 10:45:08 - Credencial restaurada correctamente para 10.0.0.192
+2026-03-10 10:45:08 - ==== FIN SINCRONIZACION ====
+2026-03-10 12:47:22 - ==== INICIO SINCRONIZACION ====
+
+
+2026-03-10 12:47:22 - Credencial encontrada para 10.0.0.15
+
+2026-03-10 12:47:26 - Puerto 3389 OK en 10.0.0.15
+
+
+
+2026-03-10 12:47:26 - Credencial encontrada para 10.0.0.101
+
+2026-03-10 12:47:29 - Puerto 3389 OK en 10.0.0.101
+
+
+
+2026-03-10 12:47:29 - Credencial encontrada para 10.0.0.201
+
+2026-03-10 12:47:32 - Puerto 3389 OK en 10.0.0.201
+
+
+
+2026-03-10 12:47:32 - Credencial encontrada para 10.0.0.60
+
+2026-03-10 12:57:07 - ==== INICIO SINCRONIZACION ====
+2026-03-10 12:57:07 - Validando credencial de 10.0.0.15
+2026-03-10 12:57:07 - Credencial encontrada para 10.0.0.15
+2026-03-10 12:57:11 - Puerto 3389 OK en 10.0.0.15
+2026-03-10 12:57:11 - Credencial OK para 10.0.0.15
+2026-03-10 12:57:11 - Validando credencial de 10.0.0.101
+2026-03-10 12:57:11 - Credencial encontrada para 10.0.0.101
+2026-03-10 12:57:14 - Puerto 3389 OK en 10.0.0.101
+2026-03-10 12:57:14 - Credencial OK para 10.0.0.101
+2026-03-10 12:57:15 - Validando credencial de 10.0.0.201
+2026-03-10 12:57:15 - Credencial encontrada para 10.0.0.201
+2026-03-10 12:57:18 - Puerto 3389 OK en 10.0.0.201
+2026-03-10 12:57:18 - Credencial OK para 10.0.0.201
+2026-03-10 12:57:18 - Validando credencial de 10.0.0.60
+2026-03-10 12:57:18 - Credencial encontrada para 10.0.0.60
+2026-03-10 12:57:21 - Puerto 3389 OK en 10.0.0.60
+2026-03-10 12:57:21 - Credencial OK para 10.0.0.60
+2026-03-10 12:57:21 - Validando credencial de 10.0.0.102
+2026-03-10 12:57:21 - Credencial encontrada para 10.0.0.102
+2026-03-10 13:02:34 - ==== INICIO SINCRONIZACION ====
+2026-03-10 13:02:34 - Validando credencial de 10.0.0.15
+2026-03-10 13:02:34 - Credencial encontrada para 10.0.0.15
+2026-03-10 13:02:38 - Puerto 3389 OK en 10.0.0.15
+2026-03-10 13:02:38 - Credencial OK para 10.0.0.15
+2026-03-10 13:02:38 - Validando credencial de 10.0.0.101
+2026-03-10 13:02:38 - Credencial encontrada para 10.0.0.101
+2026-03-10 13:02:41 - Puerto 3389 OK en 10.0.0.101
+2026-03-10 13:02:41 - Credencial OK para 10.0.0.101
+2026-03-10 13:02:41 - Validando credencial de 10.0.0.201
+2026-03-10 13:02:41 - Credencial encontrada para 10.0.0.201
+2026-03-10 13:02:44 - Puerto 3389 OK en 10.0.0.201
+2026-03-10 13:02:44 - Credencial OK para 10.0.0.201
+2026-03-10 13:02:44 - Validando credencial de 10.0.0.60
+2026-03-10 13:02:44 - Credencial encontrada para 10.0.0.60
+2026-03-10 13:02:47 - Puerto 3389 OK en 10.0.0.60
+2026-03-10 13:02:47 - Credencial OK para 10.0.0.60
+2026-03-10 13:02:48 - Validando credencial de 10.0.0.102
+2026-03-10 13:02:48 - Credencial encontrada para 10.0.0.102
+2026-03-10 13:02:51 - Puerto 3389 OK en 10.0.0.102
+2026-03-10 13:02:51 - Credencial OK para 10.0.0.102
+2026-03-10 13:02:51 - Validando credencial de 10.0.0.77
+2026-03-10 13:02:51 - Credencial encontrada para 10.0.0.77
+2026-03-10 13:02:54 - Puerto 3389 OK en 10.0.0.77
+2026-03-10 13:02:54 - Credencial OK para 10.0.0.77
+2026-03-10 13:02:54 - Validando credencial de 10.0.0.56
+2026-03-10 13:02:54 - Credencial encontrada para 10.0.0.56
+2026-03-10 13:02:57 - Puerto 3389 OK en 10.0.0.56
+2026-03-10 13:02:57 - Credencial OK para 10.0.0.56
+2026-03-10 13:02:57 - Validando credencial de 10.0.0.36
+2026-03-10 13:02:57 - Credencial encontrada para 10.0.0.36
+2026-03-10 13:03:00 - Puerto 3389 OK en 10.0.0.36
+2026-03-10 13:03:00 - Credencial OK para 10.0.0.36
+2026-03-10 13:03:00 - Validando credencial de 10.0.0.40
+2026-03-10 13:03:01 - Credencial encontrada para 10.0.0.40
+2026-03-10 13:03:04 - Puerto 3389 OK en 10.0.0.40
+2026-03-10 13:03:04 - Credencial OK para 10.0.0.40
+2026-03-10 13:03:04 - Validando credencial de 10.0.0.186
+2026-03-10 13:03:04 - Credencial encontrada para 10.0.0.186
+2026-03-10 13:03:07 - Puerto 3389 OK en 10.0.0.186
+2026-03-10 13:03:07 - Credencial OK para 10.0.0.186
+2026-03-10 13:03:07 - Validando credencial de 10.0.0.87
+2026-03-10 13:03:07 - Credencial encontrada para 10.0.0.87
+2026-03-10 13:03:10 - Puerto 3389 OK en 10.0.0.87
+2026-03-10 13:03:10 - Credencial OK para 10.0.0.87
+2026-03-10 13:03:10 - Validando credencial de 10.0.0.84
+2026-03-10 13:03:11 - Credencial encontrada para 10.0.0.84
+2026-03-10 13:03:14 - Puerto 3389 OK en 10.0.0.84
+2026-03-10 13:03:14 - Credencial OK para 10.0.0.84
+2026-03-10 13:03:14 - Validando credencial de 10.0.0.246
+2026-03-10 13:03:14 - Credencial encontrada para 10.0.0.246
+2026-03-10 13:03:17 - Puerto 3389 OK en 10.0.0.246
+2026-03-10 13:03:17 - Credencial OK para 10.0.0.246
+2026-03-10 13:03:17 - Validando credencial de 10.0.0.54
+2026-03-10 13:03:17 - Credencial encontrada para 10.0.0.54
+2026-03-10 13:03:20 - Puerto 3389 OK en 10.0.0.54
+2026-03-10 13:03:20 - Credencial OK para 10.0.0.54
+2026-03-10 13:03:20 - Validando credencial de 10.0.0.203
+2026-03-10 13:03:21 - Credencial encontrada para 10.0.0.203
+2026-03-10 13:03:23 - Puerto 3389 OK en 10.0.0.203
+2026-03-10 13:03:23 - Credencial OK para 10.0.0.203
+2026-03-10 13:03:24 - Validando credencial de 10.0.0.48
+2026-03-10 13:03:24 - Credencial encontrada para 10.0.0.48
+2026-03-10 13:03:27 - Puerto 3389 OK en 10.0.0.48
+2026-03-10 13:03:27 - Credencial OK para 10.0.0.48
+2026-03-10 13:03:27 - Validando credencial de 10.0.0.53
+2026-03-10 13:03:27 - Credencial encontrada para 10.0.0.53
+2026-03-10 13:03:30 - Puerto 3389 OK en 10.0.0.53
+2026-03-10 13:03:30 - Credencial OK para 10.0.0.53
+2026-03-10 13:03:30 - Validando credencial de 10.0.0.59
+2026-03-10 13:03:31 - Credencial encontrada para 10.0.0.59
+2026-03-10 13:03:34 - Puerto 3389 OK en 10.0.0.59
+2026-03-10 13:03:34 - Credencial OK para 10.0.0.59
+2026-03-10 13:03:34 - Validando credencial de 10.0.0.103
+2026-03-10 13:03:34 - Credencial encontrada para 10.0.0.103
+2026-03-10 13:03:37 - Puerto 3389 OK en 10.0.0.103
+2026-03-10 13:03:37 - Credencial OK para 10.0.0.103
+2026-03-10 13:03:37 - Validando credencial de 10.0.0.192
+2026-03-10 13:03:37 - Credencial encontrada para 10.0.0.192
+2026-03-10 13:03:40 - Sin respuesta ICMP desde 10.0.0.192
+2026-03-10 13:03:40 - Restaurando credencial para 10.0.0.192
+2026-03-10 13:03:40 - Credencial restaurada correctamente para 10.0.0.192
+2026-03-10 13:03:40 - ==== FIN SINCRONIZACION ====
+2026-03-10 14:27:19 - INICIO SINCRONIZACION GRUPO
+2026-03-10 14:27:19 - Servidor 10.0.0.49 no existe en tabla Credenciales
+2026-03-10 14:27:19 - Validando credencial de 10.0.0.102
+2026-03-10 14:27:19 - Credencial encontrada para 10.0.0.102
+2026-03-10 14:27:23 - Puerto 3389 OK en 10.0.0.102
+2026-03-10 14:27:23 -  Credencial OK para 10.0.0.102
+2026-03-10 14:27:23 -   FIN SINCRONIZACION GRUPO 
+2026-03-10 14:27:23 - INICIO SINCRONIZACION GRUPO
+2026-03-10 14:27:23 - Servidor 10.0.0.49 no existe en tabla Credenciales
+2026-03-10 14:27:23 -   FIN SINCRONIZACION GRUPO 
+2026-03-10 14:56:32 - INICIO SINCRONIZACION GRUPO
+2026-03-10 14:56:32 - Servidor 10.0.0.49 no existe en tabla Credenciales
+2026-03-10 14:56:32 - Validando credencial de 10.0.0.102
+2026-03-10 14:56:32 - Credencial encontrada para 10.0.0.102
+2026-03-10 14:56:35 - Puerto 3389 OK en 10.0.0.102
+2026-03-10 14:56:35 -  Credencial OK para 10.0.0.102
+2026-03-10 14:56:35 -   FIN SINCRONIZACION GRUPO 
+2026-03-10 14:58:08 - INICIO SINCRONIZACION GRUPO
+2026-03-10 14:58:08 - Validando credencial de 10.0.0.49
+2026-03-10 14:58:08 - Credencial encontrada para 10.0.0.49
+2026-03-10 14:58:11 - Puerto 3389 OK en 10.0.0.49
+2026-03-10 14:58:11 -  Credencial OK para 10.0.0.49
+2026-03-10 14:58:11 - Validando credencial de 10.0.0.102
+2026-03-10 14:58:11 - Credencial encontrada para 10.0.0.102
+2026-03-10 14:58:14 - Puerto 3389 OK en 10.0.0.102
+2026-03-10 14:58:14 -  Credencial OK para 10.0.0.102
+2026-03-10 14:58:14 -   FIN SINCRONIZACION GRUPO 

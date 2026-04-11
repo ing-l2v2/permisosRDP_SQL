@@ -1,0 +1,165 @@
+body {
+  font-family: Segoe UI;
+  background: #f4f6f8;
+  margin: 30px;
+}
+
+h1 {
+  color: #2c3e50;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+  background: white;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 13px;
+}
+
+th {
+  background: #34495e;
+  color: white;
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+tr:hover {
+  background: #e8f4ff;
+}
+
+input {
+  padding: 6px;
+  margin: 10px 0;
+  width: 300px;
+  border: 1px solid #ccc;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.cardTitle {
+  font-size: 12px;
+  color: #777;
+}
+
+.cardValue {
+  font-size: 25px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.filters input {
+  width: 90%;
+  padding: 4px;
+  font-size: 11px;
+}
+
+.arrow {
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+.expired {
+  background: #ff9999 !important;
+}
+
+.expired:nth-child(even) {
+  /* background: #ffc6cd !important;*/
+  background: #ff6666 !important;
+}
+
+.expired:hover {
+  background: #ee7777 !important;
+  color: yellow;
+}
+
+.warning {
+  background-color: #fff3cd !important;
+}
+.warning:nth-child(even) {
+  background-color: #fff5dc !important;
+}
+
+.warning:hover {
+  background-color: #ffe69c !important;
+}
+
+#btnSqlTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #1f4e79;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+#btnSqlTop:hover {
+  background-color: #163a5c;
+}
+
+.navLink {
+  display: inline-block;
+  margin: 10px;
+  padding: 6px 12px;
+  background: #2c7be5;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.navLink:hover {
+  background: #1a5bb8;
+}
+
+#tablaSql {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tablaSql th {
+  background-color: #009578;
+  color: #ffffff;
+  text-align: center;
+  position: sticky;
+  top: 0px;
+}
+
+#tablaRdp {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tablaRdp th {
+  background-color: #009578;
+  color: #ffffff;
+  text-align: center;
+  position: sticky;
+  top: 0px;
+}

@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 20px;
+}
+
+h2 {
+  color: #1a4a84;
+}
+
+#filtros {
+  margin: 10px 0;
+}
+
+#filtros select {
+  margin-right: 10px;
+  padding: 6px;
+}
+
+#searchBox {
+  padding: 6px;
+  width: 260px;
+  border: 1px solid #888;
+  margin-bottom: 12px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 8px #8883;
+}
+
+thead th {
+  background: #1a4a84;
+  color: white;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+thead th.sort-asc::after {
+  content: " ▲";
+}
+thead th.sort-desc::after {
+  content: " ▼";
+}
+
+tbody tr:nth-child(even) {
+  background: #eef4ff;
+}
+
+tbody tr:hover {
+  background: #d4e3ff;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}

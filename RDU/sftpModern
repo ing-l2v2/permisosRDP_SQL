@@ -1,0 +1,552 @@
+# ================================================
+#  Fix OpenSSH Modern Permissions
+#  Para servicio: sshd_modern
+#  Autor: Leonel Villa
+# ================================================
+
+Write-Host "== Reparando permisos para OpenSSH-Modern ==" -ForegroundColor Cyan
+$basePath = "C:\ProgramData\ssh_modern"
+$etcPath = "$basePath\etc"
+$keyHostPath = "$basePath\keyhost"	# Alojar las keyHost
+$authKeysPath = "$etcPath\authorized_keys"
+$logPath = "$basePath\logs"
+$sftpModern = "D:\SFTP_MODERN"
+$rootPath = "$sftpModern\WORK"
+$keyGenSSH = "C:\OpenSSH-Modern\OpenSSH-Win64\ssh-keygen.exe"
+
+## CREAR LOS DIRECTORIOS NECESARIOS con el usuario Administrator
+New-Item -ItemType Directory -Path "$logPath" -Force
+New-Item -ItemType Directory -Path "$authKeysPath" -Force
+New-Item -ItemType Directory -Path "$keyHostPath" -Force
+New-Item -ItemType Directory -Path "$rootPath" -Force
+
+# Generar llaves del servidor
+& $keyGenSSH -t rsa -f $keyHostPath\ssh_host_rsa_key -N "Secur3Serv3r.FTP"
+& $keyGenSSH -t ecdsa -f $keyHostPath\ssh_host_ecdsa_key -N "Secur3Serv3r.FTP"
+& $keyGenSSH -t ed25519 -f $keyHostPath\ssh_host_ed25519_key -N "Secur3Serv3r.FTP"
+
+# Crear grupo sftp-users si no existe aún establecido.
+Get-LocalGroupMember sftp-users 	# Comprueba si existe en el grupo sftp-users
+if (-not (Get-LocalGroup -Name 'sftp-users' -ErrorAction SilentlyContinue)) {
+  New-LocalGroup -Name 'sftp-users' -Description "Usuarios del SFTP moderno"
+}
+
+# Generar usuarios para el grupo sftp-users
+New-LocalUser -Name psilva -NoPassword -FullName "Paola Silva" -Description "SFTP Modern-Consorcio- paola.silva@consorcio.cl"
+Add-LocalGroupMember -Group "sftp-users" -Member "psilva"
+New-LocalUser -Name test02 -NoPassword
+Add-LocalGroupMember -Group "sftp-users" -Member "test02"
+
+# Generar llaves privadas y publicas para el usuario
+& $keyGenSSH -t ed25519 -f "C:\infraestructura\Keys\psilva"
+Registrar las claves públicas
+type C:\Infraestructura\keys\psilva.pub > $authKeysPath\psilva
+New-Item -ItemType Directory -Path "C:\Users\Administrator\.ssh" -Force
+type C:\Infraestructura\keys\psilva.pub > C:\Users\Administrator\.ssh\psilva.pub
+
+#Eliminar usuarios del grupo sftp-users
+$grupo = "sftp-users"
+$members = "ebetancourt", "mvega", "test03", "test98"
+foreach ($m in $members) {
+  if (Get-LocalGroupMember -Group $grupo -Member $m -ErrorAction SilentlyContinue) {
+    Remove-LocalGroupMember -Group $grupo -Member $m
+    Write-Host "Eliminado: $m"
+  }
+  else {
+    Write-Host "Usuario $m. No pertenece al grupo: $grupo"
+  }
+}
+
+
+# Generar un sshd_config a partir de uno existente en OpenSSH
+copy C:\OpenSSH-Modern\OpenSSH-Win64\sshd_config_default  C:\ProgramData\ssh_modern\etc\sshd_config
+
+## Generar regla Firewall para puerto 2222 OpenSSH-Server-2222
+netsh advfirewall firewall add rule name="OpenSSH-Server-2222" dir=in action=allow protocol=TCP localport=2222
+
+# Generar el servicio sshd_modern
+sc.exe delete sshd_modern
+New-Service -Name sshd_modern `
+  -BinaryPathName "C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe -f C:\ProgramData\ssh_modern\etc\sshd_config" `
+  -DisplayName "sshd_modern" `
+  -Description "OpenSSH Modern 10.0p2" `
+  -StartupType Automatic
+
+
+# Validar rutas
+if (!(Test-Path $etcPath)) { Write-Host "ERROR: No existe $etcPath" -ForegroundColor Red; exit }
+if (!(Test-Path $authKeysPath)) { Write-Host "ERROR: No existe $authKeysPath" -ForegroundColor Red; exit }
+if (!(Test-Path $keyHostPath)) { Write-Host "ERROR: No existe $keyHostPath" -ForegroundColor Red; exit }
+
+icacls $basePath /inheritance:r
+icacls $basePath /grant "SYSTEM:F" /grant "Administrators:F" /grant "NT SERVICE\sshd_modern:RX"
+
+# ================================================
+# Permisos para sshd_config
+# ================================================
+takeown /F "$etcPath\sshd_config" /A
+icacls "$etcPath\sshd_config" /reset
+icacls "$etcPath\sshd_config" /inheritance:r
+icacls "$etcPath\sshd_config" /inheritance:r /grant 'NT AUTHORITY\SYSTEM:(F)' /grant 'BUILTIN\Administrators:(F)' /grant 'NT SERVICE\sshd_modern:(RX)' /grant 'FIDENSLAT\Domain Admins:(F)'
+icacls "$etcPath\sshd_config"
+Write-Host "OK: Permisos de ETC/sshd_config corregidos." -ForegroundColor Green
+
+# ================================================
+# PERMISOS PARA CARPETA ETC
+# ================================================
+Write-Host "`n-- Corrigiendo permisos en carpeta ETC --"
+takeown /F "$etcPath" /A
+icacls "$etcPath" /reset
+icacls "$etcPath" /inheritance:r | Out-Null
+icacls "$etcPath" /grant:r 'BUILTIN\Administrators:(F)' /grant:r 'FIDENSLAT\Domain Admins:(F)' /grant 'NT AUTHORITY\SYSTEM:(F)' /grant 'NT SERVICE\sshd_modern:(RX)' | Out-Null
+
+icacls $etcPath /remove:g "FIDENSLAT\leonel.villa" 2>$null
+icacls $etcPath /remove:g "Users" "Authenticated Users" "Everyone" 2>$null
+icacls $etcPath /remove:g "leonel.villa" "FIDENSLAT\leonel.villa" "FIDENSLAT\leonel.villa"
+$sid = (Get-LocalUser -Name "leonel.villa").Sid.Value
+icacls $etcPath /remove "$sid"
+
+# El propietario del directorio NO es SYSTEM
+takeown /F "$etcPath\$f" /A
+icacls "$etcPath" /setowner "SYSTEM"
+# Reasignar permisos explícitos (solo SYSTEM, Service y Administrators)
+icacls $etcPath /inheritance:r | Out-Null
+icacls $etcPath /grant:r "NT AUTHORITY\SYSTEM:(F)" /grant:r "FIDENSLAT\Domain Admins:(F)" /grant:r "BUILTIN\Administrators:(F)" /grant "NT SERVICE\sshd_modern:(RX)" | Out-Null
+icacls $etcPath
+Write-Host "OK: Permisos de ETC corregidos." -ForegroundColor Green
+
+# ================================================
+# PERMISOS PARA LLAVES HOSTKEY
+# ================================================
+Write-Host "`n-- Corrigiendo permisos de HostKeys --"
+takeown /F "$keyHostPath\$f" /A
+icacls "$keyHostPath\ssh_host_*_key" /inheritance:r
+icacls "$keyHostPath\ssh_host_*_key" /grant "SYSTEM:F" /grant "FIDENSLAT\Domain Admins:(F)" /grant "Administrators:(F)"
+icacls "$keyHostPath\ssh_host_*_key" /remove "Users" "Everyone" "Authenticated Users"
+
+Get-ChildItem "$etcPath\ssh_host_*_key" -ErrorAction SilentlyContinue | ForEach-Object {
+  icacls $_.FullName /inheritance:r | Out-Null
+  icacls $_.FullName /grant:r 'BUILTIN\Administrators:(F)' /grant:r 'FIDENSLAT\Domain Admins:(F)' /grant 'NT AUTHORITY\SYSTEM:(F)' | Out-Null
+  icacls $_.FullName /remove 'Users' 'Everyone' 'Authenticated Users' | Out-Null
+  Write-Host "OK: $($_.Name) (privada)" -ForegroundColor Yellow
+}
+
+Get-ChildItem "$etcPath\ssh_host_*_key.pub" -ErrorAction SilentlyContinue | ForEach-Object {
+  icacls $_.FullName /inheritance:r | Out-Null
+  icacls $_.FullName /grant:r 'BUILTIN\Administrators:(F)' /grant:r 'FIDENSLAT\Domain Admins:(F)' /grant 'NT AUTHORITY\SYSTEM:(F)' /grant 'Users:(R)' | Out-Null
+  icacls $_.FullName /remove 'Everyone' | Out-Null
+  Write-Host "OK: $($_.Name) (pública)" -ForegroundColor Yellow
+}
+
+# Quitar la herencia en los archivos privados
+Write-Host "`n-- Quitando la herencia en los archivos privados $keyHostPath --"
+$keysHost = @(
+  "$keyHostPath\ssh_host_rsa_key",
+  "$keyHostPath\ssh_host_ecdsa_key",
+  "$keyHostPath\ssh_host_ed25519_key"
+)
+foreach ($k in $keysHost) {
+  icacls $k /inheritance:r
+}
+# Quitar permisos a TODOS los usuarios excepto SYSTEM y Administrators
+Write-Host "`n-- Quitando permisos a TODOS los usuarios excepto SYSTEM y Administrators en $keyHostPath --"
+icacls "$keyHostPath" /inheritance:r
+foreach ($k in $keysHost) {
+  icacls $k /grant 'FIDENSLAT\Domain Admins:(F)'
+  icacls $k /remove:g "FIDENSLAT\leonel.villa" 2>$null
+  icacls $k /remove:g "Users" "Authenticated Users" "Everyone" 2>$null
+  icacls $k /remove:g "leonel.villa" "FIDENSLAT\leonel.villa"
+  icacls $k /remove:d "FIDENSLAT\leonel.villa"
+  $sid = (Get-LocalUser -Name "leonel.villa").Sid.Value
+  icacls $k /remove "$sid"
+}
+# El propietario del archivo NO es SYSTEM
+Write-Host "`n-- Propietario del archivo privado NO es SYSTEM $keyHostPath --"
+foreach ($f in "ssh_host_rsa_key", "ssh_host_ecdsa_key", "ssh_host_ed25519_key") {
+  takeown /F "$keyHostPath\$f" /A
+  icacls "$keyHostPath\$f" /setowner "SYSTEM"
+}
+# Reasignar permisos explícitos (solo SYSTEM y Administrators)
+Write-Host "`n-- Reasignar permisos explisitos a cada privada $keys --"
+foreach ($k in $keys) {
+  icacls $k /grant:r "NT AUTHORITY\SYSTEM:(F)" /grant:r "BUILTIN\Administrators:(F)" /grant:r 'FIDENSLAT\Domain Admins:(F)'
+}
+# Verificar que solo NT AUTHORITY\SYSTEM:(F), BUILTIN\Administrators:(F)
+Write-Host "`n-- Verificar que solo SYSTEM y Administrators a cada privada $keyHostPath --"
+icacls $keyHostPath\ssh_host_*_key
+icacls $etcPath
+
+
+# ================================================
+# PERMISOS PARA authorized_keys
+# ================================================
+Write-Host "`n-- Corrigiendo carpeta authorized_keys --"
+
+icacls $authKeysPath /inheritance:r | Out-Null
+icacls $authKeysPath /grant:r 'BUILTIN\Administrators:(F)' /grant:r 'FIDENSLAT\Domain Admins:(F)' /grant 'NT AUTHORITY\SYSTEM:(F)' /grant 'NT SERVICE\sshd_modern:(RX)' | Out-Null
+
+Write-Host "OK: Carpeta authorized_keys corregida." -ForegroundColor Green
+
+# ================================================
+# PERMISOS PARA CADA archivo authorized_keys\%u claves publicas dentro de $authKeysPath
+# ================================================
+Write-Host "`n-- Corrigiendo archivos dentro de authorized_keys --"
+
+Get-ChildItem $authKeysPath -File | ForEach-Object {
+  icacls $_.FullName /inheritance:r | Out-Null
+  icacls $_.FullName /grant:r 'BUILTIN\Administrators:(F)' /grant 'NT SERVICE\sshd_modern:(R)' /grant 'NT AUTHORITY\SYSTEM:(R)' | Out-Null
+  Write-Host "OK: Permisos corregidos para $($_.Name)" -ForegroundColor Yellow
+
+  #icacls "$authKeysPath\psilva" /inheritance:r
+  #icacls "$authKeysPath\psilva" /grant "SYSTEM:(F)" /grant "NT SERVICE\sshd_modern:(R)" /grant:r 'BUILTIN\Administrators:(F)'
+  #icacls "$authKeysPath\psilva" /grant 'psilva:(R)'
+  #icacls "$authKeysPath\psilva" /setowner "psilva"
+
+  #icacls "$authKeysPath\test01" /inheritance:r /grant 'test01:(R)'
+  #icacls "$authKeysPath\test02" /inheritance:r /grant 'test02:(R)'
+  #icacls "$authKeysPath\test98" /inheritance:r /grant 'test98:(R)'
+  #icacls "$authKeysPath\test01" /setowner "test01"
+  #icacls "$authKeysPath\test02" /setowner "test02"
+  #icacls "$authKeysPath\test98" /setowner "test98"
+
+  # ================================================
+  # PERMISOS PARA LOGs
+  # ================================================
+  Write-Host "`n-- Corrigiendo archivos dentro de logs --"
+  icacls "$logPath" /inheritance:r
+  icacls "$logPath" /inheritance:r /grant "SYSTEM:(OI)(CI)(F)" /grant "Administrators:(OI)(CI)(F)" /grant "FIDENSLAT\Domain Admins:(F)"
+
+  # ================================================
+  # PERMISOS PARA SFTP_MODERN\WORK
+  # ================================================
+  Write-Host "`n-- Asignando permisos a ROOT $rootPath --"
+  ##	takeown /F "$etcPath\sshd_config" /A
+  icacls "$sftpModern" /reset
+  icacls $rootPath /reset
+  icacls "$sftpModern" /inheritance:r /grant "SYSTEM:(F)" /grant "Administrators:(F)" /grant "FIDENSLAT\Domain Admins:(F)"
+  icacls $rootPath /inheritance:r /grant "SYSTEM:(F)" /grant "Administrators:(F)" /grant "FIDENSLAT\Domain Admins:(F)"  /grant "NT SERVICE\sshd_modern:(RX)"
+  icacls "$rootPath" /setowner "SYSTEM"
+
+  # ================================================
+  # PERMISOS PARA SFTP_MODERN\WORK\test01 o para psilva
+  # ================================================
+  Write-Host "`n-- Asignando permisos a ROOT $rootPath\psilva --"
+  New-Item -ItemType Directory -Path "$rootPath\psilva\.ssh" -Force
+  New-Item -ItemType Directory -Path "$rootPath\psilva\data" -Force
+  icacls "$rootPath\psilva" /reset
+  icacls "$rootPAth\psilva\.ssh" /inheritance:r /grant:r "SRV-REPLICA-01\psilva:(OI)(CI)(M)" "NT SERVICE\sshd_modern:(RX)" "SYSTEM:(RX)" "BUILTIN\Administrators:(RX)"
+  icacls "$rootPath\psilva\data" /inheritance:r /grant:r "SRV-REPLICA-01\psilva:(OI)(CI)(M)"
+
+  #icacls "$rootPath\test01" /inheritance:r /grant:r "SYSTEM:(OI)(CI)(F)" /grant:r "Administrators:(OI)(CI)(F)" /grant:r "FIDENSLAT\Domain Admins:(OI)(CI)(F)" /grant:r "test01:(OI)(CI)(M)"
+  icacls "$rootPath\psilva" /inheritance:r /grant:r "SRV-REPLICA-01\psilva:(OI)(CI)(M)" "NT SERVICE\sshd_modern:(OI)(CI)(RX)" "BUILTIN\Administrators:(OI)(CI)(RX)" "SYSTEM:(OI)(CI)(RX)"
+
+  # icacls "$rootPath\test01\.ssh" /inheritance:r /grant:r "SYSTEM:(F) Administrators:(F) test01:(F)"
+  icacls "$rootPath\test01_inbox" /reset
+  icacls "$rootPath\test01_inbox" /inheritance:r /grant:r "SYSTEM:(OI)(CI)(F)" /grant:r "Administrators:(OI)(CI)(F)" /grant:r "FIDENSLAT\Domain Admins:(OI)(CI)(F)" /grant:r "test01:(M)"
+  icacls "$rootPath\test01_outbox" /reset
+  icacls "$rootPath\test01_outbox" /inheritance:r /grant:r "SYSTEM:(OI)(CI)(F)" /grant:r "Administrators:(OI)(CI)(F)" /grant:r "FIDENSLAT\Domain Admins:(OI)(CI)(F)" /grant:r "test01:(M)"
+  icacls "$rootPath\test02_inbox" /reset
+  icacls "$rootPath\test02_inbox" /inheritance:r /grant:r "SYSTEM:(OI)(CI)(F)" /grant:r "Administrators:(OI)(CI)(F)" /grant:r "FIDENSLAT\Domain Admins:(OI)(CI)(F)" /grant:r "test02:(M)"
+
+  Write-Host "`n== Todos los permisos han sido corregidos con éxito ==" -ForegroundColor Green
+
+  # ================================================
+  # SUGERIR ARRANQUE
+  # ================================================
+  Write-Host "`nAhora ejecute:"
+  Write-Host "    net stop sshd_modern"
+  Write-Host "    net start sshd_modern" -ForegroundColor Cyan
+
+  Write-Host "`nSi aún falla, ejecutar modo debug, desde cmd lanzado por > ** PsExec64 -i -s cmd.exe ** :"
+  Write-Host "    C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe -f C:\ProgramData\ssh_modern\etc\sshd_config -D -d -d" -ForegroundColor Yellow
+  Write-Host "`n 	Revisar aquí OJO cmd "
+  # "C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe" -f "C:\ProgramData\ssh_modern\etc\sshd_config" -D -d -d
+
+  # =======================================
+  #  REDEFINIDAS VARIABLES PARA GENERAR REPORTE
+  # =======================================
+  $basePath = "C:\ProgramData\ssh_modern"
+  $etcPath = "$basePath\etc"
+  $keyHostPath = "$basePath\keyhost"	# Alojar las keyHost
+  $authKeysPath = "$etcPath\authorized_keys"
+  $logPath = "$basePath\logs"
+  $sftpModern = "D:\SFTP_MODERN"
+  $rootPath = "$sftpModern\WORK"
+  $keyGenSSH = "C:\OpenSSH-Modern\OpenSSH-Win64\ssh-keygen.exe"
+  Write-Host "`n       Permisos de $etcPath : "
+  icacls $etcPath
+  Write-Host "      Permisos de $etcPath\ssh_config: "
+  icacls "$etcPath\sshd_config"
+  Write-Host "      Permisos de keyHostPath $keyHostPath "
+  icacls $keyHostPath
+  icacls $keyHostPath\ssh_host_*_key
+  icacls $keyHostPath\ssh_host_*_key.pub
+  Write-Host "      Permisos de authKeyPath PUB $authKeysPath "
+  icacls $authKeysPath
+  icacls $authKeysPath\*
+  Write-Host "      Permisos para logs $logPath "
+  icacls $logPath
+  Write-Host "     Permisos $sftpModern "
+  icacls "$sftpModern"
+  icacls "$rootPath"
+  icacls "$rootPath\psilva"
+  icacls "$rootPath\psilva\.ssh"
+  icacls "$rootPath\psilva\data"
+  (Get-Acl "D:\SFTP_MODERN\WORK").Owner  # Debe ser SYSTEM
+  (Get-Acl "C:\ProgramData\ssh_modern\etc\authorized_keys\psilva").Owner   # Debe ser psilva
+  #(Get-Acl "E:\SFTP_MODERN\WORK").Owner   # Debe ser SYSTEM
+  #(Get-Acl "C:\ProgramData\ssh_modern\etc\authorized_keys\test01").Owner	 # Debe ser test01
+  Write-Host "`n El d:\SFTP_MODERN\WORK ESTA COMO  /setowner "SYSTEM" y "
+  Write-Host "C:\ProgramData\ssh_modern\etc\authorized_keys\psilva  /setowner "psilva" "
+  # Write-Host "C:\ProgramData\ssh_modern\etc\authorized_keys\test02  /setowner "test02" "
+  # Write-Host "C:\ProgramData\ssh_modern\etc\authorized_keys\test95  /setowner "test98" "
+
+  # ================================
+  # Quitar y asignar los permisos para ejecutar como usuario Administrator
+  # ================================
+  ## Asigna para Administrator
+  takeown /F "C:\Users\Administrator\.ssh\test01" /A
+  icacls C:\Users\Administrator\.ssh\test01 /inheritance:r
+  icacls C:\Users\Administrator\.ssh\test01 /remove:g "FIDENSLAT\leonel.villa" "Users" "Authenticated Users" "Administrators"
+
+  icacls C:\Users\Administrator\.ssh\config /inheritance:r /grant:r "Administrator:(R)" /grant:r "SYSTEM:(R)"
+  ## Asigna para Leonel Villa
+  takeown /F "C:\Users\leonel.villa\.ssh\test01" /A
+  icacls C:\Users\leonel.villa\.ssh\test01 /inheritance:r
+  icacls C:\Users\leonel.villa\.ssh\test01 /remove:g "Administrator" "Users" "Authenticated Users" "Administrators"
+
+  icacls C:\Users\leonel.villa\.ssh\test01 /grant:r "FIDENSLAT\leonel.villa" /grant:r "SYSTEM:(R)"
+  icacls C:\Users\leonel.villa\.ssh\config /inheritance:r /grant:r "FIDENSLAT\leonel.villa:(R)" /grant:r "SYSTEM:(R)"
+
+  # ssh sftp-test01
+  # ssh test01@localhost -p 2222 -i C:\Users\leonel.villa\.ssh\test01 -vvv
+  # ssh -vvv -i C:\Users\Administrator\.ssh\psilva psilva@localhost -p 2222
+
+
+
+  Write-Host "`n @@ Eliminar la huella del antiguo servidor OpenSSH en el puerto 2222 (o en localhost). "
+  Write-Host " ssh-keygen.exe -R '[localhost]:2222'    o con "
+  Write-Host " del C:\Users\leonel.villa\.ssh\known_hosts "
+
+  Write-Host " Tomar posesión de sshd_config "
+  takeown /F "C:\ProgramData\ssh_modern\etc\sshd_config"
+
+  Write-Host "	certutil -decodehex C:\ProgramData\ssh_modern\authorized_keys\test01 tmp.hex "
+
+  Write-Host " Copiar desde el .ssh la llave privada unicamente  test01 al Cliente lvill\.ssh\test01 "
+  icacls C:\Users\lvill\.ssh\test01 /inheritance:r
+  icacls C:\Users\lvill\.ssh\test01 /grant lvill:(F)
+  icacls C:\Users\lvill\.ssh\test01 /grant SYSTEM:(F)
+  icacls C:\Users\lvill\.ssh\test01 /grant Administradores:(F)
+
+  # Validar llave privada
+  & $keyGenSSH -l -f "C:\Users\Administrator\.ssh\psilva"
+
+
+  # Detengo y elimino el servicio defectuoso
+  Stop-Service sshd_modern -Force
+  sc.exe delete sshd_modern
+  # Creo el servicio correctamente usando CMD como Administrator
+  sc.exe create sshd_modern binPath= "\"C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe\" -f \"C:\ProgramData\ssh_modern\etc\sshd_config\" -D" DisplayName= "OpenSSH Modern (10.0.p2)" start= auto obj= "LocalSystem"
+
+  sc config sshd_modern binPath= "\"C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe\" -f \"C:\ProgramData\ssh_modern\etc\sshd_config\""
+
+  # Aplico modificacion de permisos 
+  icacls "C:\ProgramData\ssh_modern\keyhost" /inheritance:r
+  icacls "C:\ProgramData\ssh_modern\keyhost" /grant:r "SYSTEM:(OI)(CI)(F)"
+  #Revoco
+  icacls "C:\ProgramData\ssh_modern\keyhost" /remove "Administrators"
+  icacls "C:\ProgramData\ssh_modern\keyhost" /remove "Users"
+  icacls "C:\ProgramData\ssh_modern\keyhost" /remove "FIDENSLAT\leonel.villa"
+
+  icacls C:\ProgramData\ssh_modern\keyhost
+
+  # En pc cliente, borrar entrada para el puerto host 203 e intentar conexion al 203
+  ssh-keygen -R "[10.0.0.203]:2222"
+  #   O borrar todo el host completo
+  del C:\Users\lvill\.ssh\known_hosts
+  ssh -i C:\Users\lvill\.ssh\test01_ed25519 test01@10.0.0.203 -p 2222 -vvv
+  
+  # En pc cliente, borrar entrada para el puerto host 53 e intentar conexion al 53
+  ssh-keygen -R "[10.0.0.53]:2222"
+  #   O borrar todo el host completo
+  del C:\Users\lvill\.ssh\known_hosts
+  ssh -i C:\Users\lvill\.ssh\psilva psilva@10.0.0.53 -p 2222 -vvv
+
+  # del lado del cliente
+  ssh-keygen -lf C:\Users\lvill\.ssh\test01_ed25519.pub
+  # del lado del servidor
+  ssh-keygen -lf C:\ProgramData\ssh_modern\etc\authorized_keys\test01
+
+  # 1. Primero tomar propiedad sobre la carpeta y los archivos privados
+  takeown /F "C:\ProgramData\ssh_modern\keyhost\ssh_host_ed25519_key"
+  takeown /F "C:\ProgramData\ssh_modern\keyhost\ssh_host_ecdsa_key"
+  takeown /F "C:\ProgramData\ssh_modern\keyhost\ssh_host_rsa_key"
+
+  takeown /F "C:\ProgramData\ssh_modern\keyhost" /R /D Y
+  icacls "C:\ProgramData\ssh_modern\keyhost" /grant administrators:F /T
+  icacls "C:\ProgramData\ssh_modern\keyhost" /reset /T
+  icacls "C:\ProgramData\ssh_modern\keyhost" /setowner "Administrators" /T /C
+
+  # Remover llaves
+  Remove-Item "C:\ProgramData\ssh_modern\keyhost\ssh_host_*" -Force
+
+  # Generar llaves en la ruta 100% probado
+  $path = "C:\ProgramData\ssh_modern\keyhost"
+  ssh-keygen.exe -t ed25519 -f "$path\ssh_host_ed25519_key"
+  ssh-keygen.exe -t ecdsa   -f "$path\ssh_host_ecdsa_key"  
+  ssh-keygen.exe -t rsa     -f "$path\ssh_host_rsa_key"    
+
+  # 1.A. Confirmar rutas en sshd_config
+  Select-String -Path "C:\ProgramData\ssh_modern\etc\sshd_config" -Pattern "HostKey"
+
+  # 1.B. Validar que llaves no estan en formato DOS (CRLF)
+  type "C:\ProgramData\ssh_modern\keyhost\ssh_host_ed25519_key"
+
+  # 2. Permiso total para administrador sobre la carpeta keyhost solo para reparar
+  icacls "C:\ProgramData\ssh_modern\keyhost" /grant:r "Administrators:(OI)(CI)(F)"
+
+  # 3. Ajustar permisos a cada llave privada, no eliminar Administrators todavia
+  $keys = Get-ChildItem "C:\ProgramData\ssh_modern\keyhost\ssh_host_*_key"
+  foreach ($k in $keys) {
+    icacls $k.FullName /inheritance:r
+    icacls $k.FullName /grant:r "SYSTEM:(F)"
+    icacls $k.FullName /grant:r "Administrators:(F)"
+  }
+  # Prueba el foreground, ejecucion manual
+  & "C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe" -f "C:\ProgramData\ssh_modern\etc\sshd_config" -D
+
+  psexec64 -i -s cmd.exe
+  "C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe" -f "C:\ProgramData\ssh_modern\etc\sshd_config" -d
+
+  # 4. Quitar Administrators para dejar permisos estrictos
+  foreach ($k in $keys) {
+    icacls $k /remove:g "Administrators"
+  }
+  # 4.A. Cambiar el owner de claves privadas
+  icacls "C:\ProgramData\ssh_modern\keyhost\ssh_host_ed25519_key" /setowner "SYSTEM"
+  icacls "C:\ProgramData\ssh_modern\keyhost\ssh_host_ecdsa_key" /setowner "SYSTEM"
+  icacls "C:\ProgramData\ssh_modern\keyhost\ssh_host_rsa_key" /setowner "SYSTEM"
+
+  icacls "C:\ProgramData\ssh_modern\keyhost\ssh_host_*_key"
+
+  # 5. Las pub si deben ser legibles por users y sshd_modern
+
+  # 6. Probar que las llaves existen y no estan vacias
+  Get-Item "C:\ProgramData\ssh_modern\keyhost\ssh_host_*_key" | Select Name, Length
+
+  # 7. Probar el demonio
+  & "C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe" -f "C:\ProgramData\ssh_modern\etc\sshd_config" -D
+
+  # El archivo de permisos
+  icacls C:\ProgramData\ssh_modern\etc\authorized_keys\test01 /inheritance:r
+  icacls C:\ProgramData\ssh_modern\etc\authorized_keys\test01 /grant SYSTEM:F
+  icacls C:\ProgramData\ssh_modern\etc\authorized_keys\test01 /grant Administrators:F
+
+  icacls "C:\ProgramData\ssh_modern\etc\authorized_keys\test01" /inheritance:r
+  icacls "C:\ProgramData\ssh_modern\etc\authorized_keys\test01" /grant:r "SYSTEM:(F)"
+  icacls "C:\ProgramData\ssh_modern\etc\authorized_keys\test01" /grant:r "Administrators:(F)"
+
+  # Revisar el error real del servicio
+  Get-WinEvent -LogName Application | where { $_.ProviderName -eq "sshd_modern" } | select -First 20 | fl
+  # o mas general
+  Get-WinEvent -LogName Application -MaxEvents 30 | fl
+
+  # Arranque en modo DEBUG
+  & "C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe" -f "C:\ProgramData\ssh_modern\etc\sshd_config" -ddd
+  # Verificar que archivo de configuracion no contiene errores
+  & "C:\OpenSSH-Modern\OpenSSH-Win64\sshd.exe" -t -f "C:\ProgramData\ssh_modern\etc\sshd_config"
+
+  #Levantar el servicio
+  Start-Service sshd_modern
+  # Verificar si escucha 2222
+  netstat -ano | findstr :2222
+  # Y si hago ... se deberia conectar
+  ssh -vvv -i ... test01@localhost -p 2222
+
+  # -----------------------------------------------------------------
+  takeown /F "C:\ProgramData\ssh_modern\keyhost" /R /D Y
+  icacls "C:\ProgramData\ssh_modern\keyhost" /reset /T
+
+  icacls "C:\ProgramData\ssh_modern\keyhost" /inheritance:r
+  icacls "C:\ProgramData\ssh_modern\keyhost" /grant:r "SYSTEM:(OI)(CI)(F)"
+
+  $keys = @(
+    "C:\ProgramData\ssh_modern\keyhost\ssh_host_ed25519_key",
+    "C:\ProgramData\ssh_modern\keyhost\ssh_host_ecdsa_key",
+    "C:\ProgramData\ssh_modern\keyhost\ssh_host_rsa_key"
+  )
+  foreach ($k in $keys) {
+    icacls $k /inheritance:r
+    icacls $k /grant:r "SYSTEM:(F)"
+  }
+  icacls "C:\ProgramData\ssh_modern\keyhost\ssh_host_*_key"
+  icacls "C:\ProgramData\ssh_modern\keyhost"
+
+  icacls "C:\ProgramData\ssh_modern\keyhost" /inheritance:r
+  icacls "C:\ProgramData\ssh_modern\keyhost" /remove:g "FIDENSLAT\leonel.villa" 2>$null
+
+  # Variable de maquina
+  SetX SSHD_CHECK_PERMISSIONS 0 /M
+
+  # Solucion
+  icacls "C:\ProgramData\ssh_modern\keyhost\ssh_host_*_key" /inheritance:r
+  icacls "C:\ProgramData\ssh_modern\keyhost\ssh_host_*_key" /remove:g administrators
+  icacls "C:\ProgramData\ssh_modern\keyhost\ssh_host_*_key" /grant:r SYSTEM:F
+  # Cambiar propietario a System, ejecutar con privilegios elevados     psexec64 -i -s powershell.exe
+  # Puedes descargase desde https://learn.microsoft.com/sysinternals/downloads/psexec?utm_source=chatgpt.com
+  icacls "C:\ProgramData\ssh_modern\keyhost\ssh_host_*_key" /setowner SYSTEM
+
+
+
+  # Ir a la carpeta de la clave
+  cd C:\Users\Administrator\.ssh
+
+  # Quitar herencia
+  icacls test01 /inheritance:r
+
+  # Eliminar cualquier permiso existente
+  icacls test01 /remove "BUILTIN\Administrators"
+  icacls test01 /remove "Everyone"
+  icacls test01 /remove "NT AUTHORITY\Authenticated Users"
+
+  # Solo dar acceso a SYSTEM y al usuario propietario
+  icacls test01 /grant:r "SYSTEM:F"
+  icacls test01 /grant:r "SRV-AUTOCLUB-01\Administrator:F"
+
+  # Forzar al usuario como dueño
+  icacls test01 /setowner "SRV-AUTOCLUB-01\Administrator"
+
+
+
+  cd C:\Users\Administrator
+  # Quitar herencia
+  icacls .ssh /inheritance:r
+  # Eliminar permisos “extra”
+  icacls .ssh /remove "BUILTIN\Administrators"
+  icacls .ssh /remove "Everyone"
+  icacls .ssh /remove "NT AUTHORITY\Authenticated Users"
+  # Conceder solo al usuario y SYSTEM
+  icacls .ssh /grant:r "SRV-AUTOCLUB-01\Administrator:(F)"
+  icacls .ssh /grant:r "SYSTEM:(F)"
+
+  sftp -i C:\Users\lvill\.ssh\test01 -P 2222 test01@10.0.0.203
+  sftp -i C:\Users\lvill\.ssh\psilva -P 2222 psilva@10.0.0.53
+
+
+
+  # Permisos para la carpeta C:\OpenSSH-Modern y C:\OpenSSH-Modern\OpenSSH-Win64
+  takeown /F "C:\OpenSSH-Modern" /R /D Y
+  icacls "C:\OpenSSH-Modern" /setowner Administrators /T
+  icacls "C:\OpenSSH-Modern\OpenSSH-Win64" /inheritance:r
+  icacls "C:\OpenSSH-Modern\OpenSSH-Win64" /grant:r Administrators:F
+  icacls "C:\OpenSSH-Modern\OpenSSH-Win64" /grant:r SYSTEM:F
+  icacls "C:\OpenSSH-Modern\OpenSSH-Win64" /grant:r Users:RX
+
+  # Permisos para C:\ProgramData\ssh_modern\keyhost
+  icacls "C:\ProgramData\ssh_modern\keyhost" /inheritance:r
+  icacls "C:\ProgramData\ssh_modern\keyhost" /grant:r SYSTEM:F
+  icacls "C:\ProgramData\ssh_modern\keyhost" /grant:r Administrators:F
+
+  #Confirmar ruta del binario
+  (Get-Command ssh).Source

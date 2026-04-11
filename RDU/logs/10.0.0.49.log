@@ -1,0 +1,66 @@
+2026-02-26 18:06:14 | [10.0.0.49 rdp_remove] Inicio remove para FIDENSLAT\jtoledo en Remote Desktop Users y remove
+2026-02-26 18:06:17 | [10.0.0.49 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-26 18:06:17 | Proceso OK
+2026-02-26 18:06:18 | REMOVE OK
+2026-02-27 14:07:20 | [10.0.0.49] Inicio proceso ADD de RDP para FIDENSLAT\jbogado en Administrators
+2026-02-27 14:07:25 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\jbogado] NumReg [16789] Estado [2]
+2026-02-27 14:07:25 | [10.0.0.49 rdp_add] ERROR SP → rollback rdu_infraRegistrarAsignacionRDU
+2026-02-27 14:07:28 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-02-28 02:24:46 | [10.0.0.49 rdp_remove] Inicio remove para FIDENSLAT\jbogado en Administrators y remove
+2026-02-28 02:24:49 | [10.0.0.49 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-28 02:24:50 | Proceso OK
+2026-02-28 02:24:50 | REMOVE OK
+2026-02-28 14:49:49 | [10.0.0.49] Inicio proceso ADD de RDP para FIDENSLAT\jtoledo en Remote Desktop Users
+2026-02-28 14:49:54 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\jtoledo] NumReg [16800] Estado [2]
+2026-02-28 14:49:55 | Proceso OK
+2026-03-03 10:49:53 | [10.0.0.49 rdp_remove] Inicio remove para FIDENSLAT\jtoledo en Remote Desktop Users y remove
+2026-03-03 10:49:57 | [10.0.0.49 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-03 10:49:57 | Proceso OK
+2026-03-03 10:49:57 | REMOVE OK
+2026-03-06 11:04:56 | [10.0.0.49 rdp_add] No responde al ping
+2026-03-06 11:06:17 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\jtoledo] NumReg [16890] Estado [2]
+2026-03-06 11:06:18 | Proceso OK
+2026-03-07 16:29:21 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-07 16:35:55 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-07 16:48:29 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-07 17:06:02 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-10 08:55:08 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Remote Desktop Users', NumReg: 16947, Estado: '2', Expira: '2026-03-12 00:00', HoraExpira: '2026-03-10 10:20'
+2026-03-10 14:12:43 | Proceso completado Ok. FIDENSLAT\jbogado en 'Administrators', NumReg: 16948, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-10 20:00'
+2026-03-10 14:19:25 | Proceso completado Ok. FIDENSLAT\jbogado en 'Administrators', NumReg: 16948, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-10 20:00'
+2026-03-10 14:26:25 | Proceso completado Ok. FIDENSLAT\jbogado en 'Administrators', NumReg: 16948, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-10 20:00'
+2026-03-10 14:27:24 | Proceso completado Ok. FIDENSLAT\jbogado en 'Administrators', NumReg: 16948, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-10 20:00'
+2026-03-10 14:56:37 | Proceso completado Ok. FIDENSLAT\jbogado en 'Administrators', NumReg: 16948, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-10 20:00'
+2026-03-10 14:58:15 | Proceso completado Ok. FIDENSLAT\jbogado en 'Administrators', NumReg: 16948, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-10 20:00'
+2026-03-12 09:49:06 | [10.0.0.102 rdpRemove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-12 09:51:45 | [10.0.0.102 rdpRemove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-12 10:03:51 | [10.0.0.102 rdpRemove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-12 10:04:17 | [10.0.0.102 rdpRemove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-16 16:01:14 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Remote Desktop Users', NumReg: 17000, Estado: '2', Expira: '2026-03-18 00:00', HoraExpira: '2026-03-16 16:15'
+2026-03-19 08:35:15 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Remote Desktop Users', NumReg: 17018, Estado: '2', Expira: '2026-03-20 00:00', HoraExpira: '2026-03-19 23:59'
+2026-03-20 08:51:15 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-20 12:50:04 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-20 13:02:23 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-20 13:03:29 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-20 13:05:20 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-23 09:41:28 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-24 15:15:08 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-24 15:40:43 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-24 16:17:59 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-24 16:19:33 | 49 no registro estado ASIGNADO por Numreg NULL
+2026-03-26 13:06:47 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Remote Desktop Users', NumReg: 17084, Estado: '2', Expira: '2026-03-27 00:00', HoraExpira: '2026-03-26 23:59'
+2026-03-30 11:05:37 | Proceso completado Ok. FIDENSLAT\jbarona en 'Administrators', NumReg: 17127, Estado: '2', Expira: '2026-04-01 00:00', HoraExpira: '2026-03-30 11:00'
+2026-03-31 16:57:20 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Remote Desktop Users', NumReg: 17140, Estado: '2', Expira: '2026-04-02 00:00', HoraExpira: '2026-03-31 18:20'
+2026-04-06 08:36:00 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-06 08:40:45 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-06 09:29:48 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-08 09:11:24 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Remote Desktop Users', NumReg: 17208, Estado: '2', Expira: '2026-04-10 00:00', HoraExpira: '2026-04-08 10:10'
+2026-04-08 17:09:30 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-08 17:13:50 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-09 09:49:38 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-09 20:50:21 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-10 10:43:44 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-10 11:14:28 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-10 13:23:22 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-10 19:27:53 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-10 20:05:56 | No se asigna REVOCADO en 49 POR NumReg NULL
+2026-04-11 13:48:09 | No se asigna REVOCADO en 49 POR NumReg NULL

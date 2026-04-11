@@ -1,0 +1,7 @@
+# Ignorar todos los archivos con extension
+.exe
+.log
+.csv
+.rar
+
+RDU/reportes/**/*.txt

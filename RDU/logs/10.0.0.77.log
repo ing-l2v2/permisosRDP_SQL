@@ -1,0 +1,50 @@
+2026-02-27 10:22:32 | [10.0.0.77 rdp_remove] Inicio remove para FIDENSLAT\mcobos en Remote Desktop Users y remove
+2026-02-27 10:22:37 | [10.0.0.77 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-27 10:22:37 | Proceso OK
+2026-02-27 10:22:37 | REMOVE OK
+2026-02-27 10:23:10 | [10.0.0.77] Inicio proceso ADD de RDP para FIDENSLAT\mcobos en Remote Desktop Users
+2026-02-27 10:23:13 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\mcobos] NumReg [16782] Estado [2]
+2026-02-27 10:23:13 | [10.0.0.77 rdp_add] ERROR SP → rollback rdu_infraRegistrarAsignacionRDU
+2026-02-27 10:23:16 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-02-27 10:23:53 | [10.0.0.77] Inicio proceso ADD de RDP para FIDENSLAT\mcobos en Remote Desktop Users
+2026-02-27 10:23:56 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\mcobos] NumReg [16782] Estado [2]
+2026-02-27 10:23:56 | [10.0.0.77 rdp_add] ERROR SP → rollback rdu_infraRegistrarAsignacionRDU
+2026-02-27 10:24:00 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-03-02 08:20:41 | [10.0.0.77] Inicio proceso ADD de RDP para FIDENSLAT\mcobos en Remote Desktop Users
+2026-03-02 08:20:47 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\mcobos] NumReg [NULL] Estado [2]
+2026-03-02 08:20:47 | Proceso OK
+2026-03-02 08:23:59 | [10.0.0.77] Inicio proceso ADD de RDP para FIDENSLAT\mcobos en Remote Desktop Users
+2026-03-02 08:24:03 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\mcobos] NumReg [NULL] Estado [2]
+2026-03-02 08:24:03 | Proceso OK
+2026-03-02 08:34:46 | [10.0.0.77 rdp_remove] Inicio remove para FIDENSLAT\mcobos en Remote Desktop Users y remove
+2026-03-02 08:34:50 | [10.0.0.77 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-02 08:34:51 | Proceso OK
+2026-03-02 08:34:51 | REMOVE OK
+2026-03-04 10:27:14 | [10.0.0.77 rdp_remove] Inicio remove para FIDENSLAT\mcobos en Remote Desktop Users y remove
+2026-03-04 10:27:19 | [10.0.0.77 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 10:27:19 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-04 10:27:19 | Proceso OK
+2026-03-04 10:27:19 | REMOVE OK
+2026-03-04 10:30:30 | [10.0.0.77 rdp_remove] Inicio remove para FIDENSLAT\mcobos en Remote Desktop Users y remove
+2026-03-04 10:30:33 | [10.0.0.77 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 10:30:33 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-04 10:30:33 | Proceso OK
+2026-03-04 10:30:33 | REMOVE OK
+2026-03-09 11:55:18 | ERROR: ADD_FAIL: FIDENSLAT\mcobos ya es un miembro del grupo Remote Desktop Users.
+2026-03-09 12:01:25 | ERROR: ADD_FAIL: FIDENSLAT\mcobos ya es un miembro del grupo Remote Desktop Users.
+2026-03-09 12:02:29 | Proceso completado Ok. FIDENSLAT\mcobos en 'Remote Desktop Users', NumReg: 16920, Estado: '2', Expira: '2026-03-16 00:00', HoraExpira: '2026-03-09 11:00'
+2026-03-16 09:10:38 | ERROR: No se puede indizar en una matriz nula.
+2026-03-16 09:26:22 | ERROR: No se puede indizar en una matriz nula.
+2026-03-16 09:37:59 | ERROR: No se puede indizar en una matriz nula.
+2026-03-16 09:41:41 | ERROR: No se puede indizar en una matriz nula.
+2026-03-16 09:48:22 | ERROR: No se puede indizar en una matriz nula.
+2026-03-16 09:49:07 | ERROR: No se puede indizar en una matriz nula.
+2026-03-16 09:49:43 | ERROR: No se puede indizar en una matriz nula.
+2026-03-16 09:53:54 | Proceso completado Ok. FIDENSLAT\mcobos en , NumReg: , Estado: , Expira: '2026-03-23 11:00', HoraExpira: 
+2026-03-16 09:53:55 | Proceso completado Ok. FIDENSLAT\mcobos en 'Remote Desktop Users', NumReg: 16971, Estado: '2', Expira: '2026-03-23 00:00', HoraExpira: '2026-03-16 11:00'
+2026-03-20 10:16:19 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Administrators', NumReg: 17027, Estado: '2', Expira: '2026-03-21 00:00', HoraExpira: '2026-03-20 23:59'
+2026-03-24 09:30:46 | Proceso completado Ok. FIDENSLAT\mcobos en 'Remote Desktop Users', NumReg: 17065, Estado: '2', Expira: '2026-03-30 00:00', HoraExpira: '2026-03-24 11:00'
+2026-03-27 09:07:50 | ERROR: ADD_FAIL: FIDENSLAT\jtoledo ya es un miembro del grupo Administrators.
+2026-03-30 09:12:36 | Proceso completado Ok. FIDENSLAT\mcobos en 'Remote Desktop Users', NumReg: 17098, Estado: '2', Expira: '2026-04-06 00:00', HoraExpira: '2026-03-30 11:00'
+2026-04-06 09:25:14 | Proceso completado Ok. FIDENSLAT\mcobos en , NumReg: , Estado: , Expira: '2026-04-13 11:00', HoraExpira: 
+2026-04-06 09:25:14 | Proceso completado Ok. FIDENSLAT\mcobos en 'Remote Desktop Users', NumReg: 17165, Estado: '2', Expira: '2026-04-13 00:00', HoraExpira: '2026-04-06 10:25'

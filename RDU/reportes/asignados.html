@@ -1,0 +1,1329 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Accesos SQL y RDP TODO</title>
+<link rel="stylesheet" href="css/asignados.css">
+</head>
+
+<body>
+<h1>Accesos SQL-<a href="#accesosRdp" class="navLink">RDP</a> [ TODO ] de los 1 dias atras respecto a Fin</h1>
+
+<!-- Mini Dashboard -->
+<div class="dashboard">
+<div class="card">
+<div class="cardTitle">Accesos SQL</div>
+<div class="cardValue">83</div>
+</div>
+<div class="card">
+<div class="cardTitle">Servidores SQL</div>
+<div class="cardValue">7</div>
+</div>
+<div class="card">
+<div class="cardTitle">Asignado SQL</div>
+<div class="cardValue">60</div>
+</div>
+<div class="card">
+<div class="cardTitle">Revocado SQL</div>
+<div class="cardValue">23</div>
+</div>
+<div class="card">
+<div class="cardTitle">Usuarios SQL</div>
+<div class="cardValue">11</div>
+</div>
+<div class="card">
+<div class="cardTitle">Accesos RDP</div>
+<div class="cardValue">17</div>
+</div>
+<div class="card">
+<div class="cardTitle">Servidores RDP</div>
+<div class="cardValue">7</div>
+</div>
+<div class="card">
+<div class="cardTitle">Asignado RDP</div>
+<div class="cardValue">7</div>
+</div>
+<div class="card">
+<div class="cardTitle">Revocado RDP</div>
+<div class="cardValue">10</div>
+</div>
+<div class="card">
+<div class="cardTitle">Usuarios RDP</div>
+<div class="cardValue">9</div>
+</div>
+<div class="card">
+<div class="cardTitle">Total Accesos</div>
+<div class="cardValue">100</div>
+</div>
+</div>
+
+<input type="text" id="globalSearch" placeholder="Buscar en todo el reporte...">
+<h2 id="accesosSql">Accesos SQL</h2>
+<input type="text" class="groupSearch" data-table="tablaSql" placeholder="Buscar en SQL">
+
+<table id="tablaSql">
+<thead>
+
+<!-- Filtros de cabeceras en tablaSql -->
+<tr class="filters">
+<th><input class="colFilter" data-col="0" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="1" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="2" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="3" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="4" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="5" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="6" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="7" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="8" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="9" data-table="tablaSql"></th>
+<th><input class="colFilter" data-col="10" data-table="tablaSql"></th>
+</tr>
+
+<tr>
+<th onclick="sortTable(0,'tablaSql')">Servidor <span class="arrow"></span></th>
+<th onclick="sortTable(1,'tablaSql')">Usuario <span class="arrow"></span></th>
+<th onclick="sortTable(2,'tablaSql')">Base <span class="arrow"></span></th>
+<th onclick="sortTable(3,'tablaSql')">Permiso <span class="arrow"></span></th>
+<th onclick="sortTable(4,'tablaSql')">NumReg <span class="arrow"></span></th>
+<th onclick="sortTable(5,'tablaSql')">CodUser <span class="arrow"></span></th>
+<th onclick="sortTable(6,'tablaSql')">Inicio <span class="arrow"></span></th>
+<th onclick="sortTable(7,'tablaSql')">Fin <span class="arrow"></span></th>
+<th onclick="sortTable(8,'tablaSql')">Id <span class="arrow"></span></th>
+<th onclick="sortTable(9,'tablaSql')">Revocado <span class="arrow"></span></th>
+<th onclick="sortTable(10,'tablaSql')">Estado <span class="arrow"></span></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>10.0.0.49</td>
+<td>mcobos</td>
+<td>Contempora</td>
+<td>db_rwsp</td>
+<td>17182</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>1309</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>mcobos</td>
+<td>Chilena_Log</td>
+<td>db_rwsp</td>
+<td>17179</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>1308</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>mcobos</td>
+<td>Chilena</td>
+<td>db_rwsp</td>
+<td>17179</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>1307</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>mcobos</td>
+<td>Banmedica_log</td>
+<td>db_rw</td>
+<td>17175</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>1306</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>mcobos</td>
+<td>Banmedica</td>
+<td>db_rw</td>
+<td>17175</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>1305</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>mcobos</td>
+<td>AutomovilClub_log</td>
+<td>db_rw</td>
+<td>17173</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>1304</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>mcobos</td>
+<td>AutomovilClub</td>
+<td>db_rw</td>
+<td>17173</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>1303</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>mvasquez</td>
+<td>AutomovilClub_log</td>
+<td>db_rw</td>
+<td>17158</td>
+<td>00114</td>
+<td>2026-04-06 09:48</td>
+<td>2026-04-13 09:48</td>
+<td>1302</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>mvasquez</td>
+<td>AutomovilClub</td>
+<td>db_rw</td>
+<td>17158</td>
+<td>00114</td>
+<td>2026-04-06 09:48</td>
+<td>2026-04-13 09:48</td>
+<td>1301</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jarzolay</td>
+<td>AutomovilClub_log</td>
+<td>db_rw</td>
+<td>17177</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>1300</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jarzolay</td>
+<td>AutomovilClub</td>
+<td>db_rw</td>
+<td>17177</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>1299</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jarzolay</td>
+<td>Banmedica_log</td>
+<td>db_rw</td>
+<td>17176</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>1298</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jarzolay</td>
+<td>Banmedica</td>
+<td>db_rw</td>
+<td>17176</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>1297</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jarzolay</td>
+<td>Chilena_Log</td>
+<td>db_rw</td>
+<td>17174</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>1296</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jarzolay</td>
+<td>Chilena</td>
+<td>db_rw</td>
+<td>17174</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>1295</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>kcuenca</td>
+<td>AutomovilClub</td>
+<td>SQLAgentOperatorRole</td>
+<td>17222</td>
+<td>00120</td>
+<td>2026-04-10 11:46</td>
+<td>2026-04-10 21:00</td>
+<td>1323</td>
+<td>2026-04-10 21:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>kcuenca</td>
+<td>AutomovilClub_log</td>
+<td>db_rwsp</td>
+<td>17222</td>
+<td>00120</td>
+<td>2026-04-10 11:46</td>
+<td>2026-04-10 21:00</td>
+<td>1322</td>
+<td>2026-04-10 21:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>kcuenca</td>
+<td>AutomovilClub</td>
+<td>db_rwsp</td>
+<td>17222</td>
+<td>00120</td>
+<td>2026-04-10 11:46</td>
+<td>2026-04-10 21:00</td>
+<td>1321</td>
+<td>2026-04-10 21:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jbogado</td>
+<td>AutomovilClub</td>
+<td>SQLAgentOperatorRole</td>
+<td>17220</td>
+<td>00098</td>
+<td>2026-04-09 11:03</td>
+<td>2026-04-10 20:00</td>
+<td>1320</td>
+<td>2026-04-10 20:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jbogado</td>
+<td>AutomovilClub_log</td>
+<td>db_rwsp</td>
+<td>17220</td>
+<td>00098</td>
+<td>2026-04-09 11:03</td>
+<td>2026-04-10 20:00</td>
+<td>1319</td>
+<td>2026-04-10 20:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jbogado</td>
+<td>AutomovilClub</td>
+<td>db_rwsp</td>
+<td>17220</td>
+<td>00098</td>
+<td>2026-04-09 11:03</td>
+<td>2026-04-10 20:00</td>
+<td>1318</td>
+<td>2026-04-10 20:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jbarona</td>
+<td>Chilena_Log</td>
+<td>db_rwsp</td>
+<td>17210</td>
+<td>00132</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 10:00</td>
+<td>1317</td>
+<td>2026-04-10 10:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jbarona</td>
+<td>Chilena</td>
+<td>db_rwsp</td>
+<td>17210</td>
+<td>00132</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 10:00</td>
+<td>1316</td>
+<td>2026-04-10 10:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jbogado</td>
+<td>AutomovilClub</td>
+<td>SQLAgentOperatorRole</td>
+<td>17205</td>
+<td>00098</td>
+<td>2026-04-07 10:19</td>
+<td>2026-04-09 10:00</td>
+<td>1315</td>
+<td>2026-04-09 10:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jbogado</td>
+<td>AutomovilClub_log</td>
+<td>db_rwsp</td>
+<td>17205</td>
+<td>00098</td>
+<td>2026-04-07 10:19</td>
+<td>2026-04-09 10:00</td>
+<td>1314</td>
+<td>2026-04-09 10:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>jbogado</td>
+<td>AutomovilClub</td>
+<td>db_rwsp</td>
+<td>17205</td>
+<td>00098</td>
+<td>2026-04-07 10:19</td>
+<td>2026-04-09 10:00</td>
+<td>1313</td>
+<td>2026-04-09 10:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.56</td>
+<td>mcobos</td>
+<td>Affinity</td>
+<td>db_rwsp</td>
+<td>17187</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>100</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.56</td>
+<td>mcobos</td>
+<td>RENTA_NACIONAL</td>
+<td>db_rwsp</td>
+<td>17185</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>99</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.56</td>
+<td>mcobos</td>
+<td>Baninter</td>
+<td>db_rwsp</td>
+<td>17164</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>98</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.56</td>
+<td>mcobos</td>
+<td>Bice</td>
+<td>db_rwsp</td>
+<td>17163</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>97</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.56</td>
+<td>mvasquez</td>
+<td>RENTA_NACIONAL</td>
+<td>db_rw</td>
+<td>17160</td>
+<td>00114</td>
+<td>2026-04-06 09:48</td>
+<td>2026-04-13 09:48</td>
+<td>96</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.56</td>
+<td>jarzolay</td>
+<td>Bice</td>
+<td>db_rw</td>
+<td>17169</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>95</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.56</td>
+<td>jarzolay</td>
+<td>Baninter</td>
+<td>db_rw</td>
+<td>17167</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>94</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>larroba</td>
+<td>IMCRUZ</td>
+<td>db_rw</td>
+<td>17184</td>
+<td>00137</td>
+<td>2026-04-06 10:24</td>
+<td>2026-04-13 10:24</td>
+<td>106</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>larroba</td>
+<td>FIDENS_ROOT</td>
+<td>db_rw</td>
+<td>17184</td>
+<td>00137</td>
+<td>2026-04-06 10:24</td>
+<td>2026-04-13 10:24</td>
+<td>105</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>jarzolay</td>
+<td>IMCRUZ</td>
+<td>db_rw</td>
+<td>17172</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>104</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>jarzolay</td>
+<td>FIDENS_ROOT</td>
+<td>db_rw</td>
+<td>17172</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>103</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>ecordova</td>
+<td>IMCRUZ</td>
+<td>db_rwsp</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>2026-04-10 15:48</td>
+<td>2026-04-12 15:48</td>
+<td>114</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>ecordova</td>
+<td>FIDENS_ROOT</td>
+<td>db_rwsp</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>2026-04-10 15:48</td>
+<td>2026-04-12 15:48</td>
+<td>113</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>ecordova</td>
+<td>FIDENS_ROOT</td>
+<td>SQLAgentOperatorRole</td>
+<td>17228</td>
+<td>00112</td>
+<td>2026-04-10 15:48</td>
+<td>2026-04-12 15:40</td>
+<td>115</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>ecordova</td>
+<td>FIDENS_ROOT</td>
+<td>SQLAgentOperatorRole</td>
+<td>17215</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>112</td>
+<td>2026-04-10 11:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>ecordova</td>
+<td>IMCRUZ</td>
+<td>db_rwsp</td>
+<td>17215</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>111</td>
+<td>2026-04-10 11:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>ecordova</td>
+<td>FIDENS_ROOT</td>
+<td>db_rwsp</td>
+<td>17215</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>110</td>
+<td>2026-04-10 11:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.80</td>
+<td>jarzolay</td>
+<td>SSMLBC</td>
+<td>db_rw</td>
+<td>17178</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>30</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>mcobos</td>
+<td>RSA</td>
+<td>db_rwsp</td>
+<td>17207</td>
+<td>00055</td>
+<td>2026-04-07 13:41</td>
+<td>2026-04-13 11:00</td>
+<td>84</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>mcobos</td>
+<td>SuraCL_Vida</td>
+<td>db_rwsp</td>
+<td>17170</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>83</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>mcobos</td>
+<td>SuraCL</td>
+<td>db_rwsp</td>
+<td>17168</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>82</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>larroba</td>
+<td>RSA</td>
+<td>db_rwsp</td>
+<td>17188</td>
+<td>00137</td>
+<td>2026-04-06 10:24</td>
+<td>2026-04-13 10:24</td>
+<td>81</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>larroba</td>
+<td>RSA</td>
+<td>db_rw</td>
+<td>17188</td>
+<td>00137</td>
+<td>2026-04-08 12:11</td>
+<td>2026-04-13 10:24</td>
+<td>85</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>larroba</td>
+<td>SuraCL_Vida</td>
+<td>db_rw</td>
+<td>17183</td>
+<td>00137</td>
+<td>2026-04-06 10:23</td>
+<td>2026-04-13 10:23</td>
+<td>80</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>larroba</td>
+<td>SuraCL</td>
+<td>db_rw</td>
+<td>17181</td>
+<td>00137</td>
+<td>2026-04-06 10:23</td>
+<td>2026-04-13 10:23</td>
+<td>79</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>larroba</td>
+<td>RSA_RETAIL</td>
+<td>db_rw</td>
+<td>17180</td>
+<td>00137</td>
+<td>2026-04-06 10:23</td>
+<td>2026-04-13 10:23</td>
+<td>78</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>mcobos</td>
+<td>RSA</td>
+<td>db_rwsp</td>
+<td>17202</td>
+<td>00055</td>
+<td>2026-04-06 18:13</td>
+<td>2026-04-13 11:00</td>
+<td>373</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>mcobos</td>
+<td>BCI_PYME</td>
+<td>db_rwsp</td>
+<td>17162</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>366</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>mcobos</td>
+<td>FIDENS_ROOT</td>
+<td>db_rwsp</td>
+<td>17159</td>
+<td>00055</td>
+<td>2026-04-06 10:24</td>
+<td>2026-04-13 10:24</td>
+<td>365</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>mcobos</td>
+<td>DERCO_CORREDOR</td>
+<td>db_rwsp</td>
+<td>17159</td>
+<td>00055</td>
+<td>2026-04-06 10:24</td>
+<td>2026-04-13 10:24</td>
+<td>364</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>larroba</td>
+<td>FIDENS_ROOT</td>
+<td>db_rwsp</td>
+<td>17189</td>
+<td>00137</td>
+<td>2026-04-06 10:24</td>
+<td>2026-04-13 10:24</td>
+<td>363</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>larroba</td>
+<td>DERCO_CORREDOR</td>
+<td>db_rwsp</td>
+<td>17189</td>
+<td>00137</td>
+<td>2026-04-06 10:24</td>
+<td>2026-04-13 10:24</td>
+<td>362</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>larroba</td>
+<td>RSA_CAMIONES</td>
+<td>db_rw</td>
+<td>17186</td>
+<td>00137</td>
+<td>2026-04-06 10:24</td>
+<td>2026-04-13 10:24</td>
+<td>361</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>jarzolay</td>
+<td>BCI_PYME</td>
+<td>db_rw</td>
+<td>17166</td>
+<td>00128</td>
+<td>2026-04-06 09:47</td>
+<td>2026-04-13 09:47</td>
+<td>360</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>ecordova</td>
+<td>FIDENS_ROOT</td>
+<td>db_rwsp</td>
+<td>17227</td>
+<td>00112</td>
+<td>2026-04-10 15:50</td>
+<td>2026-04-12 15:40</td>
+<td>389</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>ecordova</td>
+<td>DERCO_CORREDOR</td>
+<td>db_rwsp</td>
+<td>17227</td>
+<td>00112</td>
+<td>2026-04-10 15:50</td>
+<td>2026-04-12 15:40</td>
+<td>388</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>ecordova</td>
+<td>BCI_PYME</td>
+<td>SQLAgentOperatorRole</td>
+<td>17226</td>
+<td>00112</td>
+<td>2026-04-10 15:49</td>
+<td>2026-04-12 15:40</td>
+<td>387</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>ecordova</td>
+<td>BCI_PYME</td>
+<td>db_rwsp</td>
+<td>17226</td>
+<td>00112</td>
+<td>2026-04-10 15:49</td>
+<td>2026-04-12 15:40</td>
+<td>386</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>cberruz</td>
+<td>FIDENS_ROOT</td>
+<td>db_rwsp</td>
+<td>17224</td>
+<td>00108</td>
+<td>2026-04-10 14:58</td>
+<td>2026-04-12 10:00</td>
+<td>385</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>cberruz</td>
+<td>DERCO_CORREDOR</td>
+<td>db_rwsp</td>
+<td>17224</td>
+<td>00108</td>
+<td>2026-04-10 14:58</td>
+<td>2026-04-12 10:00</td>
+<td>384</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>eavalos</td>
+<td>DERCO_CORREDOR</td>
+<td>ALTER TRACE</td>
+<td>17221</td>
+<td>00141</td>
+<td>2026-04-10 09:54</td>
+<td>2026-04-11 22:00</td>
+<td>383</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>eavalos</td>
+<td>DERCO_CORREDOR</td>
+<td>SQLAgentOperatorRole</td>
+<td>17221</td>
+<td>00141</td>
+<td>2026-04-10 09:54</td>
+<td>2026-04-11 22:00</td>
+<td>382</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>eavalos</td>
+<td>FIDENS_ROOT</td>
+<td>db_rwsp</td>
+<td>17221</td>
+<td>00141</td>
+<td>2026-04-10 09:54</td>
+<td>2026-04-11 22:00</td>
+<td>381</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>eavalos</td>
+<td>DERCO_CORREDOR</td>
+<td>db_rwsp</td>
+<td>17221</td>
+<td>00141</td>
+<td>2026-04-10 09:54</td>
+<td>2026-04-11 22:00</td>
+<td>380</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>cberruz</td>
+<td>FIDENS_ROOT</td>
+<td>db_rwsp</td>
+<td>17219</td>
+<td>00108</td>
+<td>2026-04-08 12:12</td>
+<td>2026-04-10 11:00</td>
+<td>379</td>
+<td>2026-04-10 11:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>cberruz</td>
+<td>DERCO_CORREDOR</td>
+<td>db_rwsp</td>
+<td>17219</td>
+<td>00108</td>
+<td>2026-04-08 12:12</td>
+<td>2026-04-10 11:00</td>
+<td>378</td>
+<td>2026-04-10 11:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>ecordova</td>
+<td>FIDENS_ROOT</td>
+<td>db_rwsp</td>
+<td>17216</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>377</td>
+<td>2026-04-10 11:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>ecordova</td>
+<td>DERCO_CORREDOR</td>
+<td>db_rwsp</td>
+<td>17216</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>376</td>
+<td>2026-04-10 11:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>ecordova</td>
+<td>BCI_PYME</td>
+<td>SQLAgentOperatorRole</td>
+<td>17214</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>375</td>
+<td>2026-04-10 11:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>ecordova</td>
+<td>BCI_PYME</td>
+<td>db_rwsp</td>
+<td>17214</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>374</td>
+<td>2026-04-10 11:01</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>sql-ginger</td>
+<td>mvasquez</td>
+<td>fidqaclient</td>
+<td>RW</td>
+<td>17157</td>
+<td>00114</td>
+<td>2026-04-06 09:51</td>
+<td>2026-04-13 11:00</td>
+<td>81</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>sql-ginger</td>
+<td>larroba</td>
+<td>firma-digital-inchcape</td>
+<td>RW</td>
+<td>17190</td>
+<td>00137</td>
+<td>2026-04-06 10:27</td>
+<td>2026-04-13 11:00</td>
+<td>82</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>sql-ginger</td>
+<td>larroba</td>
+<td>flujo-venta-inchcape</td>
+<td>RW</td>
+<td>17190</td>
+<td>00137</td>
+<td>2026-04-06 10:27</td>
+<td>2026-04-13 11:00</td>
+<td>83</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>sql-ginger</td>
+<td>mcobos</td>
+<td>fidqaclient</td>
+<td>RW</td>
+<td>17203</td>
+<td>00055</td>
+<td>2026-04-06 18:21</td>
+<td>2026-04-13 11:00</td>
+<td>84</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>sql-ginger</td>
+<td>jtoledo</td>
+<td>pagos-sura-cont</td>
+<td>R</td>
+<td>17204</td>
+<td>00031</td>
+<td>2026-04-07 10:42</td>
+<td>2026-04-09 10:10</td>
+<td>87</td>
+<td>2026-04-09 11:03</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>sql-ginger</td>
+<td>jtoledo</td>
+<td>autenticacion-sura-cont</td>
+<td>R</td>
+<td>17204</td>
+<td>00031</td>
+<td>2026-04-07 10:38</td>
+<td>2026-04-09 09:40</td>
+<td>85</td>
+<td>2026-04-07 10:42</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>sql-ginger</td>
+<td>jtoledo</td>
+<td>pagos-sura-cont</td>
+<td>R</td>
+<td>17204</td>
+<td>00031</td>
+<td>2026-04-07 10:38</td>
+<td>2026-04-09 09:40</td>
+<td>86</td>
+<td>2026-04-07 10:42</td>
+<td>REVOCADO</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="accesosRdp">Accesos RDP</h2>
+<input type="text" class="groupSearch" data-table="tablaRdp" placeholder="Buscar en RDP">
+<table id="tablaRdp">
+<thead>
+
+<!-- Filtros de cabeceras en tablaRdp -->
+<tr class="filters">
+<th><input class="colFilter" data-col="0" data-table="tablaRdp"></th>
+<th><input class="colFilter" data-col="1" data-table="tablaRdp"></th>
+<th><input class="colFilter" data-col="2" data-table="tablaRdp"></th>
+<th><input class="colFilter" data-col="3" data-table="tablaRdp"></th>
+<th><input class="colFilter" data-col="4" data-table="tablaRdp"></th>
+<th><input class="colFilter" data-col="5" data-table="tablaRdp"></th>
+<th><input class="colFilter" data-col="6" data-table="tablaRdp"></th>
+<th><input class="colFilter" data-col="7" data-table="tablaRdp"></th>
+<th><input class="colFilter" data-col="8" data-table="tablaRdp"></th>
+<th><input class="colFilter" data-col="9" data-table="tablaRdp"></th>
+</tr>
+
+<tr>
+<th onclick="sortTable(0,'tablaRdp')">Servidor <span class="arrow"></span></th>
+<th onclick="sortTable(1,'tablaRdp')">Usuario <span class="arrow"></span></th>
+<th onclick="sortTable(2,'tablaRdp')">Grupo <span class="arrow"></span></th>
+<th onclick="sortTable(3,'tablaRdp')">NumReg <span class="arrow"></span></th>
+<th onclick="sortTable(4,'tablaRdp')">CodUser <span class="arrow"></span></th>
+<th onclick="sortTable(5,'tablaRdp')">Inicio <span class="arrow"></span></th>
+<th onclick="sortTable(6,'tablaRdp')">Fin <span class="arrow"></span></th>
+<th onclick="sortTable(7,'tablaRdp')">Id <span class="arrow"></span></th>
+<th onclick="sortTable(8,'tablaRdp')">Revocado <span class="arrow"></span></th>
+<th onclick="sortTable(9,'tablaRdp')">Estado <span class="arrow"></span></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>10.0.0.86</td>
+<td>.\mcobos</td>
+<td>Remote Desktop Users</td>
+<td>17171</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>288</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.77</td>
+<td>FIDENSLAT\mcobos</td>
+<td>Remote Desktop Users</td>
+<td>17165</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>287</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>.\mcobos</td>
+<td>Remote Desktop Users</td>
+<td>17161</td>
+<td>00055</td>
+<td>2026-04-06 10:25</td>
+<td>2026-04-13 10:25</td>
+<td>286</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>FIDENSLAT\ecordova</td>
+<td>Remote Desktop Users</td>
+<td>17230</td>
+<td>00112</td>
+<td>2026-04-10 15:51</td>
+<td>2026-04-12 15:40</td>
+<td>309</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>.\ecordova</td>
+<td>Remote Desktop Users</td>
+<td>17229</td>
+<td>00112</td>
+<td>2026-04-10 15:51</td>
+<td>2026-04-12 15:40</td>
+<td>308</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.203</td>
+<td>FIDENSLAT\sbriones</td>
+<td>Administrators</td>
+<td>17225</td>
+<td>00123</td>
+<td>2026-04-10 14:58</td>
+<td>2026-04-12 12:00</td>
+<td>307</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>.\cberruz</td>
+<td>Remote Desktop Users</td>
+<td>17224</td>
+<td>00108</td>
+<td>2026-04-10 14:58</td>
+<td>2026-04-12 10:00</td>
+<td>306</td>
+<td></td>
+<td>ASIGNADO</td>
+</tr><tr>
+<td>10.0.0.203</td>
+<td>FIDENSLAT\kcuenca</td>
+<td>Administrators</td>
+<td>17223</td>
+<td>00120</td>
+<td>2026-04-10 11:46</td>
+<td>2026-04-10 21:00</td>
+<td>305</td>
+<td>2026-04-10 21:06</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>.\jtoledo</td>
+<td>Administrators</td>
+<td>17218</td>
+<td>00031</td>
+<td>2026-04-08 12:00</td>
+<td>2026-04-10 12:00</td>
+<td>303</td>
+<td>2026-04-10 12:14</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.203</td>
+<td>FIDENSLAT\jtoledo</td>
+<td>Administrators</td>
+<td>17217</td>
+<td>00031</td>
+<td>2026-04-08 11:22</td>
+<td>2026-04-10 11:25</td>
+<td>302</td>
+<td>2026-04-10 11:44</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>.\cberruz</td>
+<td>Remote Desktop Users</td>
+<td>17219</td>
+<td>00108</td>
+<td>2026-04-08 12:12</td>
+<td>2026-04-10 11:00</td>
+<td>304</td>
+<td>2026-04-10 11:44</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.61</td>
+<td>FIDENSLAT\ecordova</td>
+<td>Remote Desktop Users</td>
+<td>17213</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>301</td>
+<td>2026-04-10 11:44</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>.\ecordova</td>
+<td>Remote Desktop Users</td>
+<td>17212</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>300</td>
+<td>2026-04-10 11:44</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.102</td>
+<td>.\ecordova</td>
+<td>Remote Desktop Users</td>
+<td>17211</td>
+<td>00112</td>
+<td>2026-04-08 11:21</td>
+<td>2026-04-10 11:00</td>
+<td>299</td>
+<td>2026-04-08 11:21</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.103</td>
+<td>.\jtoledo</td>
+<td>Administrators</td>
+<td>17209</td>
+<td>00031</td>
+<td>2026-04-08 10:45</td>
+<td>2026-04-10 10:50</td>
+<td>298</td>
+<td>2026-04-10 11:44</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.49</td>
+<td>FIDENSLAT\jtoledo</td>
+<td>Remote Desktop Users</td>
+<td>17208</td>
+<td>00031</td>
+<td>2026-04-08 10:11</td>
+<td>2026-04-10 10:10</td>
+<td>297</td>
+<td>2026-04-10 11:43</td>
+<td>REVOCADO</td>
+</tr><tr>
+<td>10.0.0.86</td>
+<td>.\jtoledo</td>
+<td>Remote Desktop Users</td>
+<td>17206</td>
+<td>00031</td>
+<td>2026-04-07 10:17</td>
+<td>2026-04-09 10:10</td>
+<td>296</td>
+<td>2026-04-08 10:53</td>
+<td>REVOCADO</td>
+</tr>
+</tbody>
+</table>
+<br><br>
+<p><strong>Informe generado en: </strong> <span id='totalProceso'>00:00:12</span></p><br><br>
+<br><br><br>
+<button id="btnSqlTop" onclick="irSql()">Accesos SQL</button>
+
+<script src="js/asignados.js"></script>
+</body>
+</html>

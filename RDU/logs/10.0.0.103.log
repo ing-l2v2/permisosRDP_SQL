@@ -1,0 +1,26 @@
+2026-02-26 18:06:11 | [10.0.0.103 rdp_remove] Inicio remove para gchavez en Remote Desktop Users y remove
+2026-02-26 18:06:14 | [10.0.0.103 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-26 18:06:14 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-02-26 18:06:14 | Proceso OK
+2026-02-26 18:06:14 | REMOVE OK
+2026-03-02 08:38:35 | [10.0.0.103 rdp_remove] Inicio remove para .\ecordova en Remote Desktop Users y remove
+2026-03-02 08:38:38 | [10.0.0.103 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-02 08:38:38 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-02 08:38:38 | Proceso OK
+2026-03-02 08:38:38 | REMOVE OK
+2026-03-03 10:48:08 | [10.0.0.103] Inicio proceso ADD de RDP para .\jtoledo en Administrators
+2026-03-03 10:48:11 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\jtoledo] NumReg [16846] Estado [2]
+2026-03-03 10:48:11 | Proceso OK
+2026-03-05 14:39:46 | ERROR: System error 1378 has occurred.
+2026-03-05 14:40:19 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-05 14:42:06 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\jtoledo] NumReg [16886] Estado [2]
+2026-03-05 14:42:07 | Proceso OK
+2026-03-09 10:20:36 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 16936, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-09 11:00'
+2026-03-24 15:16:20 | Proceso completado Ok. .\jtoledo en 'Remote Desktop Users', NumReg: 17073, Estado: '2', Expira: '2026-03-26 00:00', HoraExpira: '2026-03-24 16:30'
+2026-03-30 16:32:16 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17133, Estado: '2', Expira: '2026-04-01 00:00', HoraExpira: '2026-03-30 17:00'
+2026-03-31 10:08:46 | Proceso completado Ok. .\jtoledo en 'Remote Desktop Users', NumReg: 17136, Estado: '2', Expira: '2026-04-02 00:00', HoraExpira: '2026-03-31 10:45'
+2026-03-31 11:22:07 | Proceso completado Ok. .\gchavez en 'Remote Desktop Users', NumReg: 17137, Estado: '2', Expira: '2026-04-02 00:00', HoraExpira: '2026-03-31 13:22'
+2026-04-01 09:44:37 | Proceso completado Ok. .\gchavez en 'Administrators', NumReg: 17145, Estado: '2', Expira: '2026-04-03 00:00', HoraExpira: '2026-04-01 11:44'
+2026-04-06 17:13:13 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17200, Estado: '2', Expira: '2026-04-08 00:00', HoraExpira: '2026-04-06 17:40'
+2026-04-06 17:13:20 | Proceso completado Ok. .\gchavez en 'Administrators', NumReg: 17201, Estado: '2', Expira: '2026-04-08 00:00', HoraExpira: '2026-04-06 18:13'
+2026-04-08 09:45:11 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17209, Estado: '2', Expira: '2026-04-10 00:00', HoraExpira: '2026-04-08 10:50'

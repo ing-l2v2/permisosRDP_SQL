@@ -1,0 +1,15 @@
+2026-03-06 09:35:39 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\jtoledo] NumReg [16889] Estado [2]
+2026-03-06 09:35:39 | Proceso OK
+2026-03-11 15:12:26 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Administrators', NumReg: 16956, Estado: '2', Expira: '2026-03-13 00:00', HoraExpira: '2026-03-11 16:00'
+2026-03-12 09:43:08 | ERROR: No se puede indizar en una matriz nula.
+2026-03-18 10:30:14 | Proceso completado Ok. FIDENSLAT\kcuenca en 'Administrators', NumReg: 17007, Estado: '2', Expira: '2026-03-20 00:00', HoraExpira: '2026-03-18 12:30'
+2026-03-23 09:38:36 | ERROR: ADD_FAIL: Principal FIDENSLAT\mlizama was not found.
+2026-03-24 12:27:56 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Administrators', NumReg: 17071, Estado: '2', Expira: '2026-03-26 00:00', HoraExpira: '2026-03-24 13:45'
+2026-03-24 15:14:45 | ERROR: ADD_FAIL: Principal FIDENSLAT\mlizama was not found.
+2026-03-24 16:17:59 | Proceso completado Ok. FIDENSLAT\marcelo.lizama en , NumReg: , Estado: , Expira: NULL, HoraExpira: 
+2026-03-24 16:19:33 | Proceso completado Ok. FIDENSLAT\marcelo.lizama en , NumReg: , Estado: , Expira: NULL, HoraExpira: 
+2026-03-24 16:45:08 | ERROR: ADD_FAIL: Principal FIDENSLAT\mlizama was not found.
+2026-03-24 16:45:23 | Proceso completado Ok. FIDENSLAT\marcelo.lizama en , NumReg: , Estado: , Expira: NULL, HoraExpira: 
+2026-03-24 16:45:23 | Proceso completado Ok. FIDENSLAT\marcelo.lizama en 'Administrators', NumReg: 17074, Estado: '2', Expira: '2026-03-24 00:00', HoraExpira: '2026-03-24 19:00'
+2026-03-30 09:45:26 | Proceso completado Ok. FIDENSLAT\kcuenca en 'Administrators', NumReg: 17126, Estado: '2', Expira: '2026-03-31 00:00', HoraExpira: '2026-03-30 21:00'
+2026-04-01 15:35:47 | Proceso completado Ok. FIDENSLAT\kcuenca en 'Administrators', NumReg: 17142, Estado: '2', Expira: '2026-04-02 00:00', HoraExpira: '2026-04-01 21:00'

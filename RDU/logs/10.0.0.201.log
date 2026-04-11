@@ -1,0 +1,62 @@
+2026-02-26 09:30:46 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Remote Desktop Users y remove
+2026-02-26 09:30:50 | [10.0.0.201 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-26 09:30:51 | Proceso OK
+2026-02-26 09:30:51 | REMOVE OK
+2026-02-26 09:30:51 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Administrators y remove
+2026-02-26 09:30:53 | [10.0.0.201 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-26 09:30:53 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-02-26 09:30:53 | Proceso OK
+2026-02-26 09:30:53 | REMOVE OK
+2026-02-26 09:31:55 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Administrators y remove
+2026-02-26 09:31:59 | No responde al ping
+2026-02-26 09:32:12 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Administrators y remove
+2026-02-26 09:32:16 | No responde al ping
+2026-02-26 09:35:57 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Administrators y remove
+2026-02-26 09:36:01 | No responde al ping
+2026-02-26 09:37:21 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Remote Desktop Users y remove
+2026-02-26 09:37:24 | [10.0.0.201 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-26 09:37:24 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-02-26 09:37:24 | Proceso OK
+2026-02-26 09:37:24 | REMOVE OK
+2026-02-26 09:38:06 | [10.0.0.201] Inicio proceso ADD de RDP para .\cberruz en Administrators
+2026-02-26 09:38:10 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\cberruz] NumReg [16767] Estado [2]
+2026-02-26 09:38:10 | Proceso OK
+2026-02-26 09:40:52 | [10.0.0.201 rdp_remove] Inicio remove para .\cberruz en Administrators y remove
+2026-02-26 09:40:55 | [10.0.0.201 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-26 09:40:55 | Proceso OK
+2026-02-26 09:40:55 | REMOVE OK
+2026-02-26 09:41:32 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Administrators y remove
+2026-02-26 09:41:35 | [10.0.0.201 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-26 09:41:35 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-02-26 09:41:35 | Proceso OK
+2026-02-26 09:41:35 | REMOVE OK
+2026-02-26 09:42:05 | [10.0.0.201] Inicio proceso ADD de RDP para FIDENSLAT\cberruz en Administrators
+2026-02-26 09:42:08 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\cberruz] NumReg [16767] Estado [2]
+2026-02-26 09:42:08 | Proceso OK
+2026-03-02 08:55:46 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Remote Desktop Users y remove
+2026-03-02 08:55:49 | [10.0.0.201 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-02 08:55:49 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-02 08:55:49 | Proceso OK
+2026-03-02 08:55:49 | REMOVE OK
+2026-03-02 08:56:54 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Administrators y remove
+2026-03-02 08:56:57 | [10.0.0.201 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-02 08:56:57 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-02 08:56:57 | Proceso OK
+2026-03-02 08:56:57 | REMOVE OK
+2026-03-02 10:04:36 | [10.0.0.201] Inicio proceso ADD de RDP para FIDENSLAT\cberruz en Administrators
+2026-03-02 10:04:39 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\cberruz] NumReg [16838] Estado [2]
+2026-03-02 10:04:39 | Proceso OK
+2026-03-03 09:47:50 | [10.0.0.201] Inicio proceso ADD de RDP para FIDENSLAT\pvalle en Administrators
+2026-03-03 09:47:53 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [FIDENSLAT\pvalle] NumReg [16837] Estado [2]
+2026-03-03 09:47:53 | Proceso OK
+2026-03-04 09:59:27 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Remote Desktop Users y remove
+2026-03-04 09:59:30 | [10.0.0.201 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 09:59:30 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-04 09:59:31 | Proceso OK
+2026-03-04 09:59:31 | REMOVE OK
+2026-03-04 20:33:21 | [10.0.0.201 rdp_remove] Inicio remove para FIDENSLAT\cberruz en Administrators y remove
+2026-03-04 20:33:25 | [10.0.0.201 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 20:33:25 | Proceso OK
+2026-03-04 20:33:25 | REMOVE OK
+2026-03-18 10:32:57 | Proceso completado Ok. FIDENSLAT\cberruz en 'Remote Desktop Users', NumReg: 17010, Estado: '2', Expira: '2026-03-20 00:00', HoraExpira: '2026-03-18 10:00'
+2026-03-23 09:34:13 | Proceso completado Ok. FIDENSLAT\cberruz en 'Remote Desktop Users', NumReg: 17056, Estado: '2', Expira: '2026-03-25 00:00', HoraExpira: '2026-03-23 11:00'

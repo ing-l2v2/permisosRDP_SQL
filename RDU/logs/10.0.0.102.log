@@ -1,0 +1,212 @@
+2026-02-26 10:23:29 | [10.0.0.102] Inicio proceso ADD de RDP para .\ecordova en Remote Desktop Users
+2026-02-26 10:23:32 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\ecordova] NumReg [16760] Estado [2]
+2026-02-26 10:23:32 | Proceso OK
+2026-02-26 15:01:48 | [10.0.0.102 rdp_remove] Inicio remove para .\jtoledo en Remote Desktop Users y remove
+2026-02-26 15:01:51 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-26 15:01:51 | Proceso OK
+2026-02-26 15:01:51 | REMOVE OK
+2026-02-27 10:19:55 | [10.0.0.102] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-02-27 10:19:57 | ERROR: System error 1378 has occurred.
+2026-02-27 10:20:29 | [10.0.0.102 rdp_remove] Inicio remove para .\mcobos en Remote Desktop Users y remove
+2026-02-27 10:20:32 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-27 10:20:33 | Proceso OK
+2026-02-27 10:20:33 | REMOVE OK
+2026-02-27 10:20:43 | [10.0.0.102] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-02-27 10:20:45 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\mcobos] NumReg [16787] Estado [2]
+2026-02-27 10:20:45 | [10.0.0.102 rdp_add] ERROR SP â†’ rollback rdu_infraRegistrarAsignacionRDU
+2026-02-27 10:20:47 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-02-27 10:29:59 | [10.0.0.102 rdp_remove] Inicio remove para .\cberruz en Remote Desktop Users y remove
+2026-02-27 10:30:01 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-27 10:30:02 | Proceso OK
+2026-02-27 10:30:02 | REMOVE OK
+2026-02-27 10:30:32 | [10.0.0.102] Inicio proceso ADD de RDP para .\cberruz en Remote Desktop Users
+2026-02-27 10:30:34 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\cberruz] NumReg [16790] Estado [2]
+2026-02-27 10:30:34 | [10.0.0.102 rdp_add] ERROR SP â†’ rollback rdu_infraRegistrarAsignacionRDU
+2026-02-27 10:30:36 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-02-27 10:44:46 | [10.0.0.102] Inicio proceso ADD de RDP para .\gchavez en Remote Desktop Users
+2026-02-27 10:44:49 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\gchavez] NumReg [16763] Estado [2]
+2026-02-27 10:44:49 | [10.0.0.102 rdp_add] ERROR SP â†’ rollback rdu_infraRegistrarAsignacionRDU
+2026-02-27 10:44:51 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-02-28 02:20:36 | [10.0.0.102] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-02-28 02:20:39 | ERROR: System error 1378 has occurred.
+2026-02-28 02:21:22 | [10.0.0.102] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-02-28 02:21:25 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\mcobos] NumReg [16787] Estado [2]
+2026-02-28 02:21:25 | Proceso OK
+2026-03-02 08:20:35 | [10.0.0.102] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-03-02 08:20:37 | ERROR: System error 1378 has occurred.
+2026-03-02 08:23:54 | [10.0.0.102] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-03-02 08:23:56 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\mcobos] NumReg [16822] Estado [2]
+2026-03-02 08:23:56 | Proceso OK
+2026-03-02 08:41:22 | [10.0.0.102] Inicio proceso ADD de RDP para .\ecordova en Remote Desktop Users
+2026-03-02 08:41:24 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\ecordova] NumReg [16825] Estado [2]
+2026-03-02 08:41:24 | Proceso OK
+2026-03-02 08:55:19 | [10.0.0.102 rdp_remove] Inicio remove para .\cberruz en Remote Desktop Users y remove
+2026-03-02 08:55:21 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-02 08:55:21 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-02 08:55:21 | Proceso OK
+2026-03-02 08:55:21 | REMOVE OK
+2026-03-02 09:55:14 | [10.0.0.102] Inicio proceso ADD de RDP para .\cberruz en Remote Desktop Users
+2026-03-02 09:55:16 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\cberruz] NumReg [16835] Estado [2]
+2026-03-02 09:55:16 | Proceso OK
+2026-03-02 10:06:51 | [10.0.0.102] Inicio proceso ADD de RDP para .\gchavez en Remote Desktop Users
+2026-03-02 10:06:53 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\gchavez] NumReg [16836] Estado [2]
+2026-03-02 10:06:54 | Proceso OK
+2026-03-03 10:47:17 | [10.0.0.102] Inicio proceso ADD de RDP para .\jtoledo en Administrators
+2026-03-03 10:47:20 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\jtoledo] NumReg [16845] Estado [2]
+2026-03-03 10:47:20 | Proceso OK
+2026-03-04 10:29:37 | [10.0.0.102 rdp_remove] Inicio remove para .\mcobos en Remote Desktop Users y remove
+2026-03-04 10:29:39 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 10:29:39 | Proceso OK
+2026-03-04 10:29:39 | REMOVE OK
+2026-03-04 10:30:03 | [10.0.0.102] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-03-04 10:30:06 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\mcobos] NumReg [16863] Estado [2]
+2026-03-04 10:30:06 | Proceso OK
+2026-03-04 13:30:08 | [10.0.0.102] Inicio proceso ADD de RDP para .\cberruz en Remote Desktop Users
+2026-03-04 13:30:10 | ERROR: System error 1378 has occurred.
+2026-03-04 13:36:15 | [10.0.0.102] Inicio proceso ADD de RDP para .\cberruz en Remote Desktop Users
+2026-03-04 13:36:18 | ERROR: System error 1378 has occurred.
+2026-03-04 13:37:23 | [10.0.0.102 rdp_remove] Inicio remove para .\cberruz en Remote Desktop Users y remove
+2026-03-04 13:37:26 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 13:37:26 | Proceso OK
+2026-03-04 13:37:27 | REMOVE OK
+2026-03-04 13:38:35 | [10.0.0.102] Inicio proceso ADD de RDP para .\cberruz en Remote Desktop Users
+2026-03-04 13:38:40 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\cberruz] NumReg [16880] Estado [2]
+2026-03-04 13:38:40 | Proceso OK
+2026-03-04 14:41:07 | [10.0.0.102] Inicio proceso ADD de RDP para .\ecordova en Remote Desktop Users
+2026-03-04 14:41:10 | ERROR: System error 1378 has occurred.
+2026-03-04 14:41:50 | [10.0.0.102 rdp_remove] Inicio remove para  en Remote Desktop Users y remove
+2026-03-04 14:41:54 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 14:41:54 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-04 14:41:54 | Proceso OK
+2026-03-04 14:41:54 | REMOVE OK
+2026-03-04 14:42:18 | [10.0.0.102 rdp_remove] Inicio remove para  en Remote Desktop Users y remove
+2026-03-04 14:42:21 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 14:42:21 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-04 14:42:21 | Proceso OK
+2026-03-04 14:42:21 | REMOVE OK
+2026-03-04 14:43:25 | [10.0.0.102] Inicio proceso ADD de RDP para .\ecordova en Remote Desktop Users
+2026-03-04 14:43:27 | ERROR: System error 1378 has occurred.
+2026-03-04 14:43:51 | [10.0.0.102 rdp_remove] Inicio remove para .\ecordova en Remote Desktop Users y remove
+2026-03-04 14:43:54 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 14:43:54 | Proceso OK
+2026-03-04 14:43:55 | REMOVE OK
+2026-03-04 14:44:33 | [10.0.0.102] Inicio proceso ADD de RDP para .\ecordova en Remote Desktop Users
+2026-03-04 14:44:35 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\ecordova] NumReg [16881] Estado [2]
+2026-03-04 14:44:35 | Proceso OK
+2026-03-04 20:33:13 | [10.0.0.102 rdp_remove] Inicio remove para .\pvalera en Remote Desktop Users y remove
+2026-03-04 20:33:15 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 20:33:15 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-04 20:33:15 | Proceso OK
+2026-03-04 20:33:15 | REMOVE OK
+2026-03-04 20:33:25 | [10.0.0.102 rdp_remove] Inicio remove para .\gchavez en Remote Desktop Users y remove
+2026-03-04 20:33:27 | [10.0.0.102 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 20:33:27 | Proceso OK
+2026-03-04 20:33:27 | REMOVE OK
+2026-03-05 13:44:53 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ ProyFidens NumReg 16839
+2026-03-05 13:45:13 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ ProyFidens NumReg 16837
+2026-03-05 14:40:09 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ ProyFidens NumReg 16846
+2026-03-05 14:42:39 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ ProyFidens NumReg 16845
+2026-03-05 14:44:03 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\jtoledo] NumReg [16887] Estado [2]
+2026-03-05 14:44:03 | Proceso OK
+2026-03-06 09:41:00 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\cberruz] NumReg [16892] Estado [2]
+2026-03-06 09:41:01 | Proceso OK
+2026-03-06 11:04:25 | ERROR: There is no such global user or group: FIDENSLAT\jtoledo.
+2026-03-06 15:09:51 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ ProyFidens NumReg 16883
+2026-03-06 15:14:26 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ ProyFidens NumReg 16881
+2026-03-06 15:15:12 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 16893, Estado: '2', Expira: '2026-03-08 00:00', HoraExpira: '2026-03-06 16:30'
+2026-03-06 21:54:57 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ ProyFidens NumReg 16897
+2026-03-06 21:58:14 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ ProyFidens NumReg 16891
+2026-03-07 16:37:14 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ 102.ProyFidens NumReg 16890
+2026-03-07 16:50:42 | [10.0.0.102 rdp_add] Advertencia: No se registrÃ³ 102.ProyFidens NumReg 16890
+2026-03-07 17:11:35 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-07 17:12:38 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-07 17:15:01 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-07 17:23:19 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-09 09:19:34 | ERROR: No se puede indizar en una matriz nula.
+2026-03-09 09:25:23 | ERROR: No se puede indizar en una matriz nula.
+2026-03-09 09:27:27 | ERROR: No se puede indizar en una matriz nula.
+2026-03-09 09:31:19 | ERROR: No se encuentra ninguna sobrecarga para "ToString" y el número de argumentos "1".
+2026-03-09 09:34:51 | ERROR: Excepción al llamar a "Parse" con los argumentos "1": "No se puede reconocer la cadena como valor DateTime válido."
+2026-03-09 09:37:04 | ERROR: No se encuentra ninguna sobrecarga para "TryParse" y el número de argumentos "2".
+2026-03-09 09:37:48 | ERROR: No se encuentra ninguna sobrecarga para "TryParse" y el número de argumentos "2".
+2026-03-09 09:44:00 | ERROR: No se encuentra ninguna sobrecarga para "ToString" y el número de argumentos "1".
+2026-03-09 09:45:05 | ERROR: No se encuentra ninguna sobrecarga para "ToString" y el número de argumentos "1".
+2026-03-09 09:46:23 | [10.0.0.102 rdp_add] ERROR SP â†’ rollback rdu_infraRegistrarAsignacionRDU
+2026-03-09 09:46:25 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-03-09 09:47:51 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 16939, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-09 11:00'
+2026-03-09 09:50:21 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 16939, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-09 11:00'
+2026-03-09 10:12:46 | ERROR: No se puede convertir el valor "" al tipo "System.Int32". Error: "No se puede convertir un objeto DBNull en otros tipos."
+2026-03-09 10:16:39 | ERROR: No se puede convertir el valor "" al tipo "System.Int32". Error: "No se puede convertir un objeto DBNull en otros tipos."
+2026-03-09 10:17:40 | Proceso completado Ok. .\gchavez en 'Remote Desktop Users', NumReg: 16944, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-09 12:17'
+2026-03-09 10:20:33 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 16937, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-09 11:00'
+2026-03-09 10:23:30 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 16942, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-09 09:00'
+2026-03-09 11:50:55 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 16927, Estado: '2', Expira: '2026-03-16 00:00', HoraExpira: '2026-03-09 11:00'
+2026-03-11 09:48:59 | ERROR: Error de conexión al servidor remoto 10.0.0.102. Mensaje de error: WinRM no puede procesar la solicitud. Se produjo el siguiente error con código de error 0x8009030e al usar la autenticación Negotiate: Una sesión de inicio especificada no existe. Es posible que haya finalizado.  
+ Las causas posibles son:
+  -El nombre de usuario o la contraseña especificados no son válidos.
+  -Se usa Kerberos cuando no se especificó ningún método de autenticación ni ningún nombre de usuario.
+  -Kerberos acepta nombres de usuario de dominio, pero no nombres de usuario locales.
+  -El nombre de entidad de seguridad de servicio (SPN) del nombre y puerto del equipo remoto no existe.
+  -Los equipos cliente y remoto se encuentran en dominios distintos y no hay confianza entre los dos dominios.
+ Después de comprobar los problemas mencionados, intente lo siguiente:
+  -Consulte el visor de eventos y busque eventos relacionados con la autenticación.
+  -Cambie el método de autenticación; agregue el equipo de destino a la opción de configuración TrustedHosts de WinRM o use el transporte HTTPS.
+ Tenga en cuenta que es posible que no se autentiquen los equipos de la lista TrustedHosts.
+   -Para obtener más información acerca de la configuración de WinRM, ejecute el siguiente comando: winrm help config. Para obtener más información, consulte el tema de la Ayuda about_Remote_Troubleshooting.
+2026-03-11 09:49:29 | ERROR: Error de conexión al servidor remoto 10.0.0.102. Mensaje de error: WinRM no puede procesar la solicitud. Se produjo el siguiente error con código de error 0x8009030e al usar la autenticación Negotiate: Una sesión de inicio especificada no existe. Es posible que haya finalizado.  
+ Las causas posibles son:
+  -El nombre de usuario o la contraseña especificados no son válidos.
+  -Se usa Kerberos cuando no se especificó ningún método de autenticación ni ningún nombre de usuario.
+  -Kerberos acepta nombres de usuario de dominio, pero no nombres de usuario locales.
+  -El nombre de entidad de seguridad de servicio (SPN) del nombre y puerto del equipo remoto no existe.
+  -Los equipos cliente y remoto se encuentran en dominios distintos y no hay confianza entre los dos dominios.
+ Después de comprobar los problemas mencionados, intente lo siguiente:
+  -Consulte el visor de eventos y busque eventos relacionados con la autenticación.
+  -Cambie el método de autenticación; agregue el equipo de destino a la opción de configuración TrustedHosts de WinRM o use el transporte HTTPS.
+ Tenga en cuenta que es posible que no se autentiquen los equipos de la lista TrustedHosts.
+   -Para obtener más información acerca de la configuración de WinRM, ejecute el siguiente comando: winrm help config. Para obtener más información, consulte el tema de la Ayuda about_Remote_Troubleshooting.
+2026-03-11 11:18:09 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 16950, Estado: '2', Expira: '2026-03-13 00:00', HoraExpira: '2026-03-11 09:00'
+2026-03-11 11:35:00 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 16953, Estado: '2', Expira: '2026-03-13 00:00', HoraExpira: '2026-03-11 12:00'
+2026-03-11 18:40:05 | [10.0.0.102 rdpRemove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-13 10:39:44 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 16960, Estado: '2', Expira: '2026-03-15 00:00', HoraExpira: '2026-03-13 09:00'
+2026-03-13 14:17:34 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 16962, Estado: '2', Expira: '2026-03-15 00:00', HoraExpira: '2026-03-13 12:30'
+2026-03-16 09:10:41 | ERROR: No se puede indizar en una matriz nula.
+2026-03-16 09:25:03 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 16996, Estado: '2', Expira: '2026-03-18 00:00', HoraExpira: '2026-03-16 09:00'
+2026-03-16 09:58:14 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-03-23 11:00', HoraExpira: 
+2026-03-16 09:58:14 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 16972, Estado: '2', Expira: '2026-03-23 00:00', HoraExpira: '2026-03-16 11:00'
+2026-03-16 10:04:27 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 16998, Estado: '2', Expira: '2026-03-18 00:00', HoraExpira: '2026-03-16 12:00'
+2026-03-16 19:00:01 | Proceso completado Ok. .\pvalle en 'Remote Desktop Users', NumReg: 17003, Estado: '2', Expira: '2026-03-18 00:00', HoraExpira: '2026-03-16 21:00'
+2026-03-16 19:00:37 | Proceso completado Ok. .\pvalle en , NumReg: , Estado: , Expira: '2026-03-18 21:00', HoraExpira: 
+2026-03-16 19:00:38 | Proceso completado Ok. .\pvalle en 'Remote Desktop Users', NumReg: 17003, Estado: '2', Expira: '2026-03-18 00:00', HoraExpira: '2026-03-16 21:00'
+2026-03-17 10:34:15 | Proceso completado Ok. .\jtoledo en 'Remote Desktop Users', NumReg: 17002, Estado: '2', Expira: '2026-03-18 00:00', HoraExpira: '2026-03-17 18:25'
+2026-03-18 11:14:13 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17005, Estado: '2', Expira: '2026-03-20 00:00', HoraExpira: '2026-03-18 09:00'
+2026-03-18 11:20:09 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17015, Estado: '2', Expira: '2026-03-20 00:00', HoraExpira: '2026-03-18 13:20'
+2026-03-19 11:06:48 | Proceso completado Ok. .\pvalle en 'Remote Desktop Users', NumReg: 17019, Estado: '2', Expira: '2026-03-20 00:00', HoraExpira: '2026-03-19 23:00'
+2026-03-20 08:50:13 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17026, Estado: '2', Expira: '2026-03-22 00:00', HoraExpira: '2026-03-20 09:00'
+2026-03-23 08:21:21 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17031, Estado: '2', Expira: '2026-03-25 00:00', HoraExpira: '2026-03-23 10:21'
+2026-03-23 09:34:02 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17055, Estado: '2', Expira: '2026-03-25 00:00', HoraExpira: '2026-03-23 09:00'
+2026-03-24 09:30:36 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17064, Estado: '2', Expira: '2026-03-30 00:00', HoraExpira: '2026-03-24 11:00'
+2026-03-25 09:12:25 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17079, Estado: '2', Expira: '2026-03-27 00:00', HoraExpira: '2026-03-25 11:00'
+2026-03-25 15:07:40 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17082, Estado: '2', Expira: '2026-03-27 00:00', HoraExpira: '2026-03-25 14:00'
+2026-03-27 13:40:35 | Proceso completado Ok. .\cberruz en , NumReg: , Estado: , Expira: '2026-03-29 12:00', HoraExpira: 
+2026-03-27 13:40:35 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17092, Estado: '2', Expira: '2026-03-29 00:00', HoraExpira: '2026-03-27 12:00'
+2026-03-30 09:12:29 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17097, Estado: '2', Expira: '2026-04-06 00:00', HoraExpira: '2026-03-30 11:00'
+2026-03-30 09:24:12 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17123, Estado: '2', Expira: '2026-04-01 00:00', HoraExpira: '2026-03-30 09:00'
+2026-03-30 17:14:18 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17135, Estado: '2', Expira: '2026-04-01 00:00', HoraExpira: '2026-03-30 17:20'
+2026-04-01 09:44:28 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17144, Estado: '2', Expira: '2026-04-03 00:00', HoraExpira: '2026-04-01 09:00'
+2026-04-01 09:44:42 | Proceso completado Ok. .\gchavez en 'Remote Desktop Users', NumReg: 17146, Estado: '2', Expira: '2026-04-03 00:00', HoraExpira: '2026-04-01 11:44'
+2026-04-01 14:23:13 | Proceso completado Ok. .\ecordova en , NumReg: , Estado: , Expira: '2026-04-03 17:00', HoraExpira: 
+2026-04-01 14:23:14 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17150, Estado: '2', Expira: '2026-04-03 00:00', HoraExpira: '2026-04-01 16:23'
+2026-04-06 09:25:02 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-04-13 11:00', HoraExpira: 
+2026-04-06 09:25:03 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17161, Estado: '2', Expira: '2026-04-13 00:00', HoraExpira: '2026-04-06 10:25'
+2026-04-06 09:28:41 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17197, Estado: '2', Expira: '2026-04-08 00:00', HoraExpira: '2026-04-06 09:00'
+2026-04-06 09:28:59 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17194, Estado: '2', Expira: '2026-04-08 00:00', HoraExpira: '2026-04-06 10:10'
+2026-04-08 10:21:31 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17211, Estado: '2', Expira: '2026-04-10 00:00', HoraExpira: '2026-04-08 11:00'
+2026-04-08 10:21:34 | Proceso completado Ok. .\ecordova en , NumReg: , Estado: , Expira: '2026-04-10 11:00', HoraExpira: 
+2026-04-08 10:21:35 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17212, Estado: '2', Expira: '2026-04-10 00:00', HoraExpira: '2026-04-08 11:00'
+2026-04-08 11:12:54 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17219, Estado: '2', Expira: '2026-04-10 00:00', HoraExpira: '2026-04-08 11:00'
+2026-04-10 13:58:17 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17224, Estado: '2', Expira: '2026-04-12 00:00', HoraExpira: '2026-04-10 10:00'
+2026-04-10 14:48:44 | ERROR: Se encontró un sintaxis incorrecta al analizar ''.
+2026-04-10 14:50:25 | [10.0.0.102 rdpAdd] No responde al ping
+2026-04-10 14:50:47 | [10.0.0.102 rdpAdd] No responde al ping
+2026-04-10 14:51:26 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17229, Estado: '2', Expira: '2026-04-12 00:00', HoraExpira: '2026-04-10 15:40'

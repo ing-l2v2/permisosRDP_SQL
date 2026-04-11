@@ -1,0 +1,79 @@
+2026-02-26 09:40:31 | [10.0.0.86] Inicio proceso ADD de RDP para .\jtoledo en Administrators
+2026-02-26 09:40:35 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\jtoledo] NumReg [16765] Estado [2]
+2026-02-26 09:40:35 | Proceso OK
+2026-02-27 09:18:38 | [10.0.0.86 rdp_remove] Inicio remove para .\mcobos en Remote Desktop Users y remove
+2026-02-27 09:18:43 | [10.0.0.86 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-27 09:18:44 | Proceso OK
+2026-02-27 09:18:44 | REMOVE OK
+2026-02-27 09:27:48 | [10.0.0.86 rdp_remove] Inicio remove para .\mcobos en Remote Desktop Users y remove
+2026-02-27 09:27:51 | [10.0.0.86 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-27 09:27:51 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-02-27 09:27:51 | Proceso OK
+2026-02-27 09:27:51 | REMOVE OK
+2026-02-27 09:37:22 | [10.0.0.86 rdp_remove] Inicio remove para .\mcobos en Remote Desktop Users y remove
+2026-02-27 09:37:25 | [10.0.0.86 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-27 09:37:26 | Proceso OK
+2026-02-27 09:37:26 | REMOVE OK
+2026-02-27 10:11:35 | [10.0.0.86] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-02-27 10:11:39 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\mcobos] NumReg [16785] Estado [2]
+2026-02-27 10:11:39 | [10.0.0.86 rdp_add] ERROR SP → rollback rdu_infraRegistrarAsignacionRDU
+2026-02-27 10:11:41 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-02-28 02:29:41 | [10.0.0.86 rdp_remove] Inicio remove para .\jtoledo en Administrators y remove
+2026-02-28 02:29:44 | [10.0.0.86 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-02-28 02:29:44 | Proceso OK
+2026-02-28 02:29:44 | REMOVE OK
+2026-03-02 08:20:37 | [10.0.0.86] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-03-02 08:20:41 | ERROR: System error 1378 has occurred.
+2026-03-02 08:23:56 | [10.0.0.86] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-03-02 08:23:59 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\mcobos] NumReg [16815] Estado [2]
+2026-03-02 08:23:59 | Proceso OK
+2026-03-02 12:23:22 | [10.0.0.86] Inicio proceso ADD de RDP para .\jtoledo en Administrators
+2026-03-02 12:23:25 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\jtoledo] NumReg [16841] Estado [2]
+2026-03-02 12:23:26 | Proceso OK
+2026-03-04 10:26:59 | [10.0.0.86 rdp_remove] Inicio remove para .\mcobos en Remote Desktop Users y remove
+2026-03-04 10:27:03 | [10.0.0.86 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 10:27:04 | Proceso OK
+2026-03-04 10:27:04 | REMOVE OK
+2026-03-04 10:28:11 | [10.0.0.86 rdp_remove] Inicio remove para .\mcobos en Remote Desktop Users y remove
+2026-03-04 10:28:14 | [10.0.0.86 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 10:28:14 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-04 10:28:14 | Proceso OK
+2026-03-04 10:28:14 | REMOVE OK
+2026-03-04 10:28:54 | [10.0.0.86 rdp_remove] Inicio remove para .\mcobos en Remote Desktop Users y remove
+2026-03-04 10:28:56 | [10.0.0.86 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 10:28:56 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-03-04 10:28:56 | Proceso OK
+2026-03-04 10:28:56 | REMOVE OK
+2026-03-04 10:29:14 | [10.0.0.86] Inicio proceso ADD de RDP para .\mcobos en Remote Desktop Users
+2026-03-04 10:29:17 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\mcobos] NumReg [16859] Estado [2]
+2026-03-04 10:29:17 | Proceso OK
+2026-03-04 20:33:28 | [10.0.0.86 rdp_remove] Inicio remove para .\jtoledo en Administrators y remove
+2026-03-04 20:33:32 | [10.0.0.86 rdp_remove] SP ejecutado rdu_infraRegistrarRevocacionRDU
+2026-03-04 20:33:32 | Proceso OK
+2026-03-04 20:33:32 | REMOVE OK
+2026-03-05 14:39:13 | SP ejecutado OK:: rdu_infraRegistrarAsignacionRDU Usuario [.\jtoledo] NumReg [16885] Estado [2]
+2026-03-05 14:39:13 | Proceso OK
+2026-03-09 10:20:40 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 16938, Estado: '2', Expira: '2026-03-11 00:00', HoraExpira: '2026-03-09 11:00'
+2026-03-09 12:01:07 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 16923, Estado: '2', Expira: '2026-03-16 00:00', HoraExpira: '2026-03-09 11:00'
+2026-03-11 15:10:21 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 16955, Estado: '2', Expira: '2026-03-13 00:00', HoraExpira: '2026-03-11 15:30'
+2026-03-16 09:10:49 | ERROR: No se puede indizar en una matriz nula.
+2026-03-16 10:00:10 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-03-23 11:00', HoraExpira: 
+2026-03-16 10:00:10 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 16975, Estado: '2', Expira: '2026-03-23 00:00', HoraExpira: '2026-03-16 11:00'
+2026-03-16 16:01:22 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17001, Estado: '2', Expira: '2026-03-18 00:00', HoraExpira: '2026-03-16 17:35'
+2026-03-19 15:23:49 | Proceso completado Ok. .\jtoledo en 'Remote Desktop Users', NumReg: 17020, Estado: '2', Expira: '2026-03-20 00:00', HoraExpira: '2026-03-19 23:59'
+2026-03-23 16:24:50 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17061, Estado: '2', Expira: '2026-03-25 00:00', HoraExpira: '2026-03-23 15:10'
+2026-03-24 09:31:02 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17068, Estado: '2', Expira: '2026-03-30 00:00', HoraExpira: '2026-03-24 11:00'
+2026-03-30 09:12:52 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17102, Estado: '2', Expira: '2026-04-06 00:00', HoraExpira: '2026-03-30 11:12'
+2026-03-30 14:49:13 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17129, Estado: '2', Expira: '2026-04-01 00:00', HoraExpira: '2026-03-30 16:10'
+2026-04-02 09:03:47 | [10.0.0.86 rdpAdd] ERROR SP → rollback rdu_infraRegistrarAsignacionRDU
+2026-04-02 09:03:51 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-04-02 09:04:36 | ERROR: System error 1378 has occurred.
+2026-04-02 09:05:44 | ERROR: System error 1378 has occurred.
+2026-04-02 09:06:47 | [10.0.0.86 rdpAdd] ERROR SP → rollback rdu_infraRegistrarAsignacionRDU
+2026-04-02 09:06:50 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-04-02 09:23:12 | ERROR: System error 1378 has occurred.
+2026-04-02 09:23:55 | Proceso completado Ok. jtoledo en 'Remote Desktop Users', NumReg: 17155, Estado: '2', Expira: '2026-04-03 00:00', HoraExpira: '2026-04-02 23:59'
+2026-04-06 09:25:24 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-04-13 11:00', HoraExpira: 
+2026-04-06 09:25:24 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17171, Estado: '2', Expira: '2026-04-13 00:00', HoraExpira: '2026-04-06 10:25'
+2026-04-07 09:17:23 | Proceso completado Ok. .\jtoledo en 'Remote Desktop Users', NumReg: 17206, Estado: '2', Expira: '2026-04-09 00:00', HoraExpira: '2026-04-07 10:10'
+2026-04-08 11:00:26 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17218, Estado: '2', Expira: '2026-04-10 00:00', HoraExpira: '2026-04-08 12:00'
