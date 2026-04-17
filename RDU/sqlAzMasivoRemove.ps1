@@ -19,7 +19,7 @@ SELECT IdAzure, Servidor, Usuario, PermisoAsignado, BaseDatos, NumReg, CodUser, 
         ORDER BY IdAzure ASC
 "@
 
-Write-Host $sql49
+# Write-Host $sql49
 $expirados = Invoke-Sqlcmd -Query $sql49 -ConnectionString $ConCentral
 
 
@@ -71,7 +71,7 @@ UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
   EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$CodUser', $NumReg;
   SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $NumReg;
 "@   
-    Write-Host $sql102Fin 
+    # Write-Host $sql102Fin 
     $finaliza102 = Invoke-Sqlcmd -Query $sql102Fin -ConnectionString $Con102
     if (-not $finaliza102 -or $finaliza102.Count -eq 0) {
       Write-Host "No se pudo finalizar en Fidens para NumReg $NumReg"
@@ -84,7 +84,7 @@ UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
     WHERE IdAzure = $IdAzure;
     SELECT * FROM dbo.infraAccesosAzure WHERE IdAzure = $IdAzure;
 "@
-      Write-Host $sql49Fin
+      # Write-Host $sql49Fin
       $finaliza49 = Invoke-Sqlcmd -Query $sql49Fin -ConnectionString $ConCentral
       if (-not $finaliza49 -or $finaliza49.Count -eq 0 -or $Permiso -eq "") {
         Write-Host "No se pudo finalizar en 49 para NumReg $NumReg"

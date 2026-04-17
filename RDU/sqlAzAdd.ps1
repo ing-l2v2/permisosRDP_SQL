@@ -26,7 +26,7 @@ Write-Host "COUNT = $($BaseDato.Count)"
 
 Import-Module SqlServer
 
-Write-Host "== Asignando permisos en Azure SQL ==" -ForegroundColor Cyan
+Write-Host "== Asignando permisos en Azure SQL =======" -ForegroundColor Cyan
 Write-Host "Servidor: $Servidor    Bases: $($BaseDato -join " ")"  -ForegroundColor Cyan
 Write-Host "Usuario: $Usr    Tipo: $TipoAcceso    NumReg: $NumReg    CodUser: $CodUser    Expira: $Expira"  -ForegroundColor Cyan
 Write-Host "------------------------------------------"  -ForegroundColor Cyan
@@ -126,14 +126,13 @@ foreach ($bd in $BaseDato) {
       $sql = "EXEC sp_addrolemember '$r', '$Usr'"
     }
     
-    Write-Host "Aplicando: $sql" -ForegroundColor Yellow
+    # Write-Host "Aplicando: $sql" -ForegroundColor Yellow
     try {
       Invoke-Sqlcmd -Query $sql -ConnectionString $Conn
-      Write-Host ">>> Permisos aplicados en $bd" -ForegroundColor Green
+      # Write-Host ">>> Permisos aplicados en $bd" -ForegroundColor Green
       
       Write-AzureLog ".\sqlAzAdd.ps1 -Servidor `"$Servidor`" -BaseDato `"$bd`" -Usr `"$Usr`" -TipoAcceso `"$TipoAcceso`" -NumReg $NumReg -CodUser `"$CodUser`" -Expira `"$Expira`" "  
       $ejecucion = ".\sqlAzAdd.ps1 -Servidor `"$Servidor`" -BaseDato `"$bd`" -Usr `"$Usr`" -TipoAcceso `"$TipoAcceso`" -NumReg $NumReg -CodUser `"$CodUser`" -Expira `"$Expira`" "
-
     }
     catch {
       Write-Host "Permiso no fue asignado por ausencia de base $bd, error en catch" -ForegroundColor Magenta
@@ -142,7 +141,7 @@ foreach ($bd in $BaseDato) {
     }
   }
   if ($permisosOk -eq 0) {
-    Write-Host "`nPermisos asignados exitosamente en todas las bases." -ForegroundColor Cyan
+    # Write-Host "`nPermisos asignados exitosamente en todas las bases." -ForegroundColor Cyan
 
     $serv102 = "10.0.0.102"
     $serv49 = "10.0.0.49"
@@ -164,7 +163,7 @@ foreach ($bd in $BaseDato) {
         AND Estado = 'ASIGNADO'
         ORDER BY Estado ASC;
 "@
-    Write-Host $query49
+    # Write-Host $query49
     $asignadosPrev = Invoke-Sqlcmd -Query $query49 -ConnectionString $connString49
     #Write-Host "Tipo devuelto:" $asignadosPrev.GetType().FullName
     #Write-Host "Cantidad registros:" $asignadosPrev.Count
@@ -184,7 +183,7 @@ foreach ($bd in $BaseDato) {
         WHERE NumReg = $prevNumReg;
     SELECT * FROM master.dbo.infraAccesosAzure WHERE NumReg = $prevNumReg;
 "@        
-      Write-Host $sqlDelDupli49
+      # Write-Host $sqlDelDupli49
       $revocadoDupli49 = Invoke-Sqlcmd -Query $sqlDelDupli49 -ConnectionString $connString49
       if ($null -eq $revocadoDupli49 -or $revocadoDupli49.Count -eq 0) {
         Write-Host "No se revoco nada del 49 por duplicidad."
@@ -209,10 +208,10 @@ foreach ($bd in $BaseDato) {
     AND SRV.ASE_DESCRIPCION LIKE 'sql-ginger.database.windows.net'
     ORDER BY AAC_IDENAAC DESC;
 "@
-      Write-Host $sqlPrevRev102
+      # Write-Host $sqlPrevRev102
       $finalizadoPrevios = Invoke-Sqlcmd -Query $sqlPrevRev102 -ConnectionString $connString102
       if ($null -eq $finalizadoPrevios) {
-        Write-Host "No existió registros por finalizar en 102"
+        Write-Host "No existió registros por finalizar en 102" -ForegroundColor DarkRed
       }
       else {
         $prevNumReg = $finalizadoPrevios["NUMREG"]
@@ -227,7 +226,7 @@ foreach ($bd in $BaseDato) {
 
     SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $prevNumReg;
 "@
-        Write-Host $sqlFinalDupli102 
+        # Write-Host $sqlFinalDupli102 
         $finalizadoDupli = Invoke-Sqlcmd -Query $sqlFinalDupli102 -ConnectionString $connString102
         if ($null -eq $finalizadoDupli -or $finalizadoDupli.Count -eq 0) {
           Write-Host "No se pudo finalizar en 102 el $prevNumReg" -ForegroundColor Magenta
@@ -246,7 +245,7 @@ foreach ($bd in $BaseDato) {
         AND Estado = 'ASIGNADO'
         ORDER BY Estado ASC;
 "@
-    Write-Host $sql49
+    # Write-Host $sql49
     $asignados = Invoke-Sqlcmd -Query $sql49 -ConnectionString $connString49
     if (-not $asignados) {
       Write-Host "No se registro como ASIGNADO" -ForegroundColor Magenta
@@ -263,10 +262,10 @@ foreach ($bd in $BaseDato) {
 
   SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $NumReg;
 "@
-      Write-Host $sqlEjecutado102
+      # Write-Host $sqlEjecutado102
       $play102 = Invoke-Sqlcmd -Query $sqlEjecutado102 -ConnectionString $connString102
       if (-not $play102 -or $play102.Count -eq 0) {
-        Write-Host "No se pudo Ejecutado en 102 el $NumReg" -ForegroundColor Magenta
+        Write-Host "No se pudo Ejecutar en 102 el Numreg: $NumReg" -ForegroundColor Magenta
       }
       else {
         Write-Host "-----------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow

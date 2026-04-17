@@ -15,3 +15,8 @@
 2026-03-07 15:35:55 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
 2026-03-07 15:47:34 | Proceso completado Ok. .\hcaycho en 'Remote Desktop Users', NumReg: 16888, Estado: '2', Expira: '2026-03-08 00:00', HoraExpira: '2026-03-07 16:00'
 2026-03-10 13:03:43 | [10.0.0.102 rdp_remove] No se asigna FINALIZADO en 102 POR NumReg NULL
+2026-04-17 12:51:39 | ERROR: There is no such global user or group: hcaytcho.
+2026-04-17 12:57:10 | ERROR: System error 1378 has occurred.
+2026-04-17 12:58:16 | Proceso completado Ok. .\hcaycho en 'Remote Desktop Users', NumReg: 17299, Estado: '2', Expira: '2026-04-19 00:00', HoraExpira: '2026-04-17 13:58'
+2026-04-17 13:01:34 | Proceso completado Ok. .\hcaycho en , NumReg: , Estado: , Expira: NULL, HoraExpira: 
+2026-04-17 13:01:34 | Proceso completado Ok. .\hcaycho en 'Remote Desktop Users', NumReg: 17299, Estado: '2', Expira: '2026-04-19 00:00', HoraExpira: '2026-04-17 13:58'

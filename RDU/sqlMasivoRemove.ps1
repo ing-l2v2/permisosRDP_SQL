@@ -25,7 +25,8 @@ foreach ($cmdServ in $servidoresLista) {
     $accUsr = $accCreds.User
     $accPass = $accCreds.Password
     Write-Host "Validando $cmdServ..."
-    Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait
+    # Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait
+    Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait -RedirectStandardOutput "NUL"
 }
 
 #Sync-RemoteCredencialGrupo -Servidores $ServidoresLista
@@ -195,7 +196,9 @@ foreach ($r in $Origenes) {
     # Write-Host "[$servSqlFidens sqlMasivoRemove] QUERY SQL EJECUTADO rdu_infraProyectoFidensRegistrarEstado" -Foreground Yellow
     #Write-Host "[$ConnAcceso] EXEC sp_infra_list_revocados_sql"
     
-    $revocados = Invoke-Sqlcmd -Query "EXEC sp_infra_list_revocados_sql" -ConnectionString $ConnAcceso
+    Invoke-Sqlcmd -Query "EXEC dbo.sp_infra_revocar_permisos_expirados" -ConnectionString $ConnAcceso
+
+    $revocados = Invoke-Sqlcmd -Query "EXEC dbo.sp_infra_list_revocados_sql" -ConnectionString $ConnAcceso
 
     if (-not $revocados) {
         Write-Host "`nNo existen accesos expirados para revocar.`n" -ForegroundColor Cyan

@@ -210,3 +210,16 @@
 2026-04-10 14:50:25 | [10.0.0.102 rdpAdd] No responde al ping
 2026-04-10 14:50:47 | [10.0.0.102 rdpAdd] No responde al ping
 2026-04-10 14:51:26 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17229, Estado: '2', Expira: '2026-04-12 00:00', HoraExpira: '2026-04-10 15:40'
+2026-04-13 09:15:53 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17256, Estado: '2', Expira: '2026-04-15 00:00', HoraExpira: '2026-04-13 09:00'
+2026-04-13 09:21:20 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-04-20 11:00', HoraExpira: 
+2026-04-13 09:21:20 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17233, Estado: '2', Expira: '2026-04-20 00:00', HoraExpira: '2026-04-13 10:21'
+2026-04-13 11:12:24 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17270, Estado: '2', Expira: '2026-04-15 00:00', HoraExpira: '2026-04-13 11:45'
+2026-04-13 17:15:29 | Proceso completado Ok. .\ecordova en , NumReg: , Estado: , Expira: '2026-04-15 11:45', HoraExpira: 
+2026-04-13 17:15:29 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17270, Estado: '2', Expira: '2026-04-15 00:00', HoraExpira: '2026-04-13 11:45'
+2026-04-14 09:39:59 | Proceso completado Ok. .\jtoledo en 'Remote Desktop Users', NumReg: 17278, Estado: '2', Expira: '2026-04-16 00:00', HoraExpira: '2026-04-14 09:30'
+2026-04-14 09:40:56 | Proceso completado Ok. .\gchavez en 'Remote Desktop Users', NumReg: 17259, Estado: '2', Expira: '2026-04-15 00:00', HoraExpira: '2026-04-14 21:00'
+2026-04-15 11:03:27 | Proceso completado Ok. .\cberruz en , NumReg: , Estado: , Expira: '2026-04-17 09:00', HoraExpira: 
+2026-04-15 11:03:27 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17287, Estado: '2', Expira: '2026-04-17 00:00', HoraExpira: '2026-04-15 09:00'
+2026-04-15 11:06:22 | Proceso completado Ok. .\cberruz en , NumReg: , Estado: , Expira: '2026-04-17 09:00', HoraExpira: 
+2026-04-15 11:06:22 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17287, Estado: '2', Expira: '2026-04-17 00:00', HoraExpira: '2026-04-15 09:00'
+2026-04-16 08:33:54 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17291, Estado: '2', Expira: '2026-04-18 00:00', HoraExpira: '2026-04-16 09:33'

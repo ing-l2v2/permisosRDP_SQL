@@ -30,6 +30,8 @@ o
 $old = (winrm get winrm/config/client | Select-String TrustedHosts).ToString().Split('=')[1].Trim()
 winrm set winrm/config/client @{TrustedHosts="$old,10.0.0.*"}
 
+Limpiar el portapapeles desde el cmd
+cmd /c echo off | clip
 
 Ejecutar Enable-PSRemoting -Force con powershell como administrator
 Agregando credenciales al pc local
@@ -240,7 +242,7 @@ function Normalizar-Usuario {
     param([string]$Usuario)
     # Formato ".\usuario"
     if ($Usuario -match "^\.\\(.+)$") {
-        Write-Host "[rdpAdd] Normalizar-Usuario $Usuario formato .\usuario" -ForegroundColor Cyan
+        # Write-Host "[rdpAdd] Normalizar-Usuario $Usuario formato .\usuario" -ForegroundColor Cyan
         return $Matches[1]
     }
     # Formato "IP\usuario" -> solo retornar la parte de usuario
@@ -268,12 +270,17 @@ if (Test-Path $Servidores) {
 else {
     $ServerList = $Servidores.Split(",") | ForEach-Object { $_.Trim() }
 }
+
+# Caso especial de Huber Caycho
+if ($Usuario -eq ".\hcaytcho") {
+    $Usuario = ".\hcaycho"
+}
 # ==================================================================
 # INFO
 # ==================================================================
 Write-Host "----------------------------------------------------------------"
-Write-Host "Usuario a gestionar: $Usuario                     Servidor: $Servidores" -ForegroundColor Cyan
-Write-Host "Accion: $Accion                                   Grupo: $Grupo" -ForegroundColor Cyan
+Write-Host "RDP Usuario: $Usuario    Servidor: $Servidores" -ForegroundColor Cyan
+Write-Host "Accion: $Accion     Grupo: $Grupo" -ForegroundColor Cyan
 Write-Host "----------------------------------------------------------------"
 
 # ==================================================================
@@ -287,7 +294,7 @@ function Gestionar-GrupoRemoto {
         [string]$Grupo
     )
     Write-Host "`n[$Server rdpAdd] Procesando..." -ForegroundColor Cyan
-    #Write-ServerLog -Server $Server -Message "[$Server] Inicio proceso ADD de RDP para $Usuario en $Grupo"
+    # Write-ServerLog -Server $Server -Message "[$Server] Inicio proceso ADD de RDP para $Usuario en $Grupo"
     try {
         # Conectividad
         if (-not (Test-Connection -ComputerName $Server -Count 1 -Quiet)) {
@@ -326,7 +333,7 @@ EXEC dbo.rdu_infraProyFidensSolicitadosRDU
 	@Grup = 'RDP',
     @SubPry = NULL;
 "@
-        Write-Host $sql102 -foregroundColor Cyan
+        # Write-Host $sql102 -foregroundColor Cyan
         $consulta102 = Invoke-Sqlcmd -Query $sql102 -ConnectionString $ConnProyFidens
         if (-not $consulta102) {
             Write-Host "[$servSqlFidens rdpAdd] No hay referencias en 102.ProyFidens. Operación sin origen." -ForegroundColor Magenta
@@ -343,13 +350,15 @@ EXEC dbo.rdu_infraProyFidensSolicitadosRDU
             $pryFechaFin = ConvertirToValorSql($consulta102["FechaFin"])
             $pryFidNumReg = ConvertirToValorSql($consulta102["NumReg"])
             $pryFidCodUser = ConvertirToValorSql($consulta102["CodUser"])
-            Write-Host "DEBUG FechaFin cruda: >>>$pryFechaFin<<<" -ForegroundColor Cyan
-            Write-Host "pryFechaFin $pryFechaFin   pryFidNumReg $pryFidNumReg    pryFidCodUser $pryFidNumReg "
             $fechaFin = $pryFechaFin
             $ExpiraSql = "$fechaFin"
             $NumReg = $pryFidNumReg
             $CodUser = $pryFidCodUser
-            Write-Host "fechaFin $fechaFin   ExpiraSql $ExpiraSql   NumReg $NumReg    CodUser $CodUser"
+            Write-Host "-----------------------------------------" -ForegroundColor Cyan
+            Write-Host "DEBUG FechaFin cruda: >>>$pryFechaFin<<<" -ForegroundColor Cyan
+            Write-Host "pryFechaFin $pryFechaFin   pryFidNumReg $pryFidNumReg    pryFidCodUser $pryFidNumReg " -ForegroundColor Cyan
+            Write-Host "fechaFin $fechaFin   ExpiraSql $ExpiraSql   NumReg $NumReg    CodUser $CodUser" -ForegroundColor Cyan
+            Write-Host "-----------------------------------------" -ForegroundColor Cyan
         }
         #    Luego validar si existe ya una solicitud generada como ASIGNADO en 49, para mantener requerimiento y solo actualizarla
         $sql49 = @"
@@ -358,7 +367,7 @@ EXEC dbo.rdu_infra_duplicado_permiso_RDU
 	@Servidor = '$Server',
 	@Grupo = '$Grupo';
 "@
-        Write-Host $sql49 -foregroundColor Cyan
+        # Write-Host $sql49 -foregroundColor Cyan
         $duplica49 = Invoke-Sqlcmd -Query $sql49 -ConnectionString $Conn
         if (-not $duplica49) {
             $dupDuplicado = 0
@@ -391,7 +400,7 @@ EXEC dbo.rdu_infra_duplicado_permiso_RDU
             #$dupId = [int]$duplica49.Id
 
             if ($null -eq $dupNumReg -or $dupNumReg -is [System.DBNull]) {
-                Write-Host "dupNumReg genera null no se registra 102.pryFidens, no duplicado"
+                Write-Host "NO DUPLICADO dupNumReg genera null no se registra 102.pryFidens" -ForegroundColor Green
             }
             else {
                 if ($dupDuplicado -eq 1) {
@@ -403,7 +412,7 @@ EXEC rdu_infraProyectoFidensRegistrarEstado
 	@CodUser = $dupCodUser,
 	@FechaFin = NULL;
 "@                    
-                    Write-Host $sqlDupliFinaliza
+                    # Write-Host $sqlDupliFinaliza
                     $rduEstadoDupliFinalizado = Invoke-Sqlcmd -Query $sqlDupliFinaliza -ConnectionString $ConnProyFidens
                     if (-not $rduEstadoDupliFinalizado) {
                         Write-Host "Error inesperado al intentar registrar estado FINALIZADO 102.rdu_infraProyectoFidensRegistrarEstado por Duplicado."
@@ -415,12 +424,12 @@ EXEC rdu_infraProyectoFidensRegistrarEstado
                             $FueDuplicado = "CASO DUPLICIDAD [$dupDuplicado]"
                         }
                         $dupEstado = ConvertirToValorSql($rduEstadoDupliFinalizado["Estado"])
-                        Write-Host "DUPLICADO 1 $dupEstado"
+                        Write-Host "DUPLICADO 1 ESTADO $dupEstado" -ForegroundColor Green
                         $dupFechaFin = ConvertirToValorSql($rduEstadoDupliFinalizado["FFIN"])
                         $dupHoraFin = ConvertirToValorSql($rduEstadoDupliFinalizado["HFIN"])
                         Write-Host "`n=========================================================" -ForegroundColor Green
                         Write-Host "    Duplicado![$dupId] Servidor: $Server Usuario: $UsuarioOriginal Grupo: $refGrupo    $FueDuplicado" -ForegroundColor Green
-                        Write-Host "          NumReg: $dupNumReg    Estado: $dupEstado | $refEstado    Fecha Fin: $dupFechaFin    Hora: $dupHoraFin" -ForegroundColor Green
+                        Write-Host "      NumReg: $dupNumReg    Estado: $dupEstado | $refEstado    Fecha Fin: $dupFechaFin    Hora: $dupHoraFin" -ForegroundColor Green
                         Write-Host "=========================================================`n" -ForegroundColor Green
                         Write-ServerLog -Server $Server -Message "Proceso completado Ok. $UsuarioOriginal en $refGrupo, NumReg: $pryNumReg, Estado: $pryEstado, Expira: $pryFechaFin, HoraExpira: $pryHoraFin"
                     }
@@ -529,7 +538,7 @@ EXEC dbo.rdu_infraRegistrarAsignacionRDU
 "@
 
         # Write-Host "[$ServidorSQL] QUERY SQL EJECUTADO: $accesoSQL" -Foreground Yellow
-        Write-Host $Sql49 -Foreground Cyan
+        # Write-Host $Sql49 -Foreground Cyan
 
         try {
             $estadoOk = Invoke-Sqlcmd -ConnectionString $Conn -Query $Sql49 -ErrorAction Stop
@@ -578,7 +587,7 @@ EXEC rdu_infraProyectoFidensRegistrarEstado
 	@FechaFin = $FechaUpd;
 "@
                 # Write-Host "[$servProyFidens rdpAdd] QUERY SQL EJECUTADO rdu_infraProyectoFidensRegistrarEstado" -Foreground Yellow
-                Write-Host $queryProyFidens
+                # Write-Host $queryProyFidens
                 $rduEstado = Invoke-Sqlcmd -Query $queryProyFidens -ConnectionString $ConnProyFidens
                 if (-not $rduEstado) {
                     Write-Host "Error inesperado al intentar registrar estado SOLICITADO 102.rdu_infraProyectoFidensRegistrarEstado"
@@ -603,7 +612,7 @@ EXEC rdu_infraProyectoFidensRegistrarEstado
                     Write-Host "`n=========================================================" -ForegroundColor Yellow
                     Write-Host "    Exito![$idAcceso] Servidor: $Server    Usuario: $UsuarioOriginal    Grupo: $refGrupo    $FueDuplicado" -ForegroundColor Yellow
                     Write-Host "        NumReg: $pryNumReg    Estado: $pryEstado | $refEstado    Fecha Fin: $FechaPry    Hora: $HoraPry" -ForegroundColor Yellow
-                    Write-Host "=========================================================`n" -ForegroundColor Yellow
+                    Write-Host "=========================================================" -ForegroundColor Yellow
                     Write-ServerLog -Server $Server -Message "Proceso completado Ok. $UsuarioOriginal en $refGrupo, NumReg: $pryNumReg, Estado: $pryEstado, Expira: $pryFechaFin, HoraExpira: $pryHoraFin"
                 }
             }
@@ -653,7 +662,8 @@ foreach ($cmdServ in $servidoresFinal) {
     $accUsr = $accCreds.User
     $accPass = $accCreds.Password
     Write-Host "Validando $cmdServ..."
-    Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait
+    # Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait
+    Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait -RedirectStandardOutput "NUL"
 }
 
 foreach ($srv in $ServerList) {
@@ -663,7 +673,8 @@ foreach ($srv in $ServerList) {
 
     Write-AzureLog ".\rdpAdd -Servidores `"$srv`" -Usuario `"$Usuario`" -GrupoIn `"$GrupoIn`" -DuracionHoras $DuracionHoras -Expira `"$Expira`" "
 }
-Write-Host "`nProceso de asignacion de permiso concluido." -ForegroundColor Cyan
+#Write-Host "Proceso de asignacion de permiso concluido." -ForegroundColor Cyan
+Write-Host "* * * = = = - - - Proceso de asignacion de permiso concluido - - - = = = * * *`n`n" -ForegroundColor Yellow
 
 #$server = "10.0.0.102"
 #mstsc /v:$server

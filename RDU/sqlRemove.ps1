@@ -18,7 +18,8 @@ foreach ($cmdServ in $servidoresVerificados) {
   $accUsr = $accCreds.User
   $accPass = $accCreds.Password
   Write-Host "Validando $cmdServ..."
-  Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait
+  # Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait
+  Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait -RedirectStandardOutput "NUL"
 }
 
 $BdRepo = "master"

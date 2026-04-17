@@ -24,7 +24,8 @@ foreach ($cmdServ in $servidoresVerificados) {
     $accUsr = $accCreds.User
     $accPass = $accCreds.Password
     Write-Host "Validando $cmdServ..."
-    Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait
+    # Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait
+    Start-Process cmdkey -ArgumentList "/add:$cmdServ", "/user:$accUsr", "/pass:$accPass" -NoNewWindow -Wait -RedirectStandardOutput "NUL"
 }
 
 
@@ -170,7 +171,7 @@ function ConvertirToValorSql {
 # INFO
 # ==================================================================
 Write-Host "---------------------------------------------------------------------------------" -ForegroundColor Cyan
-Write-Host "Usuario a gestionar: $Usr    Servidor: $Serv    Tipo de acceso: $TipoAcceso    BaseDato: $BaseDato" -ForegroundColor Cyan
+Write-Host "SQL Usuario: $Usr    Servidor: $Serv    Tipo de acceso: $TipoAcceso    BaseDato: $BaseDato" -ForegroundColor Cyan
 Write-Host "---------------------------------------------------------------------------------" -ForegroundColor Cyan
 
 
@@ -206,7 +207,7 @@ EXEC dbo.rdu_infraProyFidensSolicitadosRDU
 	@Grup = 'SQL',
 	@SubPry = $BaseDatoSql;
 "@
-Write-Host $QuerySqlFidens -foregroundColor White
+# Write-Host $QuerySqlFidens -foregroundColor White
 $solicitados = Invoke-Sqlcmd -Query $QuerySqlFidens -ConnectionString $ConnProyFidens
 if (-not $solicitados) {
     Write-Host "[$servSqlFidens sqlAdd] No hay referencias 102.ProyFidens. Puede ser por fecha de inicio." -ForegroundColor Yellow
@@ -234,7 +235,7 @@ EXEC dbo.sp_infra_ini_asignar_permiso_temporal
 "@
 
 # Write-Host "[$accesoSQL] QUERY SQL EJECUTADO:" -Foreground Green
-Write-Host $query -foregroundColor Cyan
+# Write-Host $query -foregroundColor Cyan
 # Registrar asignación de permiso
 # Write-Host "[DEBUG::$accesoSql] Procesando sp_infra_ini_asignar_permiso_temporal. Usuario = $Usr" -ForegroundColor Green
 $asignoPermisoTemporal = Invoke-Sqlcmd -Query $query -ConnectionString $ConnAcceso
@@ -277,7 +278,7 @@ EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
 	@FechaFin = $FechaUpd;
 "@
         # Write-Host "[$servProyFidens] QUERY SQL EJECUTADO:" -Foreground Green
-        Write-Host $queryProyFidens
+        # Write-Host $queryProyFidens
         try {
             $proyFidens = Invoke-Sqlcmd -Query $queryProyFidens -ConnectionString $ConnProyFidens
             if (-not $proyFidens) {
@@ -297,7 +298,7 @@ EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
                 Write-Host "-----------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
                 Write-Host "    Exito ProyFidens::[$refIdPermiso] Usuario: $Usr    Servidor: $accesoSql    BD: $lineaBd    Estado: $EstadoPry" -ForegroundColor Yellow    
                 Write-Host "    NumReg: $NumRegPry    CodUser: $CodUser    FechaFin: $FechaPry    HFIN: $HoraPry" -ForegroundColor Yellow
-                Write-Host "-----------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
+                Write-Host "===========================================================================================================`n" -ForegroundColor Yellow
                 Write-AzureLog ".\sqlAdd -Serv `"$Serv`" -Usr `"$Usr`" -TipoAcceso `"$TipoAcceso`" -BaseDato $BaseDato -DuracionHoras $DuracionHoras -Expira `"$Expira`" "
                 #                Write-Output "Resgistro ProyFidens:: Usuario: $Usr    Servidor: $accesoSql    BD: $srvBD    "
                 #                Write-Output "NumReg: $NumRegPry    CodUser: $CodUser    Estado: $EstadoPry    FechaFin: $FFIN    HFIN: $HFIN"
