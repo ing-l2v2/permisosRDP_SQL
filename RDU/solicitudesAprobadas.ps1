@@ -21,6 +21,14 @@ $salidas = "$root\salidas"
 $htmlOut = "$root\permisos_$fecha.html"
 $txtOut = "$salidas\rdp_$fecha.txt"
 
+# ==========================================================
+# GENERAR ARCHIVOS HTML + CSS + JS
+# ==========================================================
+# Rutas HTML/CSS/JS
+$cssDir = "$root\css"
+$jsDir = "$root\js"
+$htmlOut = "$root\solicitudesAutorizadas.html"
+
 # Crear carpetas si no existen
 foreach ($p in @($root, $salidas)) {
   if (!(Test-Path $p)) { New-Item -ItemType Directory -Path $p | Out-Null }
@@ -244,7 +252,9 @@ foreach ($row in $dt) {
     
     if ($perm -ne "") {      
       #$servidor.ToCharArray() | ForEach-Object { "[{0}] {1}" -f $_, ([int][char]$_) }
-      if ($servidor -match "10\s*-fidqaclien") {
+      # if ($servidor -match "10\s*-" -and $servidor -match "(fidqaclien|fidqa)$") {
+      # if ($servidor -match "10\s*-fidqaclien") {      
+      if ($servidor -match "^10\s*-") {
         Write-Host "$servidor sqlAzAdd"
         $sql01 = ".sqlAzAdd.ps1 sql-ginger.database.windows.net base-dato $usr $perm $NumReg $CodUser $Expira"
       }
@@ -254,9 +264,9 @@ foreach ($row in $dt) {
       # $sw.WriteLine($sql01)
       $salidasMemoria += $sql01
     }
-
+    
     if ($row.sm -eq 1) {
-      if ($servidor -match "10\s*-fidqaclien") {
+      if ($servidor -match "^10\s*-") {
         $s = ".sqlAzAdd.ps1 sql-ginger.database.windows.net base-dato $usr $perm $NumReg $CodUser $Expira"
       }
       else {
@@ -265,9 +275,9 @@ foreach ($row in $dt) {
       # $sw.WriteLine($s)
       $salidasMemoria += $s
     }
-
+    
     if ($row.rwsm -eq 1) {
-      if ($servidor -match "10\s*-fidqaclien") {
+      if ($servidor -match "^10\s*-") {
         $s = ".sqlAzAdd.ps1 sql-ginger.database.windows.net base-dato $usr $perm $NumReg $CodUser $Expira" 
       }
       else {
@@ -319,23 +329,11 @@ Write-Progress -Activity "Procesando informe solicitudes aprobadas en AdminFiden
 
 
 
-# ==========================================================
-# GENERAR ARCHIVOS HTML + CSS + JS
-# ==========================================================
-
-# Rutas HTML/CSS/JS
-$cssDir = "$root\css"
-$jsDir = "$root\js"
 
 # Crear carpetas si no existen
 foreach ($p in @($cssDir, $jsDir)) {
   if (!(Test-Path $p)) { New-Item -ItemType Directory -Path $p | Out-Null }
 }
-
-# HTML destino
-# $htmlOut = "$root\solicitudesAutorizadas_$fecha.html"
-$htmlOut = "$root\solicitudesAutorizadas.html"
-
 
 $finProc = Get-Date
 $duracionProc = ($finProc - $inicioProc).ToString("hh\:mm\:ss")

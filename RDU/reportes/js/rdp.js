@@ -87,9 +87,10 @@ function generarFila(btn) {
     else if (sp) tipo = "SP";
 
     if (tipo !== "") {
-      if (servidor.includes("fidqaclien")) {
+      if (/^10\s*-/.test(servidor)) {
+        //if (servidor.includes("10 -")) {
         comandos.push(
-          `.\\sqlAzAdd.ps1 "sql-ginger.database.windows.net" "bd1","bd2" "${usr}" "${tipo}" ${numreg} "${coduser}" "${expira}" `,
+          `.\\sqlAzAdd.ps1 "sql-ginger.database.windows.net" "autenticacion,autenticacion-sura-cont,FlujoVenta,pagos,pagos-sura-cont" "${usr}" "${tipo}" ${numreg} "${coduser}" "${expira}" `,
         );
       } else {
         comandos.push(
@@ -113,6 +114,7 @@ function generarFila(btn) {
   // ----------------------------------------
   document.getElementById("cmdContent").value = comandos.join("\n");
   document.getElementById("cmdModal").style.display = "block";
+  ocultarFila(btn);
 }
 
 function generarTodo(btn) {
@@ -178,9 +180,10 @@ function generarTodo(btn) {
       else if (sp) tipo = "SP";
 
       if (tipo !== "") {
-        if (servidor.includes("fidqaclien")) {
+        if (/^10\s*-/.test(servidor)) {
+          //if (servidor.includes("10 -")) {
           comandos.push(
-            `.\\sqlAzAdd.ps1 "sql-ginger.database.windows.net" "bd1","bd2" "${usr}" "${tipo}" ${numreg} "${coduser}" "${expira}" `,
+            `.\\sqlAzAdd.ps1 "sql-ginger.database.windows.net" "autenticacion,autenticacion-sura-cont,FlujoVenta,pagos,pagos-sura-cont" "${usr}" "${tipo}" ${numreg} "${coduser}" "${expira}" `,
           );
         } else {
           comandos.push(
@@ -208,4 +211,10 @@ function generarTodo(btn) {
   // -------------------------------
   document.getElementById("cmdContent").value = comandos.join("\n");
   document.getElementById("cmdModal").style.display = "block";
+  ocultarFila(btn);
+}
+
+function ocultarFila(btn) {
+  const tr = btn.closest("tr");
+  tr.style.display = "none";
 }

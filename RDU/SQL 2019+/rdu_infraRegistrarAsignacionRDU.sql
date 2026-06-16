@@ -1,11 +1,14 @@
 ﻿/*
     ALTER TABLE infraAccesosTempRDU
       ADD CodUser VARCHAR(5) NULL
-    EXEC dbo.rdu_infraRegistrarAsignacionRDU 'FIDENSLAT\gchavez','10.0.0.61',"Remote Desktop Users", 48, NULL, NULL, NULL;
+    EXEC dbo.rdu_infraRegistrarAsignacionRDU 'FIDENSLAT\ecordova','10.0.0.61',"Remote Desktop Users", 48, NULL, NULL, NULL;
     SELECT * FROM infraAccesosTempRDU WHERE Estado='ASIGNADO' ORDER BY Id DESC
     SELECT * FROM infraAccesosTempRDU WHERE NumReg=16897
-    UPDATE dbo.infraAccesosTempRDU SET Estado = 'ASIGNADO', Expira='2026-02-27 23:59', Revocado = NULL, Observacion=NULL WHERE Id=101;
+    UPDATE dbo.infraAccesosTempRDU SET Estado = 'ASIGNADO', Expira='2026-05-30 13:12', Revocado = NULL, Observacion=NULL WHERE Id IN (481, 482, 478);
     DELETE infraAccesosTempRDU WHERE ID IN (163)
+
+    INSERT INTO dbo.infraExcepcionesSAC (nombre) VALUES ('ecordova');
+    select * from dbo.infraExcepcionesSAC
 */
 
 USE [master]
@@ -15,7 +18,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 IF OBJECT_ID('dbo.rdu_infraRegistrarAsignacionRDU') IS NOT NULL
     DROP PROCEDURE dbo.rdu_infraRegistrarAsignacionRDU;
 GO
@@ -56,14 +58,21 @@ BEGIN
     DECLARE @DuracionMaxima INT
     DECLARE @MaxDuracion INT = 48;
     DECLARE @MaxDuracionSac INT = 7*24;
+    DECLARE @UsuarioNormalizado NVARCHAR(200);
+
+    -- Si el usuario contiene "\", extrae lo que está a la derecha
+    IF CHARINDEX('\', @Usuario) > 0
+        SET @UsuarioNormalizado = RIGHT(@Usuario, LEN(@Usuario) - CHARINDEX('\', @Usuario));
+    ELSE
+        SET @UsuarioNormalizado = @Usuario;
 
     SET @DuracionMaxima = 
-        CASE
-            WHEN @Usuario IN ('.\jarzolay','.\mcobos','.\mvasquez','.\larroba','.\aaguilar','FIDENSLAT\jarzolay','FIDENSLAT\mcobos','FIDENSLAT\mvasquez','FIDENSLAT\larroba','FIDENSLAT\aaguilar')
-                THEN @MaxDuracionSac 
-            ELSE @MaxDuracion
-        END; 
-
+    CASE 
+        WHEN EXISTS (SELECT 1 
+            FROM dbo.infraExcepcionesSAC 
+            WHERE nombre = @UsuarioNormalizado) THEN @MaxDuracionSac
+        ELSE @MaxDuracion
+    END;
 
     IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'infraAccesosTempRDU')
     BEGIN

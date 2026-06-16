@@ -1300,7 +1300,7 @@ function Form_Sql_Remove_Azure {
     Add-Type -AssemblyName System.Drawing
 
     $form = New-Object System.Windows.Forms.Form
-    $form.Text = "Agregar Acceso Azure SQL"
+    $form.Text = "Remover Acceso Azure SQL"
     $form.Size = New-Object System.Drawing.Size(650, 650)
     $form.StartPosition = "CenterScreen"
 
@@ -1437,13 +1437,15 @@ function Form_Sql_Remove_Azure {
 
             # Usuario y demás parámetros
             $argList += " -Usr `"$Usr`" "
-            $argList += "-TipoAcceso `"$Tipo`" "
-            if ($null -ne $numReg) {
-                $argList += "-NumReg $NumReg "
-            }
-            if ($null -ne $codUser) {
-                $argList += "-CodUser `"$CodUser`" "
-            }
+            $argList += " -TipoAcceso `"$Tipo`" "
+            #
+            #if ($null -ne $numReg) {
+            #    $argList += " -NumReg $NumReg "
+            #}
+            #if ($null -ne $codUser) {
+            #    $argList += " -CodUser `"$CodUser`" "
+            #}
+            #
 
             [System.Windows.Forms.MessageBox]::Show(($argList | Out-String))
             Start-Process powershell -ArgumentList $argList -NoNewWindow
@@ -1798,7 +1800,7 @@ $formMenu.Controls.Add( (NuevaOpcion -text "* SQL AZURE Remover Acceso" -y 180 -
 $formMenu.Controls.Add( (NuevaOpcion -text "* Vincula Id RDP con ProyFidens" -y 230 -col 1 -onClick { Form_Rdp_Update_NumReg }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "x SQL AZURE Finalizar Acceso Masivamente" -y 230 -col 2 -onClick { Form_Revocar_Azure_Masivo_SQL }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "* Informe Accesos SQL-RDP" -y 280 -col 1 -onClick { Form_Listar_Accesos }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "* Autorizadas Fidens" -y 280 -col 2 -onClick { Form_Autorizados_Fidens }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "* Solicitudes Fidens" -y 280 -col 2 -onClick { Form_Autorizados_Fidens }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "  Info SQL Local DBA" -y 330 -col 1 -onClick { Form_Local_DBA }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "  Info SQL Azure DBA" -y 330 -col 2 -onClick { Form_Azure_DBA }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "  SFTP 10..53 Crea Usuario" -y 380 -col 1 -onClick { Form_SFTP_Crea_Usuario }) )

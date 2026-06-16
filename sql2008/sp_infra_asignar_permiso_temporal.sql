@@ -17,6 +17,20 @@
     SYS	    Administrador BD	            DB_ROLE	        db_owner
     PRF	    Permiso de Trace	            SERVER_PERMISSION	ALTER TRACE
     ALL	    Administrador de Servidor       SERVER_ROLE	    sysadmin
+
+    CREATE TABLE dbo.infraExcepcionesSAC (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        nombre VARCHAR(50) NOT NULL UNIQUE  -- Aquí va el login del usuario
+    );
+
+    INSERT INTO dbo.infraExcepcionesSAC (nombre)
+    VALUES 
+    ('jarzolay'),
+    ('mcobos'),
+    ('mvasquez'),
+    ('larroba'),
+    ('aaguilar');
+    ('ecordova');
 */
 USE master;
 GO
@@ -56,11 +70,12 @@ BEGIN
     DECLARE @MaxDuracionSac INT = 7*24;
 
     SET @DuracionMaxima = 
-        CASE
-            WHEN @Usuario IN ('jarzolay','mcobos','mvasquez','larroba','aaguilar')
-                THEN @MaxDuracionSac 
-            ELSE @MaxDuracion
-        END;  
+    CASE 
+        WHEN EXISTS (SELECT 1 
+            FROM dbo.infraExcepcionesSAC 
+            WHERE nombre = @Usuario) THEN @MaxDuracionSac
+        ELSE @MaxDuracion
+    END;
     BEGIN TRY
         ------------------------------------------------------------
         -- TABLA PARA CONTROL DE PERMISOS TEMPORALES

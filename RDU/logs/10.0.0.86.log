@@ -82,3 +82,34 @@
 2026-04-13 16:42:13 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17277, Estado: '2', Expira: '2026-04-15 00:00', HoraExpira: '2026-04-13 15:40'
 2026-04-15 16:56:51 | Proceso completado Ok. .\jtoledo en , NumReg: , Estado: , Expira: '2026-04-17 17:55', HoraExpira: 
 2026-04-15 16:56:51 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17290, Estado: '2', Expira: '2026-04-17 00:00', HoraExpira: '2026-04-15 17:55'
+2026-04-20 09:05:57 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-04-27 11:00', HoraExpira: 
+2026-04-20 09:05:57 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17319, Estado: '2', Expira: '2026-04-27 00:00', HoraExpira: '2026-04-20 10:05'
+2026-04-21 18:00:34 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17346, Estado: '2', Expira: '2026-04-23 00:00', HoraExpira: '2026-04-21 18:30'
+2026-04-23 16:21:19 | Proceso completado Ok. .\jtoledo en , NumReg: , Estado: , Expira: '2026-04-24 23:59', HoraExpira: 
+2026-04-23 16:21:19 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17359, Estado: '2', Expira: '2026-04-24 00:00', HoraExpira: '2026-04-23 23:59'
+2026-04-27 08:28:13 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-05-04 11:00', HoraExpira: 
+2026-04-27 08:28:14 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17392, Estado: '2', Expira: '2026-05-04 00:00', HoraExpira: '2026-04-27 09:28'
+2026-04-29 17:05:18 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17413, Estado: '2', Expira: '2026-04-30 00:00', HoraExpira: '2026-04-29 23:59'
+2026-05-04 08:29:49 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-05-11 11:00', HoraExpira: 
+2026-05-04 08:29:49 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17424, Estado: '2', Expira: '2026-05-11 00:00', HoraExpira: '2026-05-04 09:29'
+2026-05-04 17:12:44 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17463, Estado: '2', Expira: '2026-05-06 00:00', HoraExpira: '2026-05-04 16:45'
+2026-05-11 09:12:01 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17504, Estado: '2', Expira: '2026-05-18 00:00', HoraExpira: '2026-05-11 10:12'
+2026-05-11 15:51:45 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17539, Estado: '2', Expira: '2026-05-13 00:00', HoraExpira: '2026-05-11 16:15'
+2026-05-14 14:14:49 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17556, Estado: '2', Expira: '2026-05-15 00:00', HoraExpira: '2026-05-14 23:59'
+2026-05-18 09:10:38 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-05-25 11:00', HoraExpira: 
+2026-05-18 09:10:38 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17589, Estado: '2', Expira: '2026-05-25 00:00', HoraExpira: '2026-05-18 10:10'
+2026-05-18 18:10:02 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17603, Estado: '2', Expira: '2026-05-20 00:00', HoraExpira: '2026-05-18 13:00'
+2026-05-20 16:59:27 | Proceso completado Ok. .\jtoledo en , NumReg: , Estado: , Expira: '2026-05-22 18:00', HoraExpira: 
+2026-05-20 16:59:28 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17619, Estado: '2', Expira: '2026-05-22 00:00', HoraExpira: '2026-05-20 17:59'
+2026-05-25 10:39:26 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-06-01 11:00', HoraExpira: 
+2026-05-25 10:39:27 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17645, Estado: '2', Expira: '2026-06-01 00:00', HoraExpira: '2026-05-25 11:00'
+2026-05-25 16:09:40 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17659, Estado: '2', Expira: '2026-05-27 00:00', HoraExpira: '2026-05-25 16:55'
+2026-06-01 10:44:06 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-06-08 11:00', HoraExpira: 
+2026-06-01 10:44:06 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17719, Estado: '2', Expira: '2026-06-08 00:00', HoraExpira: '2026-06-01 11:00'
+2026-06-02 10:22:14 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17728, Estado: '2', Expira: '2026-06-04 00:00', HoraExpira: '2026-06-02 09:35'
+2026-06-08 09:58:57 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-06-15 11:00', HoraExpira: 
+2026-06-08 09:58:57 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17769, Estado: '2', Expira: '2026-06-15 00:00', HoraExpira: '2026-06-08 10:58'
+2026-06-09 15:53:19 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17800, Estado: '2', Expira: '2026-06-11 00:00', HoraExpira: '2026-06-09 16:15'
+2026-06-15 15:05:46 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17845, Estado: '2', Expira: '2026-06-17 00:00', HoraExpira: '2026-06-15 15:50'
+2026-06-16 09:24:00 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-06-22 11:00', HoraExpira: 
+2026-06-16 09:24:00 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17855, Estado: '2', Expira: '2026-06-22 00:00', HoraExpira: '2026-06-16 11:00'

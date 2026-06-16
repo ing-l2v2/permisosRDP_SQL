@@ -36,6 +36,23 @@ GO
 --  UPDATE dbo.infraPermisosTemp SET Estado='ASIGNADO', Revocado=NULL, Observacion = NULL WHERE IdPermiso IN (178,179);
 --  DELETE FROM dbo.infraPermisosTemp WHERE IdPermiso IN (207, 208);
 -- Servidores 2019+
+--
+-- Crear tabla de excepciones SAC
+/*
+    CREATE TABLE dbo.infraExcepcionesSAC (
+        id INT IDENTITY(1,1) PRIMARY KEY,
+        nombre VARCHAR(50) NOT NULL UNIQUE  -- Aquí va el login del usuario
+    );
+
+    INSERT INTO dbo.infraExcepcionesSAC (nombre)
+    VALUES 
+    ('jarzolay'),
+    ('mcobos'),
+    ('mvasquez'),
+    ('larroba'),
+    ('aaguilar');
+    ('ecordova');
+*/
 -- =============================================
 CREATE PROCEDURE dbo.sp_infra_asignar_permiso_temporal
     @Usuario SYSNAME,
@@ -64,12 +81,12 @@ BEGIN
     DECLARE @MaxDuracionSac INT = 7*24;
 
     SET @DuracionMaxima = 
-        CASE
-            WHEN @Usuario IN ('jarzolay','mcobos','mvasquez','larroba','aaguilar')
-                THEN @MaxDuracionSac 
-            ELSE @MaxDuracion
-        END; 
-
+    CASE 
+        WHEN EXISTS (SELECT 1 
+            FROM dbo.infraExcepcionesSAC 
+            WHERE nombre = @Usuario) THEN @MaxDuracionSac
+        ELSE @MaxDuracion
+    END;
     BEGIN TRY
         ------------------------------------------------------------
         -- TABLA PARA CONTROL DE PERMISOS TEMPORALES
