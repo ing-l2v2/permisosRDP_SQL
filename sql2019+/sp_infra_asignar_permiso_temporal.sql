@@ -79,6 +79,7 @@ BEGIN
     DECLARE @DuracionMaxima INT
     DECLARE @MaxDuracion INT = 48;
     DECLARE @MaxDuracionSac INT = 7*24;
+    DECLARE @Ahora DATETIME = GETDATE();
 
     SET @DuracionMaxima = 
     CASE 
@@ -164,7 +165,7 @@ BEGIN
         IF (@DupDuplica = 1 AND @IdPermiso IS NOT NULL AND EXISTS(SELECT 1 FROM dbo.infraPermisosTemp WHERE IdPermiso = @IdPermiso))
         BEGIN
             UPDATE master.dbo.infraPermisosTemp
-            SET Revocado = GETDATE(),
+            SET Revocado = @Ahora,
                 Estado = 'REVOCADO',
                 Observacion = 'FORZADO-ANTES-DE-ASIGNAR'
             WHERE IdPermiso= @IdPermiso;
@@ -255,34 +256,42 @@ RegistrarPermiso:
         WHERE USER_LOGIN = @Usuario AND IP='10.253.253'
     END
 
+
+    DECLARE @FechaExpiraMaxima DATETIME = 
+    (
+        CASE
+            WHEN @Expira IS NOT NULL
+                AND ISDATE(@Expira) = 1
+                AND @Expira > @Ahora
+                AND DATEDIFF(HOUR, @Ahora, @Expira) <= @DuracionMaxima
+            THEN @Expira
+
+            WHEN @Expira IS NOT NULL
+                AND ISDATE(@Expira) = 1
+                AND @Expira > @Ahora
+                AND DATEDIFF(HOUR, @Ahora, @Expira) > @DuracionMaxima
+            THEN DATEADD(HOUR, @DuracionMaxima, @Ahora)
+
+            ELSE DATEADD(
+                HOUR,
+                CASE
+                    WHEN @DuracionHoras IS NULL THEN @DuracionMaxima
+                    WHEN @DuracionHoras > @DuracionMaxima THEN @DuracionMaxima
+                    ELSE @DuracionHoras
+                END,
+                @Ahora
+            )
+        END
+    );
+
+    -- Redondear hacia abajo a la hora
+    SET @FechaExpiraMaxima = DATEADD(HOUR, DATEDIFF(HOUR, 0, @FechaExpiraMaxima), 0);
+
+
     INSERT INTO master.dbo.infraPermisosTemp
     (Usuario, TipoAsignacion, PermisoAsignado, BaseDatos, CodUser, NumReg, Expira)
     OUTPUT INSERTED.IdPermiso INTO @NuevoId
-    SELECT @Usuario, @TipoAsignacion, @PermisoAsignado, @BaseDatos, @CodUser, @NumReg,
-     CASE 
-        -- Caso 1: @Expira válida y futura
-        WHEN @Expira IS NOT NULL 
-             AND ISDATE(@Expira) = 1
-             AND @Expira > GETDATE() 
-             AND DATEDIFF(HOUR, GETDATE(), @Expira) <= @DuracionMaxima
-            THEN @Expira
-        -- Caso 2: @Expira existe pero excede 49 horas → limitar
-        WHEN @Expira IS NOT NULL 
-             AND ISDATE(@Expira) = 1
-             AND @Expira > GETDATE()
-             AND DATEDIFF(HOUR, GETDATE(), @Expira) > @DuracionMaxima
-            THEN DATEADD(HOUR, @DuracionMaxima, GETDATE())  -- límite máximo permitido
-        -- Caso 3: @Expira nula o inválida → usar @DuracionHoras máximo 49
-        ELSE DATEADD(
-                HOUR, 
-                CASE 
-                    WHEN @DuracionHoras IS NULL THEN @DuracionMaxima          -- por defecto
-                    WHEN @DuracionHoras > @DuracionMaxima THEN @DuracionMaxima            -- limitar
-                    ELSE @DuracionHoras 
-                END,
-                GETDATE()
-             )
-        END;     
+    SELECT @Usuario, @TipoAsignacion, @PermisoAsignado, @BaseDatos, @CodUser, @NumReg, @FechaExpiraMaxima;     
      
         EXEC dbo.sp_infra_login_estado_usuario @LoginName = @Usuario;
 

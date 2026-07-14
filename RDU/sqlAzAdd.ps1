@@ -35,7 +35,7 @@ $roles = switch ($TipoAcceso) {
   "R" { @("db_datareader") }
   "W" { @("db_datawriter") }
   "RW" { @("db_datareader", "db_datawriter") }
-  "SP" { @("EXECUTE") }
+  "SP" { @("EXECUTE", "VIEW DEFINITION") }
   "SM" { @("ALTER", "CREATE TABLE", "VIEW DEFINITION") }
   "PRF" { @("VIEW DATABASE STATE") }
   "ALL" { @("db_owner") }

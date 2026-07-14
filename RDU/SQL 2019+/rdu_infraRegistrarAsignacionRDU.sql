@@ -59,6 +59,7 @@ BEGIN
     DECLARE @MaxDuracion INT = 48;
     DECLARE @MaxDuracionSac INT = 7*24;
     DECLARE @UsuarioNormalizado NVARCHAR(200);
+    DECLARE @Ahora DATETIME = GETDATE();
 
     -- Si el usuario contiene "\", extrae lo que está a la derecha
     IF CHARINDEX('\', @Usuario) > 0
@@ -116,7 +117,7 @@ BEGIN
         IF (@Duplicado=1)
         BEGIN
             UPDATE master.dbo.infraAccesosTempRDU
-            SET Revocado = GETDATE(),
+            SET Revocado = @Ahora,
                 Estado = 'REVOCADO',
                 Observacion = 'FORZADO-ANTES-DE-ASIGNAR'
             WHERE Id= @Id;            
@@ -127,35 +128,41 @@ BEGIN
         INSERT INTO @Tmp (Duplicado) VALUES (0);
     END;
 
+
+    DECLARE @FechaExpiraMaxima DATETIME = 
+    (
+        CASE
+            WHEN @Expira IS NOT NULL
+                AND ISDATE(@Expira) = 1
+                AND @Expira > @Ahora
+                AND DATEDIFF(HOUR, @Ahora, @Expira) <= @DuracionMaxima
+            THEN @Expira
+
+            WHEN @Expira IS NOT NULL
+                AND ISDATE(@Expira) = 1
+                AND @Expira > @Ahora
+                AND DATEDIFF(HOUR, @Ahora, @Expira) > @DuracionMaxima
+            THEN DATEADD(HOUR, @DuracionMaxima, @Ahora)
+
+            ELSE DATEADD(
+                HOUR,
+                CASE
+                    WHEN @DuracionHoras IS NULL THEN @DuracionMaxima
+                    WHEN @DuracionHoras > @DuracionMaxima THEN @DuracionMaxima
+                    ELSE @DuracionHoras
+                END,
+                @Ahora
+            )
+        END
+    );
+
+    -- Redondear hacia abajo a la hora
+    SET @FechaExpiraMaxima = DATEADD(HOUR, DATEDIFF(HOUR, 0, @FechaExpiraMaxima), 0);
+
     -- Registrar nuevo acceso temporal (máximo 48h)    
     INSERT INTO master.dbo.infraAccesosTempRDU (Usuario, Servidor, Grupo, Estado, NumReg, CodUser, Expira)
     OUTPUT INSERTED.Id INTO @NuevoId
-    VALUES (@Usuario, @Servidor, @Grupo, 'ASIGNADO', @NumReg, @CodUser,
-        CASE 
-        -- Caso 1: @Expira válida y futura
-        WHEN @Expira IS NOT NULL 
-             AND ISDATE(@Expira) = 1
-             AND @Expira > GETDATE() 
-             AND DATEDIFF(HOUR, GETDATE(), @Expira) <= @DuracionMaxima
-            THEN @Expira
-        -- Caso 2: @Expira existe pero excede 49 horas → limitar
-        WHEN @Expira IS NOT NULL 
-             AND ISDATE(@Expira) = 1
-             AND @Expira > GETDATE()
-             AND DATEDIFF(HOUR, GETDATE(), @Expira) > @DuracionMaxima
-            THEN DATEADD(HOUR, @DuracionMaxima, GETDATE())  -- límite máximo permitido
-        -- Caso 3: @Expira nula o inválida → usar @DuracionHoras máximo @DuracionMaxima
-        ELSE DATEADD(
-            HOUR, 
-            CASE 
-                WHEN @DuracionHoras IS NULL THEN @DuracionMaxima          -- por defecto
-                WHEN @DuracionHoras > @DuracionMaxima THEN @DuracionMaxima            -- limitar
-                ELSE @DuracionHoras 
-            END,
-            GETDATE()
-        )
-        END
-    );
+    VALUES (@Usuario, @Servidor, @Grupo, 'ASIGNADO', @NumReg, @CodUser, @FechaExpiraMaxima);
 
     SELECT @IdSalida = Id FROM @NuevoId;
     --------------------------------------------------------------------

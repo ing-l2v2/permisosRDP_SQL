@@ -312,3 +312,36 @@
 2026-06-15 12:20:20 | Proceso completado Ok. .\gchavez en 'Remote Desktop Users', NumReg: 17844, Estado: '2', Expira: '2026-06-17 00:00', HoraExpira: '2026-06-15 13:20'
 2026-06-16 09:23:44 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-06-22 11:00', HoraExpira: 
 2026-06-16 09:23:44 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17850, Estado: '2', Expira: '2026-06-22 00:00', HoraExpira: '2026-06-16 11:00'
+2026-06-17 10:29:13 | Proceso completado Ok. .\pvalle en 'Remote Desktop Users', NumReg: 17865, Estado: '2', Expira: '2026-06-19 00:00', HoraExpira: '2026-06-17 11:29'
+2026-06-22 08:54:41 | Proceso completado Ok. .\pvalle en 'Remote Desktop Users', NumReg: 17896, Estado: '2', Expira: '2026-06-24 00:00', HoraExpira: '2026-06-22 09:00'
+2026-06-22 10:08:01 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-06-29 11:00', HoraExpira: 
+2026-06-22 10:08:02 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17879, Estado: '2', Expira: '2026-06-29 00:00', HoraExpira: '2026-06-22 11:00'
+2026-06-22 11:31:55 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17905, Estado: '2', Expira: '2026-06-29 00:00', HoraExpira: '2026-06-22 12:00'
+2026-06-24 12:36:34 | Proceso completado Ok. .\pvalle en 'Remote Desktop Users', NumReg: 17918, Estado: '2', Expira: '2026-06-26 00:00', HoraExpira: '2026-06-24 13:00'
+2026-06-24 19:09:17 | [10.0.0.102 rdpAdd] ERROR SP → rollback rdu_infraRegistrarAsignacionRDU
+2026-06-24 19:09:20 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-06-29 09:50:27 | Proceso completado Ok. .\pvalle en 'Remote Desktop Users', NumReg: 17931, Estado: '2', Expira: '2026-07-01 00:00', HoraExpira: '2026-06-29 10:00'
+2026-06-29 13:13:06 | Proceso completado Ok. .\ecordova en , NumReg: , Estado: , Expira: '2026-07-06 12:00', HoraExpira: 
+2026-06-29 13:13:06 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 17935, Estado: '2', Expira: '2026-07-06 00:00', HoraExpira: '2026-06-29 12:00'
+2026-06-30 09:53:07 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-07-06 11:00', HoraExpira: 
+2026-06-30 09:53:07 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 17958, Estado: '2', Expira: '2026-07-06 00:00', HoraExpira: '2026-06-30 11:00'
+2026-07-01 13:18:15 | Proceso completado Ok. .\pvalle en 'Remote Desktop Users', NumReg: 17977, Estado: '2', Expira: '2026-07-03 00:00', HoraExpira: '2026-07-01 14:00'
+2026-07-02 10:32:10 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 17978, Estado: '2', Expira: '2026-07-04 00:00', HoraExpira: '2026-07-02 09:00'
+2026-07-02 11:14:28 | Proceso completado Ok. .\gchavez en 'Remote Desktop Users', NumReg: 17979, Estado: '2', Expira: '2026-07-03 00:00', HoraExpira: '2026-07-02 21:00'
+2026-07-03 13:37:18 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 17992, Estado: '2', Expira: '2026-07-05 00:00', HoraExpira: '2026-07-03 13:00'
+2026-07-06 09:02:16 | Proceso completado Ok. .\mcobos en , NumReg: , Estado: , Expira: '2026-07-13 11:00', HoraExpira: 
+2026-07-06 09:02:16 | Proceso completado Ok. .\mcobos en 'Remote Desktop Users', NumReg: 18003, Estado: '2', Expira: '2026-07-13 00:00', HoraExpira: '2026-07-06 10:00'
+2026-07-06 11:04:05 | Proceso completado Ok. .\pvalle en 'Administrators', NumReg: 18038, Estado: '2', Expira: '2026-07-08 00:00', HoraExpira: '2026-07-06 12:00'
+2026-07-06 12:29:16 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 18040, Estado: '2', Expira: '2026-07-08 00:00', HoraExpira: '2026-07-06 12:00'
+2026-07-06 12:39:59 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 18042, Estado: '2', Expira: '2026-07-13 00:00', HoraExpira: '2026-07-06 13:00'
+2026-07-06 15:08:04 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 18048, Estado: '2', Expira: '2026-07-08 00:00', HoraExpira: '2026-07-06 15:00'
+2026-07-08 14:13:24 | Proceso completado Ok. .\cberruz en , NumReg: , Estado: , Expira: '2026-07-10 13:00', HoraExpira: 
+2026-07-08 14:13:24 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 18057, Estado: '2', Expira: '2026-07-10 00:00', HoraExpira: '2026-07-08 13:00'
+2026-07-09 10:06:28 | Proceso completado Ok. .\gchavez en 'Remote Desktop Users', NumReg: 18061, Estado: '2', Expira: '2026-07-11 00:00', HoraExpira: '2026-07-09 11:00'
+2026-07-09 13:40:21 | Proceso completado Ok. .\jtoledo en 'Administrators', NumReg: 18066, Estado: '2', Expira: '2026-07-11 00:00', HoraExpira: '2026-07-09 14:00'
+2026-07-09 16:47:56 | Proceso completado Ok. .\pvalera en 'Remote Desktop Users', NumReg: 18070, Estado: '2', Expira: '2026-07-11 00:00', HoraExpira: '2026-07-09 17:00'
+2026-07-10 12:44:29 | Proceso completado Ok. .\cberruz en , NumReg: , Estado: , Expira: '2026-07-12 12:00', HoraExpira: 
+2026-07-10 12:44:30 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 18072, Estado: '2', Expira: '2026-07-12 00:00', HoraExpira: '2026-07-10 12:00'
+2026-07-13 11:36:45 | Proceso completado Ok. .\pvalle en 'Remote Desktop Users', NumReg: 18099, Estado: '2', Expira: '2026-07-15 00:00', HoraExpira: '2026-07-13 12:00'
+2026-07-13 12:27:03 | Proceso completado Ok. .\ecordova en 'Remote Desktop Users', NumReg: 18103, Estado: '2', Expira: '2026-07-20 00:00', HoraExpira: '2026-07-13 13:00'
+2026-07-13 14:13:20 | Proceso completado Ok. .\cberruz en 'Remote Desktop Users', NumReg: 18106, Estado: '2', Expira: '2026-07-15 00:00', HoraExpira: '2026-07-13 14:00'
