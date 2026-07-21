@@ -6,10 +6,11 @@ param(
   [Nullable[int]]$BaseDato
 )
 
-$servidoresVerificados = @("10.0.0.102")
+#$servidoresVerificados = @("10.0.0.102")
+$servidoresVerificados = @("10.0.0.56")
 
 $TipoAcceso = $TipoAcceso.ToUpper()
-$servSqlFidens = "10.0.0.102"
+$servSqlFidens = "10.0.0.56"
 $accesoSql = "10.0.0.$Serv"
 $servidoresVerificados = ($servidoresVerificados + $accesosSql) | Sort-Object -Unique
 . "$PSScriptRoot\ServidoresCredenciales.ps1"
@@ -24,7 +25,7 @@ foreach ($cmdServ in $servidoresVerificados) {
 
 $BdRepo = "master"
 $UsrSql = "lvilla"
-$PassFidens = "lv..2021"
+$PassFidens = "L2v2..20&25.#"   # Para acceso a ProyFidens 10.0.0.56
 switch ($Serv) {
   { $_ -in "49", "56" } { $Pass = "L2v2..20&25.#" }
   { $_ -in "61", "77", "80", "86", "102" } { $Pass = "lv..2021" }

@@ -6,8 +6,8 @@ if (-not (Test-Connection -ComputerName 10.0.0.49 -Count 1 -Quiet)) {
 
 $BdRepo = "master"
 $UsrSql = "lvilla"
-$PassFidens = "lv..2021"
-$servSqlFidens = "10.0.0.102"
+$servSqlFidens = "10.0.0.56"
+$PassFidens = "L2v2..20&25.#"
 $Serv = "10.0.0."
 $Origenes = @(
     [pscustomobject]@{ Servidor = 49; Pass = "L2v2..20&25.#" },
@@ -246,7 +246,7 @@ EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
                         # Write-Host "[$servSqlFidens sql-remove-proy-fidens] SP ejecutado" -ForegroundColor Cyan
                         # Write-ServerLog -Server $servSqlFidens -Message "[$servSqlFidens sql-remove-proy-fidens] SP ejecutado"
                         if (-not $proyFidens) {
-                            Write-Host "No hay referencias para actualizar ESTADO $Estado en ProyFidens 102." -ForegroundColor Yellow
+                            Write-Host "No hay referencias para actualizar ESTADO $Estado en ProyFidens 56." -ForegroundColor Yellow
                         }
                         else {
                             $NumRegPry = ConvertirToValorSql($proyFidens["NumReg"])

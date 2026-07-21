@@ -6,9 +6,13 @@ Script: Generador automático de comandos RDP / SQL
 #---------------------------------------------
 # CONFIGURACIÓN
 #---------------------------------------------
-$server = "10.0.0.102"
+#$server = "10.0.0.102"
+#$user = "lvilla"
+#$pass = "lv..2021"
+#$database = "ProyFidens"
+$server = "10.0.0.56"
 $user = "lvilla"
-$pass = "lv..2021"
+$pass = "L2v2..20&25.#"
 $database = "ProyFidens"
 
 # Fecha para archivos
@@ -183,7 +187,8 @@ $salidasMemoria = @()
 # ================================
 # PROGRESO + TIEMPO ESTIMADO
 # ================================
-$total = $dt.count
+# $total = $dt.count
+$total = $dt.Rows.count
 $startTime = Get-Date
 $index = 0
 

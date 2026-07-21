@@ -24,7 +24,7 @@ CREATE NONCLUSTERED INDEX IX_infra_auth_email_fecha_coduser
 ON dbo.infra_auth_email (fecha_ins, coduser_solic)
 INCLUDE (usr_solic, coduser_auth, usr_auth);
 
-SELECT * FROM dbo.infra_auth_email WHERE fecha_correo = @fecha AND @usr_solic;
+--SELECT * FROM dbo.infra_auth_email WHERE fecha_correo = @fecha AND @usr_solic;
 
 exec sp_help infra_auth_email;
 INSERT INTO infra_auth_email (fecha_correo, numreg_solic, usr_solic, numreg_auth, usr_auth, asunto, txt_solicitud, txt_auth) 

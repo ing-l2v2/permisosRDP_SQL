@@ -143,14 +143,15 @@ foreach ($bd in $BaseDato) {
   if ($permisosOk -eq 0) {
     # Write-Host "`nPermisos asignados exitosamente en todas las bases." -ForegroundColor Cyan
 
-    $serv102 = "10.0.0.102"
+    $serv56 = "10.0.0.56"
     $serv49 = "10.0.0.49"
     $user = "lvilla"
-    $pass = "lv..2021"
+    #$pass = "lv..2021"
+    $pass = "L2v2..20&25.#"
     $pass49 = "L2v2..20&25.#"
     $database = "ProyFidens"
     $database49 = "master"
-    $connString102 = "Server=$serv102;Database=$database;User ID=$user;Password=$pass;TrustServerCertificate=True;"
+    $connString56 = "Server=$serv56;Database=$database;User ID=$user;Password=$pass;TrustServerCertificate=True;"
     $connString49 = "Server=$serv49;Database=$database49;User ID=$user;Password=$pass49;TrustServerCertificate=True;"
     # Si es un exito verificar si existe duplicado ASIGNADO con mismo servidor, base, usuario y tipoacceso
     $query49 = @"
@@ -176,7 +177,7 @@ foreach ($bd in $BaseDato) {
       $prevCodUser = $asignadosPrev["CodUser"]
       $prevCodUser = $prevCodUser -replace "'", "''"
       $prevExpira = $asignadosPrev["Expira"]
-      # Al existir ubicarlo en finalizado en 102 el duplicado
+      # Al existir ubicarlo en finalizado en 56 el duplicado
       $sqlDelDupli49 = @"
     UPDATE master.dbo.infraAccesosAzure
         SET Estado = 'REVOCADO', Revocado = GETDATE(), Observacion='FORZADO REVOCADO'
@@ -189,7 +190,7 @@ foreach ($bd in $BaseDato) {
         Write-Host "No se revoco nada del 49 por duplicidad."
       }
 
-      $sqlPrevRev102 = @"
+      $sqlPrevRev56 = @"
         SELECT TOP 1 AAC_IDENAAC AS NUMREG, AGE_SEG_CODIGO AS CODUSER, SRV.ASE_IPPRIVADA AS IPPRIV,
       SRV.ASE_DESCRIPCION AS SERVERNAME, LOWER(USR.TXT_ACC) AS USUARIO, CTA.ADM_IDPROY AS IDBD,
       CTA.AAC_PERSMISO AS PERMISO,
@@ -208,16 +209,16 @@ foreach ($bd in $BaseDato) {
     AND SRV.ASE_DESCRIPCION LIKE 'sql-ginger.database.windows.net'
     ORDER BY AAC_IDENAAC DESC;
 "@
-      # Write-Host $sqlPrevRev102
-      $finalizadoPrevios = Invoke-Sqlcmd -Query $sqlPrevRev102 -ConnectionString $connString102
+      # Write-Host $sqlPrevRev56
+      $finalizadoPrevios = Invoke-Sqlcmd -Query $sqlPrevRev56 -ConnectionString $connString56
       if ($null -eq $finalizadoPrevios) {
-        Write-Host "No existió registros por finalizar en 102" -ForegroundColor DarkRed
+        Write-Host "No existió registros por finalizar en 56" -ForegroundColor DarkRed
       }
       else {
         $prevNumReg = $finalizadoPrevios["NUMREG"]
         $prevCodUser = $finalizadoPrevios["CODUSER"]
 
-        $sqlFinalDupli102 = @"
+        $sqlFinalDupli56 = @"
   UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
       SET ESTADO = 3
     WHERE AAC_IDENAAC = $prevNumReg AND ESTADO IN (2,3);
@@ -226,10 +227,10 @@ foreach ($bd in $BaseDato) {
 
     SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $prevNumReg;
 "@
-        # Write-Host $sqlFinalDupli102 
-        $finalizadoDupli = Invoke-Sqlcmd -Query $sqlFinalDupli102 -ConnectionString $connString102
+        # Write-Host $sqlFinalDupli56 
+        $finalizadoDupli = Invoke-Sqlcmd -Query $sqlFinalDupli56 -ConnectionString $connString56
         if ($null -eq $finalizadoDupli -or $finalizadoDupli.Count -eq 0) {
-          Write-Host "No se pudo finalizar en 102 el $prevNumReg" -ForegroundColor Magenta
+          Write-Host "No se pudo finalizar en 56 el $prevNumReg" -ForegroundColor Magenta
         }
       }
     }
@@ -253,7 +254,7 @@ foreach ($bd in $BaseDato) {
     else {
       $idAzure = $asignados["idAzure"]
       # Asignar el item presente con fecha de expiración
-      $sqlEjecutado102 = @"
+      $sqlEjecutado56 = @"
   UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
 	  SET ESTADO = 2
   WHERE AAC_IDENAAC = $NumReg AND ESTADO = 1;
@@ -262,10 +263,10 @@ foreach ($bd in $BaseDato) {
 
   SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $NumReg;
 "@
-      # Write-Host $sqlEjecutado102
-      $play102 = Invoke-Sqlcmd -Query $sqlEjecutado102 -ConnectionString $connString102
-      if (-not $play102 -or $play102.Count -eq 0) {
-        Write-Host "No se pudo Ejecutar en 102 el Numreg: $NumReg" -ForegroundColor Magenta
+      # Write-Host $sqlEjecutado56
+      $play56 = Invoke-Sqlcmd -Query $sqlEjecutado56 -ConnectionString $connString56
+      if (-not $play56 -or $play56.Count -eq 0) {
+        Write-Host "No se pudo Ejecutar en 56 el Numreg: $NumReg" -ForegroundColor Magenta
       }
       else {
         Write-Host "-----------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow

@@ -309,11 +309,11 @@ function Gestionar-GrupoRemoto {
         # OBTENER CONTRASEÑA SEGÚN ÚLTIMO OCTETO
         # ============================================================
         $ServidorSQL = "10.0.0.49"
-        $servSqlFidens = "10.0.0.102"
+        $servSqlFidens = "10.0.0.56"
         $BdRepo = "master"
         $UsrSql = "lvilla"
         $Pass = "L2v2..20&25.#"
-        $PassFidens = "lv..2021"
+        $PassFidens = "L2v2..20&25.#"
         $Conn = "Server=$ServidorSQL;Database=$BdRepo;User ID=$UsrSql;Password=$Pass;TrustServerCertificate=True;"
         $ConnProyFidens = "Server=$servSqlFidens;Database=$BdRepo;User ID=$UsrSql;Password=$PassFidens;TrustServerCertificate=True;"
 
@@ -324,20 +324,20 @@ function Gestionar-GrupoRemoto {
         }
         
         # Validar duplicidad y no revocar si ya existe asignado
-        #    102 Previamente buscar requerimiento 102 para ver si existe o no una solicitud para cotegarla
+        #    56 Previamente buscar requerimiento 56 para ver si existe o no una solicitud para cotegarla
         #       Recibe FechaFin DATETIME, NumReg INT y CodUser VARCHAR(5)
-        $sql102 = @"
+        $sql56 = @"
 EXEC dbo.rdu_infraProyFidensSolicitadosRDU
 	@User = '$UsuarioOriginal',
 	@Serv = '$Server',
 	@Grup = 'RDP',
     @SubPry = NULL;
 "@
-        # Write-Host $sql102 -foregroundColor Cyan
-        $consulta102 = Invoke-Sqlcmd -Query $sql102 -ConnectionString $ConnProyFidens
-        if (-not $consulta102) {
-            Write-Host "[$servSqlFidens rdpAdd] No hay referencias en 102.ProyFidens. Operación sin origen." -ForegroundColor Magenta
-            Write-ServerLog -Server $servSqlFidens -Message "[$servSqlFidens rdpAdd] No hay referencia en 102.ProyFidens. Operacion sin origen"
+        # Write-Host $sql56 -foregroundColor Cyan
+        $consulta56 = Invoke-Sqlcmd -Query $sql56 -ConnectionString $ConnProyFidens
+        if (-not $consulta56) {
+            Write-Host "[$servSqlFidens rdpAdd] No hay referencias en 56.ProyFidens. Operación sin origen." -ForegroundColor Magenta
+            Write-ServerLog -Server $servSqlFidens -Message "[$servSqlFidens rdpAdd] No hay referencia en 56.ProyFidens. Operacion sin origen"
             $pryFidFechaFin = "NULL"
             $pryFidNumReg = "NULL"
             $pryFidCodUser = "NULL"
@@ -346,10 +346,10 @@ EXEC dbo.rdu_infraProyFidensSolicitadosRDU
             $CodUser = "NULL"
         }
         else {
-            #$Write-Host "[$servSqlFidens rdpAdd] Hay referencias en ProyFidens del Servidor 102. Depende de NumReg" -ForegroundColor Green
-            $pryFechaFin = ConvertirToValorSql($consulta102["FechaFin"])
-            $pryFidNumReg = ConvertirToValorSql($consulta102["NumReg"])
-            $pryFidCodUser = ConvertirToValorSql($consulta102["CodUser"])
+            #$Write-Host "[$servSqlFidens rdpAdd] Hay referencias en ProyFidens del Servidor 56. Depende de NumReg" -ForegroundColor Green
+            $pryFechaFin = ConvertirToValorSql($consulta56["FechaFin"])
+            $pryFidNumReg = ConvertirToValorSql($consulta56["NumReg"])
+            $pryFidCodUser = ConvertirToValorSql($consulta56["CodUser"])
             $fechaFin = $pryFechaFin
             $ExpiraSql = "$fechaFin"
             $NumReg = $pryFidNumReg
@@ -400,11 +400,11 @@ EXEC dbo.rdu_infra_duplicado_permiso_RDU
             #$dupId = [int]$duplica49.Id
 
             if ($null -eq $dupNumReg -or $dupNumReg -is [System.DBNull]) {
-                Write-Host "NO DUPLICADO dupNumReg genera null no se registra 102.pryFidens" -ForegroundColor Green
+                Write-Host "NO DUPLICADO dupNumReg genera null no se registra 56.ProyFidens" -ForegroundColor Green
             }
             else {
                 if ($dupDuplicado -eq 1) {
-                    # Registra estado FINALIZADO al duplicado existente en 102.proyFidens
+                    # Registra estado FINALIZADO al duplicado existente en 56.proyFidens
                     $sqlDupliFinaliza = @"
 EXEC rdu_infraProyectoFidensRegistrarEstado
 	@NumReg = $dupNumReg,
@@ -415,8 +415,8 @@ EXEC rdu_infraProyectoFidensRegistrarEstado
                     # Write-Host $sqlDupliFinaliza
                     $rduEstadoDupliFinalizado = Invoke-Sqlcmd -Query $sqlDupliFinaliza -ConnectionString $ConnProyFidens
                     if (-not $rduEstadoDupliFinalizado) {
-                        Write-Host "Error inesperado al intentar registrar estado FINALIZADO 102.rdu_infraProyectoFidensRegistrarEstado por Duplicado."
-                        Write-ServerLog "Error inesperado al intentar registrar estado SOLICITADO con rdpAdd 102.rdu_infraProyectoFidensRegistrarEstado"
+                        Write-Host "Error inesperado al intentar registrar estado FINALIZADO 56.rdu_infraProyectoFidensRegistrarEstado por Duplicado."
+                        Write-ServerLog "Error inesperado al intentar registrar estado SOLICITADO con rdpAdd 56.rdu_infraProyectoFidensRegistrarEstado"
                     }
                     else {
                         $FueDuplicado = ""
@@ -590,8 +590,8 @@ EXEC rdu_infraProyectoFidensRegistrarEstado
                 # Write-Host $queryProyFidens
                 $rduEstado = Invoke-Sqlcmd -Query $queryProyFidens -ConnectionString $ConnProyFidens
                 if (-not $rduEstado) {
-                    Write-Host "Error inesperado al intentar registrar estado SOLICITADO 102.rdu_infraProyectoFidensRegistrarEstado"
-                    Write-ServerLog "Error inesperado al intentar registrar estado SOLICITADO con rdpAdd 102.rdu_infraProyectoFidensRegistrarEstado"
+                    Write-Host "Error inesperado al intentar registrar estado SOLICITADO 56.rdu_infraProyectoFidensRegistrarEstado"
+                    Write-ServerLog "Error inesperado al intentar registrar estado SOLICITADO con rdpAdd 56.rdu_infraProyectoFidensRegistrarEstado"
                 }
                 else {
                     $FueDuplicado = ""
@@ -650,7 +650,7 @@ EXEC rdu_infraProyectoFidensRegistrarEstado
 # LOOP PRINCIPAL
 # ==================================================================
 # 1) Unir servidores manuales y los de ServerList
-$servidoresTotales = ( @("10.0.0.49", "10.0.0.102") + $ServerList) | Sort-Object -Unique
+$servidoresTotales = ( @("10.0.0.49", "10.0.0.56") + $ServerList) | Sort-Object -Unique
 # 2) Limpiar la lista → quitar vacíos, espacios y duplicados
 $servidoresFinal = $servidoresTotales | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Unique
 # 3) Sincronizar credenciales una sola vez para todos
@@ -676,5 +676,5 @@ foreach ($srv in $ServerList) {
 #Write-Host "Proceso de asignacion de permiso concluido." -ForegroundColor Cyan
 Write-Host "* * * = = = - - - Proceso de asignacion de permiso concluido - - - = = = * * *`n`n" -ForegroundColor Yellow
 
-#$server = "10.0.0.102"
+#$server = "10.0.0.56"
 #mstsc /v:$server

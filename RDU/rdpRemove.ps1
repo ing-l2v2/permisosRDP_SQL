@@ -278,11 +278,11 @@ function Gestionar-GrupoRemoto {
         $UsuarioOriginal = $Usuario
 
         $ServidorSQL = "10.0.0.49"
-        $servSqlFidens = "10.0.0.102"
+        $servSqlFidens = "10.0.0.56"
         $BdRepo = "master"
         $UsrSql = "lvilla"
         $Pass = "L2v2..20&25.#"
-        $PassFidens = "lv..2021"
+        $PassFidens = "L2v2..20&25.#"   # Para acceso a ProyFidens 10.0.0.56
         $Conn = "Server=$ServidorSQL;Database=$BdRepo;User ID=$UsrSql;Password=$Pass;TrustServerCertificate=True;"
         $ConnProyFidens = "Server=$servSqlFidens;Database=$BdRepo;User ID=$UsrSql;Password=$PassFidens;TrustServerCertificate=True;"
 
@@ -372,7 +372,7 @@ EXEC dbo.rdu_infraRegistrarRevocacionRDU
                 # Write-Host "[$Server rdpRemove] SP ejecutado rdu_infraRegistrarRevocacionRDU" -ForegroundColor Cyan
                 # Write-ServerLog -Server $Server -Message "[$Server rdpRemove] SP ejecutado rdu_infraRegistrarRevocacionRDU"
                 if (-not $removidosPermisos) {
-                    Write-Host "[$ServidorSQL rdpRemove] No hay referencias no se actualizara 102.ProyFidens por 49." -ForegroundColor Yellow
+                    Write-Host "[$ServidorSQL rdpRemove] No hay referencias no se actualizara 56.ProyFidens por 49." -ForegroundColor Yellow
                     $NumReg = "NULL"
                     $CodUser = "NULL"
                     $idAcceso = "NULL"
@@ -384,7 +384,7 @@ EXEC dbo.rdu_infraRegistrarRevocacionRDU
                     $NumReg = ConvertirToValorSql($removidosPermisos["NumReg"])
                     $CodUser = ConvertirToValorSql($removidosPermisos["CodUser"])
                     $idAcceso = ConvertirToValorSql($removidosPermisos["Id"])
-                    # Write-Host "[DEBUG $ServidorSQL rdpRemove] Referencias para actualizar 102.ProyFidens. NumReg $NumReg, CodUser $CodUser, Id $idAcceso" -ForegroundColor Yellow
+                    # Write-Host "[DEBUG $ServidorSQL rdpRemove] Referencias para actualizar 56.ProyFidens. NumReg $NumReg, CodUser $CodUser, Id $idAcceso" -ForegroundColor Yellow
                     #    if ($NumReg -eq $null -or $NumReg -eq "" -or $NumReg -eq "NULL" -or $removidosPermisos -is [System.DBNull] -or  $Cod_User -eq $null -or $Cod_User -eq "" -or $CodUser -eq "NULL" -or $removidosPermisos.CodUser -is [System.DBNull] ) {
                     if ($NumReg -is [System.DBNull] -or $null -eq $NumReg -or $NumReg -eq "" -or $NumReg -eq "NULL") {
                         Write-Host "[$ServidorSQL rdpRemove] No se asigna estado REVOCADO por NumReg NULL, revisar nombre de usuario FIDENSLAT O LOCAL." -ForegroundColor Magenta
@@ -406,7 +406,7 @@ EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
                         Write-Host $SqlProyFidens
                         $revocado = Invoke-Sqlcmd -Query $SqlProyFidens -ConnectionString $ConnProyFidens
                         if (-not $revocado ) {
-                            Write-Host "Sin referencia para actualizar ESTADO Finalizado en 102.ProyFidens." -ForegroundColor Red
+                            Write-Host "Sin referencia para actualizar ESTADO Finalizado en 56.ProyFidens." -ForegroundColor Red
                         }
                         else {
                             $revNumReg = ConvertirToValorSql($revocado["NumReg"])
@@ -468,7 +468,7 @@ EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
 # LOOP PRINCIPAL
 # ==================================================================
 # 1) Unir servidores manuales y los de ServerList
-$servidoresTotales = ( @("10.0.0.49", "10.0.0.102") + $ServerList ) | Sort-Object -Unique
+$servidoresTotales = ( @("10.0.0.49", "10.0.0.56") + $ServerList ) | Sort-Object -Unique
 # 2) Limpiar la lista → quitar vacíos, espacios y duplicados
 $servidoresFinal = $servidoresTotales |
 Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Unique
@@ -492,5 +492,5 @@ foreach ($srv in $ServerList) {
 }
 Write-Host "`nProceso finalizado." -ForegroundColor Cyan
 
-#cmdkey /delete:TERMSRV/10.0.0.102
-#Write-Log "Credencial RDP removida para 10.0.0.102"
+#cmdkey /delete:TERMSRV/10.0.0.56
+#Write-Log "Credencial RDP removida para 10.0.0.56"

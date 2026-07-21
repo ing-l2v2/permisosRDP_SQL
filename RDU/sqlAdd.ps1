@@ -8,12 +8,12 @@
     [Nullable[datetime]]$Expira
 )
 . "$PSScriptRoot\ServidoresCredenciales.ps1"
-$servidoresVerificados = @("10.0.0.102")
+$servidoresVerificados = @("10.0.0.56")
 # Sync-RemoteCredencialGrupo -Servidores $servidoresVerificados
 
 $TipoAcceso = $TipoAcceso.ToUpper()
 #$servSql = "10.0.0.49"
-$servSqlFidens = "10.0.0.102"
+$servSqlFidens = "10.0.0.56"
 $accesoSql = "10.0.0.$Serv"
 
 $servidoresVerificados = ($servidoresVerificados + $accesoSql) | Sort-Object -Unique
@@ -32,7 +32,7 @@ foreach ($cmdServ in $servidoresVerificados) {
 $BdRepo = "master"
 $UsrSql = "lvilla"
 #$Pass49 = "L2v2..20&25.#"
-$PassFidens = "lv..2021"
+$PassFidens = "L2v2..20&25.#"   # Servidor 10.0.0.56
 switch ($Serv) {
     { $_ -in "49", "56" } { $Pass = "L2v2..20&25.#" }
     { $_ -in "61", "77", "80", "86", "102" } { $Pass = "lv..2021" }
@@ -198,8 +198,8 @@ else {
     $ExpiraSql = "'" + $Expira.ToString("yyyy-MM-dd HH:mm:ss") + "'"
 }
 
-# Write-Host "[DEBUG::$servSqlFidens sqlAdd] Procediendo en 102 Usr: $Usr, accesoSql: $accesoSql, BaseDatoSql: $BaseDatoSql :: rdu_infraProyFidensSolicitadosRDU"
-# Toma informacion de AdminFidens 102
+# Write-Host "[DEBUG::$servSqlFidens sqlAdd] Procediendo en 56 Usr: $Usr, accesoSql: $accesoSql, BaseDatoSql: $BaseDatoSql :: rdu_infraProyFidensSolicitadosRDU"
+# Toma informacion de AdminFidens 56
 $QuerySqlFidens = @"
 EXEC dbo.rdu_infraProyFidensSolicitadosRDU
 	@User = '$Usr',
@@ -210,7 +210,7 @@ EXEC dbo.rdu_infraProyFidensSolicitadosRDU
 # Write-Host $QuerySqlFidens -foregroundColor White
 $solicitados = Invoke-Sqlcmd -Query $QuerySqlFidens -ConnectionString $ConnProyFidens
 if (-not $solicitados) {
-    Write-Host "[$servSqlFidens sqlAdd] No hay referencias 102.ProyFidens. Puede ser por fecha de inicio." -ForegroundColor Yellow
+    Write-Host "[$servSqlFidens sqlAdd] No hay referencias 56.ProyFidens. Puede ser por fecha de inicio." -ForegroundColor Yellow
     $FechaFin = $ExpiraSql
     $NumReg = "NULL"
     $CodUser = "NULL"
@@ -219,7 +219,7 @@ else {
     $NumReg = ConvertirToValorSql($solicitados["NumReg"])
     $CodUser = ConvertirToValorSql($solicitados["CodUser"])
     $FechaFin = ConvertirToValorSql($solicitados["FechaFin"])
-    # Write-Host "[$servSqlFidens sqlAdd] Hubo referencias desde ProyFidens 102. fechaFin = $FechaFin ( $FechaFin.GetType().name ), NumReg = $NumReg ( $NumReg.GetType().name ), CodUser = $CodUser ( $CodUser.GetType().name )" -ForegroundColor Yellow 
+    # Write-Host "[$servSqlFidens sqlAdd] Hubo referencias desde ProyFidens 56. fechaFin = $FechaFin ( $FechaFin.GetType().name ), NumReg = $NumReg ( $NumReg.GetType().name ), CodUser = $CodUser ( $CodUser.GetType().name )" -ForegroundColor Yellow 
 }
 
 # Write-Host "[DEBUG $accesoSql sqlAdd] Procediendo en 49 Usuario: $Usr, TipoAcceso: $TipoAcceso, BaseDatoSql: $BaseDatoSql, DuraHorasSql: $DuraHorasSql, ExpiraSql: $ExpiraSql, NumReg: $NumReg :: sp_infra_ini_asignar_permiso_temporal" -ForegroundColor Green
@@ -246,7 +246,7 @@ if (-not $asignoPermisoTemporal) {
 }
 else {
     # Write-Host "[$accesoSql sqlAdd] Permiso asignado. NumRef = $NumReg" -ForegroundColor Green
-    # Write-Host "[$servSqlFidens sqlAdd] Actualiza  en 102 NumReg: $NumReg, Estado: 2 :: rdu_infraProyectoFidensRegistrarEstado" -ForegroundColor Green
+    # Write-Host "[$servSqlFidens sqlAdd] Actualiza  en 56 NumReg: $NumReg, Estado: 2 :: rdu_infraProyectoFidensRegistrarEstado" -ForegroundColor Green
     $refBD = @()
     foreach ($filaTemporal in $asignoPermisoTemporal) {
         $FechaUpd = ConvertirToValorSql($filaTemporal["FechaFin"])
@@ -282,7 +282,7 @@ EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
         try {
             $proyFidens = Invoke-Sqlcmd -Query $queryProyFidens -ConnectionString $ConnProyFidens
             if (-not $proyFidens) {
-                Write-Host "Sin  referencias para actualizar ESTADO $Estado en ProyFidens 102." -ForegroundColor Red
+                Write-Host "Sin  referencias para actualizar ESTADO $Estado en ProyFidens 56." -ForegroundColor Red
             }
             else {
                 $NumRegPry = ConvertirToValorSql($proyFidens["NumReg"])

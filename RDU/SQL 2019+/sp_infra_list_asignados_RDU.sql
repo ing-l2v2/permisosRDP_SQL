@@ -10,7 +10,7 @@ GO
 --
 -- This block of comments will not be included in
 -- the definition of the procedure.
--- EXEC dbo.sp_infra_list_asignados_RDU 'REVOCADO'
+-- EXEC master.dbo.sp_infra_list_asignados_RDU 'SOLICITADO'
 -- ================================================
 SET ANSI_NULLS ON
 GO
