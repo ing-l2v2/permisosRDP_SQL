@@ -2,11 +2,12 @@ $BdRepo49 = "master"
 $UsrSql = "lvilla"
 $Pass49 = "L2v2..20&25.#"
 $serv49 = "10.0.0.49"
-$BdRepo102 = "ProyFidens"
-$serv102 = "10.0.0.102"
-$Pass102 = "lv..2021"
-$ConCentral = "Server=$Serv49;Database=$BdRepo49;User ID=$UsrSql;Password=$Pass49;TrustServerCertificate=True";
-$Con102 = "Server=$serv102;Database=$BdRepo102;User ID=$UsrSql;Password=$Pass102;TrustServerCertificate=True";
+$BdRepo56 = "ProyFidens"
+$serv56 = "10.0.0.56"
+$Pass56 = "L2v2..20&25.#"
+$Connect49 = "Server=$Serv49;Database=$BdRepo49;User ID=$UsrSql;Password=$Pass49;TrustServerCertificate=True";
+$Connect56 = "Server=$serv56;Database=$BdRepo56;User ID=$UsrSql;Password=$Pass56;TrustServerCertificate=True";
+$NumRegDup = 0
 
 $inicioProc = Get-Date
 
@@ -20,7 +21,7 @@ SELECT IdAzure, Servidor, Usuario, PermisoAsignado, BaseDatos, NumReg, CodUser, 
 "@
 
 # Write-Host $sql49
-$expirados = Invoke-Sqlcmd -Query $sql49 -ConnectionString $ConCentral
+$expirados = Invoke-Sqlcmd -Query $sql49 -ConnectionString $Connect49
 
 
 if (-not $expirados -or $expirados.Count -eq 0) {
@@ -64,16 +65,25 @@ else {
     $NumReg = [int]$row["NumReg"]
     $CodUser = $row["CodUser"]
 
-    $sql102Fin = @"
+    $sql56Fin = @"
 UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
   SET ESTADO = 3
   WHERE AAC_IDENAAC = $NumReg AND ESTADO IN (2,3);  
-  EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$CodUser', $NumReg;
   SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $NumReg;
-"@   
-    # Write-Host $sql102Fin 
-    $finaliza102 = Invoke-Sqlcmd -Query $sql102Fin -ConnectionString $Con102
-    if (-not $finaliza102 -or $finaliza102.Count -eq 0) {
+"@  
+
+    if ($NumReg -ne $NumRegDup) {
+      $sqlCorreoSend = @"
+  EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$CodUser', $NumReg;
+  "@
+      Write-Host $sqlCorreoSend 
+      Invoke-Sqlcmd -Query $sqlCorreoSend -ConnectionString $Connect56
+      $NumRegDup = $NumReg
+    }
+
+    # Write-Host $sql56Fin 
+    $finaliza56 = Invoke-Sqlcmd -Query $sql56Fin -ConnectionString $Connect56
+    if (-not $finaliza56 -or $finaliza56.Count -eq 0) {
       Write-Host "No se pudo finalizar en Fidens para NumReg $NumReg"
     }
     else {
@@ -85,7 +95,7 @@ UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
     SELECT * FROM dbo.infraAccesosAzure WHERE IdAzure = $IdAzure;
 "@
       # Write-Host $sql49Fin
-      $finaliza49 = Invoke-Sqlcmd -Query $sql49Fin -ConnectionString $ConCentral
+      $finaliza49 = Invoke-Sqlcmd -Query $sql49Fin -ConnectionString $Connect49
       if (-not $finaliza49 -or $finaliza49.Count -eq 0 -or $Permiso -eq "") {
         Write-Host "No se pudo finalizar en 49 para NumReg $NumReg"
       }

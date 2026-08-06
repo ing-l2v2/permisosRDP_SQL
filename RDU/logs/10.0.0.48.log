@@ -37,3 +37,8 @@
 2026-07-13 14:51:56 | Proceso completado Ok. FIDENSLAT\kcuenca en 'Administrators', NumReg: 18108, Estado: '2', Expira: '2026-07-14 00:00', HoraExpira: '2026-07-13 21:00'
 2026-07-14 12:17:00 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Administrators', NumReg: 18121, Estado: '2', Expira: '2026-07-16 00:00', HoraExpira: '2026-07-14 13:00'
 2026-07-21 16:29:44 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Administrators', NumReg: 18181, Estado: '2', Expira: '2026-07-23 00:00', HoraExpira: '2026-07-21 17:00'
+2026-07-31 10:16:30 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Administrators', NumReg: 18258, Estado: '2', Expira: '2026-07-31 00:00', HoraExpira: '2026-07-31 23:00'
+2026-08-03 13:29:19 | [10.0.0.48 rdpAdd] ERROR SP → rollback rdu_infraRegistrarAsignacionRDU
+2026-08-03 13:29:23 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-08-03 14:31:03 | Proceso completado Ok. FIDENSLAT\jcarrera en 'Remote Desktop Users', NumReg: 18306, Estado: '2', Expira: '2026-08-05 00:00', HoraExpira: '2026-08-03 15:00'
+2026-08-03 14:44:45 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Administrators', NumReg: 18307, Estado: '2', Expira: '2026-08-05 00:00', HoraExpira: '2026-08-03 15:00'

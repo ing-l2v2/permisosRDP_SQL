@@ -89,7 +89,7 @@ foreach ($bd in $BaseDato) {
   Write-Host "`n>>> Procesando base: $bd" -ForegroundColor Magenta
 
   # Conexión
-  $Conn = "Server=tcp:$Servidor,1433;Database=$bd;User ID=csilva;Password=Ohdef_1007;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  $ConnectGinger = "Server=tcp:$Servidor,1433;Database=$bd;User ID=csilva;Password=Ohdef_1007;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 
   # Crear usuario si no existe en la base
   $Check = @"
@@ -107,7 +107,7 @@ foreach ($bd in $BaseDato) {
 "@
 
 
-  $usrEstatus = Invoke-Sqlcmd -Query $Check -ConnectionString $Conn
+  $usrEstatus = Invoke-Sqlcmd -Query $Check -ConnectionString $ConnectGinger
   if ($usrEstatus -eq 1) {
     Write-Host "Usuario $Usr agregado a la base de datos $bd" -ForegroundColor Yellow
   }
@@ -128,7 +128,7 @@ foreach ($bd in $BaseDato) {
     
     # Write-Host "Aplicando: $sql" -ForegroundColor Yellow
     try {
-      Invoke-Sqlcmd -Query $sql -ConnectionString $Conn
+      Invoke-Sqlcmd -Query $sql -ConnectionString $ConnectGinger
       # Write-Host ">>> Permisos aplicados en $bd" -ForegroundColor Green
       
       Write-AzureLog ".\sqlAzAdd.ps1 -Servidor `"$Servidor`" -BaseDato `"$bd`" -Usr `"$Usr`" -TipoAcceso `"$TipoAcceso`" -NumReg $NumReg -CodUser `"$CodUser`" -Expira `"$Expira`" "  
@@ -151,8 +151,10 @@ foreach ($bd in $BaseDato) {
     $pass49 = "L2v2..20&25.#"
     $database = "ProyFidens"
     $database49 = "master"
-    $connString56 = "Server=$serv56;Database=$database;User ID=$user;Password=$pass;TrustServerCertificate=True;"
-    $connString49 = "Server=$serv49;Database=$database49;User ID=$user;Password=$pass49;TrustServerCertificate=True;"
+    $prevNumRegDup = 0
+    $NumRegDup = 0
+    $Connect56 = "Server=$serv56;Database=$database;User ID=$user;Password=$pass;TrustServerCertificate=True;"
+    $Connect49 = "Server=$serv49;Database=$database49;User ID=$user;Password=$pass49;TrustServerCertificate=True;"
     # Si es un exito verificar si existe duplicado ASIGNADO con mismo servidor, base, usuario y tipoacceso
     $query49 = @"
         SELECT TOP 1 IdAzure, Servidor, Usuario, PermisoAsignado, BaseDatos, Estado, Expira, NumReg, CodUser 
@@ -165,7 +167,7 @@ foreach ($bd in $BaseDato) {
         ORDER BY Estado ASC;
 "@
     # Write-Host $query49
-    $asignadosPrev = Invoke-Sqlcmd -Query $query49 -ConnectionString $connString49
+    $asignadosPrev = Invoke-Sqlcmd -Query $query49 -ConnectionString $Connect49
     #Write-Host "Tipo devuelto:" $asignadosPrev.GetType().FullName
     #Write-Host "Cantidad registros:" $asignadosPrev.Count
     if ($null -eq $asignadosPrev -or $asignadosPrev.Count -eq 0) {
@@ -185,7 +187,7 @@ foreach ($bd in $BaseDato) {
     SELECT * FROM master.dbo.infraAccesosAzure WHERE NumReg = $prevNumReg;
 "@        
       # Write-Host $sqlDelDupli49
-      $revocadoDupli49 = Invoke-Sqlcmd -Query $sqlDelDupli49 -ConnectionString $connString49
+      $revocadoDupli49 = Invoke-Sqlcmd -Query $sqlDelDupli49 -ConnectionString $Connect49
       if ($null -eq $revocadoDupli49 -or $revocadoDupli49.Count -eq 0) {
         Write-Host "No se revoco nada del 49 por duplicidad."
       }
@@ -210,7 +212,7 @@ foreach ($bd in $BaseDato) {
     ORDER BY AAC_IDENAAC DESC;
 "@
       # Write-Host $sqlPrevRev56
-      $finalizadoPrevios = Invoke-Sqlcmd -Query $sqlPrevRev56 -ConnectionString $connString56
+      $finalizadoPrevios = Invoke-Sqlcmd -Query $sqlPrevRev56 -ConnectionString $Connect56
       if ($null -eq $finalizadoPrevios) {
         Write-Host "No existió registros por finalizar en 56" -ForegroundColor DarkRed
       }
@@ -221,14 +223,22 @@ foreach ($bd in $BaseDato) {
         $sqlFinalDupli56 = @"
   UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
       SET ESTADO = 3
-    WHERE AAC_IDENAAC = $prevNumReg AND ESTADO IN (2,3);
-  
-    EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$prevCodUser', $prevNumReg;
-
+    WHERE AAC_IDENAAC = $prevNumReg AND ESTADO IN (2,3);  
+ 
     SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $prevNumReg;
 "@
+
+        if ($prevNumReg -ne $prevNumRegDup) {
+          $sqlCorreoSend56 = @"
+  EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$prevCodUser', $prevNumReg;
+"@
+          Write-Host $sqlCorreoSend56 
+          invoke-Sqlcmd -Query $sqlCorreoSend56 -ConnectionString $Connect56
+          $prevNumRegDup = $prevNumReg
+        }
+
         # Write-Host $sqlFinalDupli56 
-        $finalizadoDupli = Invoke-Sqlcmd -Query $sqlFinalDupli56 -ConnectionString $connString56
+        $finalizadoDupli = Invoke-Sqlcmd -Query $sqlFinalDupli56 -ConnectionString $Connect56
         if ($null -eq $finalizadoDupli -or $finalizadoDupli.Count -eq 0) {
           Write-Host "No se pudo finalizar en 56 el $prevNumReg" -ForegroundColor Magenta
         }
@@ -247,7 +257,7 @@ foreach ($bd in $BaseDato) {
         ORDER BY Estado ASC;
 "@
     # Write-Host $sql49
-    $asignados = Invoke-Sqlcmd -Query $sql49 -ConnectionString $connString49
+    $asignados = Invoke-Sqlcmd -Query $sql49 -ConnectionString $Connect49
     if (-not $asignados) {
       Write-Host "No se registro como ASIGNADO" -ForegroundColor Magenta
     }
@@ -259,12 +269,23 @@ foreach ($bd in $BaseDato) {
 	  SET ESTADO = 2
   WHERE AAC_IDENAAC = $NumReg AND ESTADO = 1;
 
-  EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$CodUser', $NumReg;
-
   SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $NumReg;
 "@
+
+      if ($NumReg -ne $NumRegDup) {
+        $sqlCorreoSend = @"
+  EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$CodUser', $NumReg;
+"@
+        Write-Host $sqlCorreoSend
+        if ([string]::IsNullOrWhiteSpace($Connect56)) {
+          Write-Host "connString56 está vacía." -ForegroundColor Magenta
+        }
+        Invoke-Sqlcmd -Query $sqlCorreoSend -ConnectionString $Connect56
+        $NumRegDup = $NumReg
+      }
+      
       # Write-Host $sqlEjecutado56
-      $play56 = Invoke-Sqlcmd -Query $sqlEjecutado56 -ConnectionString $connString56
+      $play56 = Invoke-Sqlcmd -Query $sqlEjecutado56 -ConnectionString $Connect56
       if (-not $play56 -or $play56.Count -eq 0) {
         Write-Host "No se pudo Ejecutar en 56 el Numreg: $NumReg" -ForegroundColor Magenta
       }
