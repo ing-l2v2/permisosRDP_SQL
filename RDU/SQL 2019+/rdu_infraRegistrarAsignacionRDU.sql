@@ -1,7 +1,8 @@
 ﻿/*
     ALTER TABLE infraAccesosTempRDU
       ADD CodUser VARCHAR(5) NULL
-    EXEC dbo.rdu_infraRegistrarAsignacionRDU 'FIDENSLAT\ecordova','10.0.0.61',"Remote Desktop Users", 48, NULL, NULL, NULL;
+    EXEC dbo.rdu_infraRegistrarAsignacionRDU 'FIDENSLAT\jtoledo','10.0.0.49',"Remote Desktop Users", 48, NULL, NULL, NULL;
+    EXEC dbo.rdu_infraRegistrarAsignacionRDU 'FIDENSLAT\jtoledo','10.0.0.49','Administrators',48,'2026-08-07 25:59',18324,'00031';
     SELECT * FROM infraAccesosTempRDU WHERE Estado='ASIGNADO' ORDER BY Id DESC
     SELECT * FROM infraAccesosTempRDU WHERE NumReg=16897
     UPDATE dbo.infraAccesosTempRDU SET Estado = 'ASIGNADO', Expira='2026-05-30 13:12', Revocado = NULL, Observacion=NULL WHERE Id IN (481, 482, 478);

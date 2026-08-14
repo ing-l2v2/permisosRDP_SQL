@@ -7,18 +7,18 @@
     [Nullable[int]]$DuracionHoras,
     [Nullable[datetime]]$Expira
 )
-. "$PSScriptRoot\ServidoresCredenciales.ps1"
+. "$PSScriptRoot\ServidoresCredenciales.ps1"    # Ubica el archivo y lo importa en el contexto actual, el archivo se encuentra en la misma carpeta que este script
 $servidoresVerificados = @("10.0.0.56")
 # Sync-RemoteCredencialGrupo -Servidores $servidoresVerificados
 
 $TipoAcceso = $TipoAcceso.ToUpper()
 #$servSql = "10.0.0.49"
-$servSqlFidens = "10.0.0.56"
-$accesoSql = "10.0.0.$Serv"
+$servSqlFidens56 = "10.0.0.56"
+$accesoSqlSource = "10.0.0.$Serv"
 
-$servidoresVerificados = ($servidoresVerificados + $accesoSql) | Sort-Object -Unique
-#Sync-RemoteCredencialGrupo -Servidores $($accesoSql)
-. "$PSScriptRoot\ServidoresCredenciales.ps1"
+$servidoresVerificados = ($servidoresVerificados + $accesoSqlSource) | Sort-Object -Unique
+#Sync-RemoteCredencialGrupo -Servidores $($accesoSqlSource)
+. "$PSScriptRoot\ServidoresCredenciales.ps1"    # Ubica el archivo y lo importa en el contexto actual, el archivo se encuentra en la misma carpeta que este script
 foreach ($cmdServ in $servidoresVerificados) {    
     $accCreds = $Global:ServidoresCredenciales[$cmdServ]
     $accUsr = $accCreds.User
@@ -29,14 +29,14 @@ foreach ($cmdServ in $servidoresVerificados) {
 }
 
 
-$BdRepo = "master"
+$BdRepoMaster = "master"
 $UsrSql = "lvilla"
 #$Pass49 = "L2v2..20&25.#"
-$PassFidens = "L2v2..20&25.#"   # Servidor 10.0.0.56
+$PassFidens56 = "L2v2..20&25.#"   # Servidor 10.0.0.56
 switch ($Serv) {
-    { $_ -in "49", "56" } { $Pass = "L2v2..20&25.#" }
-    { $_ -in "61", "77", "80", "86", "102" } { $Pass = "lv..2021" }
-    { $_ -in "15", "36", "40", "48", "54", "60", "84", "87", "101", "186", "198", "203" } { $Pass = "lv..2021" }
+    { $_ -in "49", "56" } { $PassSourceServ = "L2v2..20&25.#" }
+    { $_ -in "61", "77", "80", "86", "102" } { $PassSourceServ = "lv..2021" }
+    { $_ -in "15", "36", "40", "48", "54", "60", "84", "87", "101", "186", "198", "203" } { $PassSourceServ = "lv..2021" }
 }
 
 # ==================================================================
@@ -176,8 +176,8 @@ Write-Host "--------------------------------------------------------------------
 
 
 Import-Module SqlServer
-$ConnAcceso = "Server=$accesoSql; Database=$BdRepo; User ID=$UsrSql; Password=$Pass; TrustServerCertificate=True;"
-$ConnProyFidens = "Server=$servSqlFidens; Database=$BdRepo; User ID=$UsrSql; Password=$PassFidens; TrustServerCertificate=True;"
+$ConnAccesoSource = "Server=$accesoSqlSource; Database=$BdRepoMaster; User ID=$UsrSql; Password=$PassSourceServ; TrustServerCertificate=True;"
+$ConnProyFidens56 = "Server=$servSqlFidens56; Database=$BdRepoMaster; User ID=$UsrSql; Password=$PassFidens56; TrustServerCertificate=True;"
 
 if ($null -eq $BaseDato) {
     $BaseDatoSql = "NULL"
@@ -198,19 +198,19 @@ else {
     $ExpiraSql = "'" + $Expira.ToString("yyyy-MM-dd HH:mm:ss") + "'"
 }
 
-# Write-Host "[DEBUG::$servSqlFidens sqlAdd] Procediendo en 56 Usr: $Usr, accesoSql: $accesoSql, BaseDatoSql: $BaseDatoSql :: rdu_infraProyFidensSolicitadosRDU"
+# Write-Host "[DEBUG::$servSqlFidens56 sqlAdd] Procediendo en 56 Usr: $Usr, accesoSql: $accesoSqlSource, BaseDatoSql: $BaseDatoSql :: rdu_infraProyFidensSolicitadosRDU"
 # Toma informacion de AdminFidens 56
 $QuerySqlFidens = @"
 EXEC dbo.rdu_infraProyFidensSolicitadosRDU
 	@User = '$Usr',
-	@Serv = '$accesoSql',
+	@Serv = '$accesoSqlSource',
 	@Grup = 'SQL',
 	@SubPry = $BaseDatoSql;
 "@
 # Write-Host $QuerySqlFidens -foregroundColor White
-$solicitados = Invoke-Sqlcmd -Query $QuerySqlFidens -ConnectionString $ConnProyFidens
+$solicitados = Invoke-Sqlcmd -Query $QuerySqlFidens -ConnectionString $ConnProyFidens56
 if (-not $solicitados) {
-    Write-Host "[$servSqlFidens sqlAdd] No hay referencias 56.ProyFidens. Puede ser por fecha de inicio." -ForegroundColor Yellow
+    Write-Host "[$servSqlFidens56 sqlAdd] No hay referencias 56.ProyFidens. Puede ser por fecha de inicio." -ForegroundColor Yellow
     $FechaFin = $ExpiraSql
     $NumReg = "NULL"
     $CodUser = "NULL"
@@ -219,10 +219,10 @@ else {
     $NumReg = ConvertirToValorSql($solicitados["NumReg"])
     $CodUser = ConvertirToValorSql($solicitados["CodUser"])
     $FechaFin = ConvertirToValorSql($solicitados["FechaFin"])
-    # Write-Host "[$servSqlFidens sqlAdd] Hubo referencias desde ProyFidens 56. fechaFin = $FechaFin ( $FechaFin.GetType().name ), NumReg = $NumReg ( $NumReg.GetType().name ), CodUser = $CodUser ( $CodUser.GetType().name )" -ForegroundColor Yellow 
+    # Write-Host "[$servSqlFidens56 sqlAdd] Hubo referencias desde ProyFidens 56. fechaFin = $FechaFin ( $FechaFin.GetType().name ), NumReg = $NumReg ( $NumReg.GetType().name ), CodUser = $CodUser ( $CodUser.GetType().name )" -ForegroundColor Yellow 
 }
 
-# Write-Host "[DEBUG $accesoSql sqlAdd] Procediendo en 49 Usuario: $Usr, TipoAcceso: $TipoAcceso, BaseDatoSql: $BaseDatoSql, DuraHorasSql: $DuraHorasSql, ExpiraSql: $ExpiraSql, NumReg: $NumReg :: sp_infra_ini_asignar_permiso_temporal" -ForegroundColor Green
+# Write-Host "[DEBUG $accesoSqlSource sqlAdd] Procediendo en 49 Usuario: $Usr, TipoAcceso: $TipoAcceso, BaseDatoSql: $BaseDatoSql, DuraHorasSql: $DuraHorasSql, ExpiraSql: $ExpiraSql, NumReg: $NumReg :: sp_infra_ini_asignar_permiso_temporal" -ForegroundColor Green
 $query = @"
 EXEC dbo.sp_infra_ini_asignar_permiso_temporal 
     @Usuario = '$Usr',
@@ -234,19 +234,19 @@ EXEC dbo.sp_infra_ini_asignar_permiso_temporal
     @CodUser = $CodUser;
 "@
 
-# Write-Host "[$accesoSQL] QUERY SQL EJECUTADO:" -Foreground Green
+# Write-Host "[$accesoSqlSource] QUERY SQL EJECUTADO:" -Foreground Green
 # Write-Host $query -foregroundColor Cyan
 # Registrar asignación de permiso
-# Write-Host "[DEBUG::$accesoSql] Procesando sp_infra_ini_asignar_permiso_temporal. Usuario = $Usr" -ForegroundColor Green
-$asignoPermisoTemporal = Invoke-Sqlcmd -Query $query -ConnectionString $ConnAcceso
+# Write-Host "[DEBUG::$accesoSqlSource] Procesando sp_infra_ini_asignar_permiso_temporal. Usuario = $Usr" -ForegroundColor Green
+$asignoPermisoTemporal = Invoke-Sqlcmd -Query $query -ConnectionString $ConnAccesoSource
 if (-not $asignoPermisoTemporal) {
     #  -or !$asignoPermisoTemporal.Count
     Write-Host "Error SQL revisar asignoPermisoTemporal en sqlAdd, error en sp_infra_ini_asignar_permiso_temporal : $($asignoPermisoTemporal.ErrorMsg)" -ForegroundColor Red
     exit 1
 }
 else {
-    # Write-Host "[$accesoSql sqlAdd] Permiso asignado. NumRef = $NumReg" -ForegroundColor Green
-    # Write-Host "[$servSqlFidens sqlAdd] Actualiza  en 56 NumReg: $NumReg, Estado: 2 :: rdu_infraProyectoFidensRegistrarEstado" -ForegroundColor Green
+    # Write-Host "[$accesoSqlSource sqlAdd] Permiso asignado. NumRef = $NumReg" -ForegroundColor Green
+    # Write-Host "[$servSqlFidens56 sqlAdd] Actualiza  en 56 NumReg: $NumReg, Estado: 2 :: rdu_infraProyectoFidensRegistrarEstado" -ForegroundColor Green
     $refBD = @()
     foreach ($filaTemporal in $asignoPermisoTemporal) {
         $FechaUpd = ConvertirToValorSql($filaTemporal["FechaFin"])
@@ -261,15 +261,15 @@ else {
     # Write-Host("[DEBUG] FechaUpd $FechaUpd") -foregroundColor Red
     #    if ($NumReg -eq $null -or $NumReg -eq "" -or $NumReg -eq "NULL" -or $solicitados.NumReg -is [System.DBNull] -or  $Cod_User -eq $null -or $Cod_User -eq "" -or $CodUser -eq "NULL" -or $solicitados.CodUser -is [System.DBNull] ) {
     if ($NumReg -is [System.DBNull] -or $null -eq $NumReg -or $NumReg -eq "" -or $NumReg -eq "NULL" ) {
-        Write-Host "[$servSqlFidens sqlAdd] No se modifico estado EJECUTADO en ProyFidens por NumReg $NumReg " -ForegroundColor Magenta
+        Write-Host "[$servSqlFidens56 sqlAdd] No se modifico estado EJECUTADO en ProyFidens por NumReg $NumReg " -ForegroundColor Magenta
         Write-Host "-----------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-        Write-Host "    Permisos::[$refIdPermiso] Usuario: $Usr    Servidor: $accesoSql    BD: $lineaBd    Estado: $EstadoPry" -ForegroundColor Green
+        Write-Host "    Permisos::[$refIdPermiso] Usuario: $Usr    Servidor: $accesoSqlSource    BD: $lineaBd    Estado: $EstadoPry" -ForegroundColor Green
         Write-Host "    NumReg: $NumRegPry    CodUser: $CodUser    FechaFin: $FFIN    HFIN: $HFIN" -ForegroundColor Green
         Write-Host "-----------------------------------------------------------------------------------------------------------" -ForegroundColor Green
         Write-AzureLog ".\sqlAdd -Serv `"$Serv`" -Usr `"$Usr`" -TipoAcceso `"$TipoAcceso`" -BaseDato $BaseDato -DuracionHoras $DuracionHoras -Expira `"$Expira`" "
     }
     else {
-        Write-Host "[$servSqlFidens sqlAdd] Asignando estado EJECUTADO en NumReg $NumReg " -ForegroundColor Green
+        Write-Host "[$servSqlFidens56 sqlAdd] Asignando estado EJECUTADO en NumReg $NumReg " -ForegroundColor Green
         $queryProyFidens = @"
 EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
 	@NumReg = $NumReg,
@@ -280,7 +280,7 @@ EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
         # Write-Host "[$servProyFidens] QUERY SQL EJECUTADO:" -Foreground Green
         # Write-Host $queryProyFidens
         try {
-            $proyFidens = Invoke-Sqlcmd -Query $queryProyFidens -ConnectionString $ConnProyFidens
+            $proyFidens = Invoke-Sqlcmd -Query $queryProyFidens -ConnectionString $ConnProyFidens56
             if (-not $proyFidens) {
                 Write-Host "Sin  referencias para actualizar ESTADO $Estado en ProyFidens 56." -ForegroundColor Red
             }
@@ -296,17 +296,17 @@ EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
                 $dt = [datetime]::Parse($limpiaHFin)
                 $HoraPry = $dt.ToString("HH:mm")
                 Write-Host "-----------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-                Write-Host "    Exito ProyFidens::[$refIdPermiso] Usuario: $Usr    Servidor: $accesoSql    BD: $lineaBd    Estado: $EstadoPry" -ForegroundColor Yellow    
+                Write-Host "    Exito ProyFidens::[$refIdPermiso] Usuario: $Usr    Servidor: $accesoSqlSource    BD: $lineaBd    Estado: $EstadoPry" -ForegroundColor Yellow    
                 Write-Host "    NumReg: $NumRegPry    CodUser: $CodUser    FechaFin: $FechaPry    HFIN: $HoraPry" -ForegroundColor Yellow
                 Write-Host "===========================================================================================================`n" -ForegroundColor Yellow
                 Write-AzureLog ".\sqlAdd -Serv `"$Serv`" -Usr `"$Usr`" -TipoAcceso `"$TipoAcceso`" -BaseDato $BaseDato -DuracionHoras $DuracionHoras -Expira `"$Expira`" "
-                #                Write-Output "Resgistro ProyFidens:: Usuario: $Usr    Servidor: $accesoSql    BD: $srvBD    "
+                #                Write-Output "Resgistro ProyFidens:: Usuario: $Usr    Servidor: $accesoSqlSource    BD: $srvBD    "
                 #                Write-Output "NumReg: $NumRegPry    CodUser: $CodUser    Estado: $EstadoPry    FechaFin: $FFIN    HFIN: $HFIN"
             }
         }
         catch {
-            Write-Host "[$servSqlFidens sqlAdd] Advertencia: No se pudo registrar en ProyFidens" -ForegroundColor Cyan
-            Write-ServerLog -Server $Server -Message "[$servSqlFidens sqlAdd] Advertencia: No se registró ProyFidens [$Usuario] [$accesoSQL] [$BaseDato] [$TipoAcceso]"
+            Write-Host "[$servSqlFidens56 sqlAdd] Advertencia: No se pudo registrar en ProyFidens" -ForegroundColor Cyan
+            Write-ServerLog -Server $Server -Message "[$servSqlFidens56 sqlAdd] Advertencia: No se registró ProyFidens56 [$Usuario] [$accesoSqlSource] [$BaseDato] [$TipoAcceso]"
         }
     }
 }

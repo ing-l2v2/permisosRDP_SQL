@@ -1713,14 +1713,15 @@ function Form_Azure_DBA {
 
     $form.ShowDialog()
 }
+
 function Form_Local_DBA {
     $form = New-Object System.Windows.Forms.Form
-    $form.Text = "Informe para DBA SQL de Locales"
+    $form.Text = "Informe para DBA SQL Locales"
     $form.Size = New-Object System.Drawing.Size(270, 200)
     $form.StartPosition = "CenterScreen"
 
     $lblExplica = New-Object System.Windows.Forms.Label
-    $lblExplica.Text = "Informe para DBA de accesos a cada Base de SQL Locales"
+    $lblExplica.Text = "Informe para DBA de accesos a Bases de SQL Locales"
     $lblExplica.Location = "5,10"
     $lblExplica.Width = 250
     $form.Controls.Add($lblExplica)
@@ -1761,6 +1762,54 @@ function Form_Local_DBA {
     $form.ShowDialog()
 }
 
+function Form_Local_RDU {
+    $form = New-Object System.Windows.Forms.Form
+    $form.Text = "Informe para Infra RDU Locales"
+    $form.Size = New-Object System.Drawing.Size(270, 200)
+    $form.StartPosition = "CenterScreen"
+
+    $lblExplica = New-Object System.Windows.Forms.Label
+    $lblExplica.Text = "Informe para Infra RDU de accesos Locales"
+    $lblExplica.Location = "5,10"
+    $lblExplica.Width = 250
+    $form.Controls.Add($lblExplica)
+
+    # Botón OK
+    $btnOK = New-Object System.Windows.Forms.Button
+    $btnOK.Text = "OK"
+    $btnOK.Width = 60
+    $btnOK.Location = "40,115"
+    $form.Controls.Add($btnOK)
+
+    # Botón Cancel
+    $btnCancel = New-Object System.Windows.Forms.Button
+    $btnCancel.Text = "Cancelar"
+    $btnCancel.Width = 60
+    $btnCancel.Location = "130,115"
+
+    $btnCancel.Add_Click({
+            $form.Close()
+        })
+    $form.KeyPreview = $true
+    $form.Add_KeyDown({
+            if ($_.KeyCode -eq "Escape") {
+                $form.Close()
+            }
+        })
+    $form.Controls.Add($btnCancel)
+
+    # Acción OK
+    $btnOK.Add_Click({
+            # [System.Windows.Forms.MessageBox]::Show( ".\sqlAzConsultarAccesos.ps1 " )
+            Start-Process powershell -ArgumentList "-File .\getRevisionRDP.ps1 "
+            $form.Close()
+        })
+
+    $btnCancel.Add_Click({ $form.Close() })
+
+    $form.ShowDialog()
+}
+
 # -----------------------------
 # CIERRA EL FORMULARIO MENU
 # -----------------------------
@@ -1772,8 +1821,8 @@ function Cerrar_Menu {
 # FORMULARIO PRINCIPAL (MENU)
 # -----------------------------
 $formMenu = New-Object System.Windows.Forms.Form
-$formMenu.Text = "GESTION DE PERMISOS"
-$formMenu.Size = New-Object System.Drawing.Size(600, 470)
+$formMenu.Text = "GESTION INFRAESTRUCTURA - PERMISOS"
+$formMenu.Size = New-Object System.Drawing.Size(600, 520)
 
 $formMenu.StartPosition = "CenterScreen"
 #$formMenu.BackColor = [System.Drawing.Color]::White
@@ -1781,7 +1830,7 @@ $formMenu.StartPosition = "CenterScreen"
 
 # Título superior grande
 $lblTitulo = New-Object System.Windows.Forms.Label
-$lblTitulo.Text = "GESTION DE PERMISOS"
+$lblTitulo.Text = "GESTION INFRAESTRUCTURA - PERMISOS"
 #$lblTitulo.Font = New-Object System.Drawing.Font("Segoe UI", 14, "Bold")
 $lblTitulo.AutoSize = $true
 $lblTitulo.Left = 20
@@ -1793,18 +1842,19 @@ $formMenu.Controls.Add( (NuevaOpcion -text "+ RDP Agregar Acceso" -y 30 -col 1 -
 $formMenu.Controls.Add( (NuevaOpcion -text "+ SQL Agregar Acceso" -y 30 -col 2 -onClick { Form_Agregar_SQL }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "x RDP Revocar Acceso" -y 80 -col 1 -onClick { Form_Revocar_RDP }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "x SQL Revocar Acceso" -y 80 -col 2 -onClick { Form_Revocar_Unit_SQL }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "x RDP Finalizar Acceso Masivamente" -y 130 -col 1 -onClick { Form_Revocar_RDP_MASIVO }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "x SQL Finalizar Acceso Masivamente" -y 130 -col 2 -onClick { Form_Revocar_Masivo_SQL }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "x RDP Finalizar Accesos Masivamente" -y 130 -col 1 -onClick { Form_Revocar_RDP_MASIVO }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "x SQL Finalizar Accesos Masivamente" -y 130 -col 2 -onClick { Form_Revocar_Masivo_SQL }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "* SQL AZURE Agregar Acceso" -y 180 -col 1 -onClick { Form_Sql_Add_Azure }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "* SQL AZURE Remover Acceso" -y 180 -col 2 -onClick { Form_Sql_Remove_Azure }) )
 $formMenu.Controls.Add( (NuevaOpcion -text "* Vincula Id RDP con ProyFidens" -y 230 -col 1 -onClick { Form_Rdp_Update_NumReg }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "x SQL AZURE Finalizar Acceso Masivamente" -y 230 -col 2 -onClick { Form_Revocar_Azure_Masivo_SQL }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "* Informe Accesos SQL-RDP" -y 280 -col 1 -onClick { Form_Listar_Accesos }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "* Solicitudes Fidens" -y 280 -col 2 -onClick { Form_Autorizados_Fidens }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "  Info SQL Local DBA" -y 330 -col 1 -onClick { Form_Local_DBA }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "  Info SQL Azure DBA" -y 330 -col 2 -onClick { Form_Azure_DBA }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "  SFTP 10..53 Crea Usuario" -y 380 -col 1 -onClick { Form_SFTP_Crea_Usuario }) )
-$formMenu.Controls.Add( (NuevaOpcion -text "  Salir" -y 380 -col 2 -onClick { Cerrar_Menu }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "x SQL AZURE Finalizar Accesos Masivamente" -y 230 -col 2 -onClick { Form_Revocar_Azure_Masivo_SQL }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "* Informe Accesos Gestionados SQL-RDP" -y 280 -col 1 -onClick { Form_Listar_Accesos }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "? Solicitudes por Aprobar FIDENS" -y 280 -col 2 -onClick { Form_Autorizados_Fidens }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "~ Info SQL Local DBA" -y 330 -col 1 -onClick { Form_Local_DBA }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "~ Info SQL Azure DBA" -y 330 -col 2 -onClick { Form_Azure_DBA }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "~ Info RDU Local DBA" -y 380 -col 1 -onClick { Form_Local_RDU }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "@  SFTP 10..53 Crea Usuario" -y 380 -col 2 -onClick { Form_SFTP_Crea_Usuario }) )
+$formMenu.Controls.Add( (NuevaOpcion -text "  Salir" -y 430 -col 1 -onClick { Cerrar_Menu }) )
 
 $formMenu.KeyPreview = $true
 $formMenu.Add_KeyDown({
