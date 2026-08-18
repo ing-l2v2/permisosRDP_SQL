@@ -43,7 +43,7 @@ $ServidorOrigen = "10.0.0.59"
 
 $Usuario = "FIDENSLAT\leonel.villa"
 
-$NombreSite = "DERCO_CORREDOR"
+$NombreSite = "zenitdesa"
 
 # Repositorio local del inventario
 $Repositorio = "C:\Infraestructura\Site"

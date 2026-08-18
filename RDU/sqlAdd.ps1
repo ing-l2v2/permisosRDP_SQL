@@ -225,13 +225,13 @@ else {
 # Write-Host "[DEBUG $accesoSqlSource sqlAdd] Procediendo en 49 Usuario: $Usr, TipoAcceso: $TipoAcceso, BaseDatoSql: $BaseDatoSql, DuraHorasSql: $DuraHorasSql, ExpiraSql: $ExpiraSql, NumReg: $NumReg :: sp_infra_ini_asignar_permiso_temporal" -ForegroundColor Green
 $query = @"
 EXEC dbo.sp_infra_ini_asignar_permiso_temporal 
-    @Usuario = '$Usr',
-    @TipoAcceso = '$TipoAcceso',
-    @BaseDatos = $BaseDatoSql,
-    @DuracionHoras = $DuraHorasSql,
-    @Expira = $FechaFin, 
-    @NumReg = $NumReg,
-    @CodUser = $CodUser;
+@Usuario = '$Usr',
+@TipoAcceso = '$TipoAcceso',
+@BaseDatos = $BaseDatoSql,
+@DuracionHoras = $DuraHorasSql,
+@Expira = $FechaFin, 
+@NumReg = $NumReg,
+@CodUser = $CodUser;
 "@
 
 # Write-Host "[$accesoSqlSource] QUERY SQL EJECUTADO:" -Foreground Green

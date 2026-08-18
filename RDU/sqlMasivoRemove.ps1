@@ -233,10 +233,10 @@ foreach ($r in $Origenes) {
 	    
                     $SqlFidens = @"
 EXEC dbo.rdu_infraProyectoFidensRegistrarEstado
-     @NumReg = $NumReg,
-     @Estado = $Estado,
-     @CodUser = $CodUser,
-     @FechaFin = NULL;
+    @NumReg = $NumReg,
+    @Estado = $Estado,
+    @CodUser = $CodUser,
+    @FechaFin = NULL;
 "@	    
                     # Write-Host "[$servSqlFidens sqlMasivoRemove] QUERY SQL EJECUTADO rdu_infraProyectoFidensRegistrarEstado" -Foreground Yellow
                     Write-Host $SqlFidens

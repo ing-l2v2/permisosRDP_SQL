@@ -93,17 +93,17 @@ foreach ($bd in $BaseDato) {
 
   # Crear usuario si no existe en la base
   $Check = @"
-  IF NOT EXISTS(SELECT * FROM sys.database_principals WHERE name = '$Usr')
-  BEGIN
-  --    CREATE USER [$Usr] WITH PASSWORD = 'Temp#12345';
-    CREATE USER [$Usr] FOR LOGIN [$Usr];
-    SELECT 1;
-  END
-  ELSE
-  BEGIN
-    SELECT 2;
-  END;
-  --SELECT * FROM sys.database_principals WHERE name = '$Usr'
+IF NOT EXISTS(SELECT * FROM sys.database_principals WHERE name = '$Usr')
+BEGIN
+--    CREATE USER [$Usr] WITH PASSWORD = 'Temp#12345';
+  CREATE USER [$Usr] FOR LOGIN [$Usr];
+  SELECT 1;
+END
+ELSE
+BEGIN
+  SELECT 2;
+END;
+--SELECT * FROM sys.database_principals WHERE name = '$Usr'
 "@
 
 
@@ -157,14 +157,14 @@ foreach ($bd in $BaseDato) {
     $Connect49 = "Server=$serv49;Database=$database49;User ID=$user;Password=$pass49;TrustServerCertificate=True;"
     # Si es un exito verificar si existe duplicado ASIGNADO con mismo servidor, base, usuario y tipoacceso
     $query49 = @"
-        SELECT TOP 1 IdAzure, Servidor, Usuario, PermisoAsignado, BaseDatos, Estado, Expira, NumReg, CodUser 
-        FROM master.dbo.infraAccesosAzure
-        WHERE Servidor = '$Servidor'
-        AND Usuario = '$Usr'
-        AND BaseDatos = '$bd'
-        AND PermisoAsignado = '$TipoAcceso'
-        AND Estado = 'ASIGNADO'
-        ORDER BY Estado ASC;
+SELECT TOP 1 IdAzure, Servidor, Usuario, PermisoAsignado, BaseDatos, Estado, Expira, NumReg, CodUser 
+FROM master.dbo.infraAccesosAzure
+WHERE Servidor = '$Servidor'
+AND Usuario = '$Usr'
+AND BaseDatos = '$bd'
+AND PermisoAsignado = '$TipoAcceso'
+AND Estado = 'ASIGNADO'
+ORDER BY Estado ASC;
 "@
     # Write-Host $query49
     $asignadosPrev = Invoke-Sqlcmd -Query $query49 -ConnectionString $Connect49
@@ -181,10 +181,11 @@ foreach ($bd in $BaseDato) {
       $prevExpira = $asignadosPrev["Expira"]
       # Al existir ubicarlo en finalizado en 56 el duplicado
       $sqlDelDupli49 = @"
-    UPDATE master.dbo.infraAccesosAzure
-        SET Estado = 'REVOCADO', Revocado = GETDATE(), Observacion='FORZADO REVOCADO'
-        WHERE NumReg = $prevNumReg;
-    SELECT * FROM master.dbo.infraAccesosAzure WHERE NumReg = $prevNumReg;
+UPDATE master.dbo.infraAccesosAzure
+SET Estado = 'REVOCADO', Revocado = GETDATE(), Observacion='FORZADO REVOCADO'
+WHERE NumReg = $prevNumReg;
+
+SELECT * FROM master.dbo.infraAccesosAzure WHERE NumReg = $prevNumReg;
 "@        
       # Write-Host $sqlDelDupli49
       $revocadoDupli49 = Invoke-Sqlcmd -Query $sqlDelDupli49 -ConnectionString $Connect49
@@ -193,23 +194,23 @@ foreach ($bd in $BaseDato) {
       }
 
       $sqlPrevRev56 = @"
-        SELECT TOP 1 AAC_IDENAAC AS NUMREG, AGE_SEG_CODIGO AS CODUSER, SRV.ASE_IPPRIVADA AS IPPRIV,
-      SRV.ASE_DESCRIPCION AS SERVERNAME, LOWER(USR.TXT_ACC) AS USUARIO, CTA.ADM_IDPROY AS IDBD,
-      CTA.AAC_PERSMISO AS PERMISO,
-        CASE
-            WHEN ISDATE(CONVERT(varchar(10), CTA.ACC_FECHAFIN, 120) + ' ' + CTA.ACC_HORAFIN) = 1
-            THEN CONVERT(datetime, CONVERT(varchar(10), CTA.ACC_FECHAFIN, 120) + ' ' + CTA.ACC_HORAFIN)
-            ELSE NULL
-        END AS EXPIRA,
-      CTA.ESTADO
-    FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA CTA
-    INNER JOIN ProyFidens.dbo.SYS_ACCOUNT USR ON CTA.AGE_SEG_CODIGO=USR.COD_USER AND USR.STATUS=1
-    INNER JOIN ProyFidens.dbo.ADM_SERVIDOR SRV ON CTA.ASE_IDENASE=SRV.ASE_IDENASE AND SRV.ASE_ESTADO=1
-    WHERE LOWER(USR.TXT_ACC) = '$Usr'
-    AND AAC_IDENAAC < $NumReg
-    AND AAC_PERSMISO LIKE '%SQL%'
-    AND SRV.ASE_DESCRIPCION LIKE 'sql-ginger.database.windows.net'
-    ORDER BY AAC_IDENAAC DESC;
+SELECT TOP 1 AAC_IDENAAC AS NUMREG, AGE_SEG_CODIGO AS CODUSER, SRV.ASE_IPPRIVADA AS IPPRIV,
+SRV.ASE_DESCRIPCION AS SERVERNAME, LOWER(USR.TXT_ACC) AS USUARIO, CTA.ADM_IDPROY AS IDBD,
+CTA.AAC_PERSMISO AS PERMISO,
+CASE
+  WHEN ISDATE(CONVERT(varchar(10), CTA.ACC_FECHAFIN, 120) + ' ' + CTA.ACC_HORAFIN) = 1
+  THEN CONVERT(datetime, CONVERT(varchar(10), CTA.ACC_FECHAFIN, 120) + ' ' + CTA.ACC_HORAFIN)
+  ELSE NULL
+END AS EXPIRA,
+CTA.ESTADO
+FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA CTA
+INNER JOIN ProyFidens.dbo.SYS_ACCOUNT USR ON CTA.AGE_SEG_CODIGO=USR.COD_USER AND USR.STATUS=1
+INNER JOIN ProyFidens.dbo.ADM_SERVIDOR SRV ON CTA.ASE_IDENASE=SRV.ASE_IDENASE AND SRV.ASE_ESTADO=1
+WHERE LOWER(USR.TXT_ACC) = '$Usr'
+AND AAC_IDENAAC < $NumReg
+AND AAC_PERSMISO LIKE '%SQL%'
+AND SRV.ASE_DESCRIPCION LIKE 'sql-ginger.database.windows.net'
+ORDER BY AAC_IDENAAC DESC;
 "@
       # Write-Host $sqlPrevRev56
       $finalizadoPrevios = Invoke-Sqlcmd -Query $sqlPrevRev56 -ConnectionString $Connect56
@@ -221,16 +222,16 @@ foreach ($bd in $BaseDato) {
         $prevCodUser = $finalizadoPrevios["CODUSER"]
 
         $sqlFinalDupli56 = @"
-  UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
-      SET ESTADO = 3
-    WHERE AAC_IDENAAC = $prevNumReg AND ESTADO IN (2,3);  
- 
-    SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $prevNumReg;
+UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
+SET ESTADO = 3
+WHERE AAC_IDENAAC = $prevNumReg AND ESTADO IN (2,3);  
+
+SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $prevNumReg;
 "@
 
         if ($prevNumReg -ne $prevNumRegDup) {
           $sqlCorreoSend56 = @"
-  EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$prevCodUser', $prevNumReg;
+EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$prevCodUser', $prevNumReg;
 "@
           Write-Host $sqlCorreoSend56 
           invoke-Sqlcmd -Query $sqlCorreoSend56 -ConnectionString $Connect56
@@ -246,15 +247,15 @@ foreach ($bd in $BaseDato) {
     }
     # Si no existe o ya se finalizo
     $sql49 = @" 
-      INSERT INTO master.dbo.infraAccesosAzure (Servidor, Usuario, TipoAsignacion, PermisoAsignado, BaseDatos, Expira, Estado, NumReg, CodUser, Ejecutar)
-      SELECT '$Servidor', '$Usr', 'DB_ROLE', '$TipoAcceso', '$bd', '$Expira', 'ASIGNADO', $NumReg, '$CodUser', '$ejecucion';
+INSERT INTO master.dbo.infraAccesosAzure (Servidor, Usuario, TipoAsignacion, PermisoAsignado, BaseDatos, Expira, Estado, NumReg, CodUser, Ejecutar)
+SELECT '$Servidor', '$Usr', 'DB_ROLE', '$TipoAcceso', '$bd', '$Expira', 'ASIGNADO', $NumReg, '$CodUser', '$ejecucion';
 
-      SELECT TOP 1 IdAzure FROM master.dbo.infraAccesosAzure WHERE Servidor = '$Servidor'
-        AND Usuario = '$Usr'
-        AND BaseDatos = '$bd'
-        AND PermisoAsignado = '$TipoAcceso'
-        AND Estado = 'ASIGNADO'
-        ORDER BY Estado ASC;
+SELECT TOP 1 IdAzure FROM master.dbo.infraAccesosAzure WHERE Servidor = '$Servidor'
+AND Usuario = '$Usr'
+AND BaseDatos = '$bd'
+AND PermisoAsignado = '$TipoAcceso'
+AND Estado = 'ASIGNADO'
+ORDER BY Estado ASC;
 "@
     # Write-Host $sql49
     $asignados = Invoke-Sqlcmd -Query $sql49 -ConnectionString $Connect49
@@ -265,16 +266,16 @@ foreach ($bd in $BaseDato) {
       $idAzure = $asignados["idAzure"]
       # Asignar el item presente con fecha de expiración
       $sqlEjecutado56 = @"
-  UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
-	  SET ESTADO = 2
-  WHERE AAC_IDENAAC = $NumReg AND ESTADO = 1;
+UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
+SET ESTADO = 2
+WHERE AAC_IDENAAC = $NumReg AND ESTADO = 1;
 
-  SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $NumReg;
+SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $NumReg;
 "@
 
       if ($NumReg -ne $NumRegDup) {
         $sqlCorreoSend = @"
-  EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$CodUser', $NumReg;
+EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$CodUser', $NumReg;
 "@
         Write-Host $sqlCorreoSend
         if ([string]::IsNullOrWhiteSpace($Connect56)) {

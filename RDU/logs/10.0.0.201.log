@@ -77,3 +77,8 @@
 2026-07-23 10:12:03 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Administrators', NumReg: 18190, Estado: '2', Expira: '2026-07-24 00:00', HoraExpira: '2026-07-23 23:00'
 2026-07-27 11:39:33 | Proceso completado Ok. FIDENSLAT\jtoledo en 'Administrators', NumReg: 18233, Estado: '2', Expira: '2026-07-29 00:00', HoraExpira: '2026-07-27 12:00'
 2026-07-31 10:07:57 | Proceso completado Ok. FIDENSLAT\gchavez en 'Remote Desktop Users', NumReg: 18257, Estado: '2', Expira: '2026-08-02 00:00', HoraExpira: '2026-07-31 11:00'
+2026-08-14 14:45:34 | ERROR: Error de conexión al servidor remoto 10.0.0.201. Mensaje de error: WinRM no puede completar la operación. Compruebe que el nombre del equipo es válido, que se puede acceder al equipo a través de la red y que la excepción del firewall del servicio WinRM está habilitada y permite el acceso desde este equipo. De manera predeterminada, la excepción de firewall de WinRM para perfiles públicos limita el acceso a equipos remotos dentro de la misma subred local. Para obtener más información, consulte el tema de la Ayuda about_Remote_Troubleshooting.
+2026-08-14 17:37:53 | Proceso completado Ok. FIDENSLAT\cberruz en 'Remote Desktop Users', NumReg: 19385, Estado: '2', Expira: '2026-08-16 00:00', HoraExpira: '2026-08-14 12:00'
+2026-08-14 19:54:27 | [10.0.0.201 rdpAdd] ERROR SP â†’ rollback rdu_infraRegistrarAsignacionRDU
+2026-08-14 19:54:30 | ERROR: ERROR: SP fallo, acceso revertido, no se asigno el acceso
+2026-08-17 11:21:25 | Proceso completado Ok. FIDENSLAT\cberruz en 'Administrators', NumReg: 19423, Estado: '2', Expira: '2026-08-19 00:00', HoraExpira: '2026-08-17 10:00'

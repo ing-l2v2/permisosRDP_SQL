@@ -14,10 +14,10 @@ $inicioProc = Get-Date
 
 $sql49 = @"
 SELECT IdAzure, Servidor, Usuario, PermisoAsignado, BaseDatos, NumReg, CodUser, Ejecutar
-        FROM master.dbo.infraAccesosAzure
-        WHERE Estado = 'ASIGNADO'
-        AND Expira <= GETDATE()
-        ORDER BY IdAzure ASC
+FROM master.dbo.infraAccesosAzure
+WHERE Estado = 'ASIGNADO'
+AND Expira <= GETDATE()
+ORDER BY IdAzure ASC
 "@
 
 # Write-Host $sql49
@@ -67,15 +67,16 @@ else {
 
     $sql56Fin = @"
 UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
-  SET ESTADO = 3
-  WHERE AAC_IDENAAC = $NumReg AND ESTADO IN (2,3);  
-  SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $NumReg;
+SET ESTADO = 3
+WHERE AAC_IDENAAC = $NumReg AND ESTADO IN (2,3);
+
+SELECT * FROM ProyFidens.dbo.ADM_ACTIVACION_CUENTA WHERE AAC_IDENAAC = $NumReg;
 "@  
 
     if ($NumReg -ne $NumRegDup) {
       $sqlCorreoSend = @"
-  EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$CodUser', $NumReg;
-  "@
+EXEC [ProyFidens].[dbo].[SYS_ADM_EMAIL_SOLICITUD_ACCESO_PRODUCCION] '$CodUser', $NumReg;
+"@
       Write-Host $sqlCorreoSend 
       Invoke-Sqlcmd -Query $sqlCorreoSend -ConnectionString $Connect56
       $NumRegDup = $NumReg
@@ -88,11 +89,10 @@ UPDATE ProyFidens.dbo.ADM_ACTIVACION_CUENTA
     }
     else {
       $sql49Fin = @"
-    UPDATE dbo.infraAccesosAzure
-    SET Estado = 'REVOCADO',
-         Revocado = GetDate()
-    WHERE IdAzure = $IdAzure;
-    SELECT * FROM dbo.infraAccesosAzure WHERE IdAzure = $IdAzure;
+UPDATE dbo.infraAccesosAzure
+SET Estado = 'REVOCADO',Revocado = GetDate()
+WHERE IdAzure = $IdAzure;
+SELECT * FROM dbo.infraAccesosAzure WHERE IdAzure = $IdAzure;
 "@
       # Write-Host $sql49Fin
       $finaliza49 = Invoke-Sqlcmd -Query $sql49Fin -ConnectionString $Connect49

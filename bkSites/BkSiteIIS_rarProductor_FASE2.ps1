@@ -44,10 +44,10 @@
 
 $ServidorOrigen = "10.0.0.59"
 
-$NombreSite = "DERCO_CORREDOR"
+$NombreSite = "zenitdesa"
 
-#$FechaBackup = Get-Date -Format "ddMMyyyy"
-$FechaBackup = "12082026"
+$FechaBackup = Get-Date -Format "ddMMyyyy"
+#$FechaBackup = "12082026"
 
 
 # Usuario utilizado para WinRM

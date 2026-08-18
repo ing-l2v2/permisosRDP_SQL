@@ -186,9 +186,9 @@ if (-not (Test-Connection -ComputerName $accesoSql -Count 1 -Quiet)) {
 }
 $query = @"
 EXEC sp_infra_ini_revocar_permiso_unitario 
-    @Usuario = '$Usr',
-    @TipoAcceso = '$TipoAcceso',
-    @BaseDatos = $BaseDatoSql;
+  @Usuario = '$Usr',
+  @TipoAcceso = '$TipoAcceso',
+  @BaseDatos = $BaseDatoSql;
 "@
 Write-Host $query -foregroundColor Cyan
 $revocoPermisoTemporal = Invoke-Sqlcmd -Query $query -ConnectionString $ConnAcceso
